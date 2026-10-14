@@ -16,6 +16,7 @@ class PaperServerListPingEventImpl extends PaperServerListPingEvent {
         super(client, server.motd(), server.getPlayerCount(), server.getMaxPlayers(),
                 server.getServerModName() + ' ' + server.getServerVersion(), protocolVersion, icon);
         this.server = server;
+        this.setHidePlayers(true); // Cubve - server-list player information is private
     }
 
     @Override

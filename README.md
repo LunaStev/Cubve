@@ -33,6 +33,12 @@ Local development builds remain in `paper-server/build/libs/`. CI development ar
 
 The existing `/paper` administration commands remain available. All commands above are registered by the server itself.
 
+## Server list
+
+The multiplayer server list displays `???` instead of the online/max player count. Cubve omits the entire player section from modern status responses, including the hover sample of names and UUIDs. Legacy pings report unknown counts (`-1`) instead of real counts. This is built into the server and remains enforced after plugin ping listeners; MOTD, icon, version and cancellation still work normally.
+
+The actual connection limit continues to use `max-players` in `server.properties`. Operator commands such as `/status` still show the real count. This hides server-list information only; it does not hide players from connected clients or separately enabled Query/RCON interfaces.
+
 ## Development and upstream
 
 See [DEVELOPMENT.md](DEVELOPMENT.md) for local development, patch maintenance, the selective upstream policy and optimization validation.

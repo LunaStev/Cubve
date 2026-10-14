@@ -79,6 +79,7 @@ public final class StandardPaperServerListPingEventImpl extends PaperServerListP
         final Component description = new AdventureComponent(event.motd());
 
         // Players
+        event.setHidePlayers(true); // Cubve - enforce privacy after plugin listeners
         final Optional<ServerStatus.Players> players;
         if (!event.shouldHidePlayers()) {
             players = Optional.of(new ServerStatus.Players(event.getMaxPlayers(), event.getNumPlayers(), event.getPlayerSampleHandle()));

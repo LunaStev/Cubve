@@ -54,6 +54,7 @@ public final class PaperLegacyStatusClient implements StatusClient {
             return null;
         }
 
+        event.setHidePlayers(true); // Cubve - legacy pings must not reveal real counts either
         return event;
     }
 
