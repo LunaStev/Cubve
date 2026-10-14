@@ -5,6 +5,10 @@ import java.util.Set;
 import java.util.UUID;
 import io.papermc.paper.datacomponent.DataComponentView;
 import io.papermc.paper.entity.LookAnchor;
+import io.papermc.paper.entity.RemovalReason;
+import io.papermc.paper.math.Angle;
+import net.kyori.adventure.text.event.HoverEvent;
+import net.kyori.adventure.text.event.HoverEventSource;
 import net.kyori.adventure.util.TriState;
 import org.bukkit.Chunk; // Paper
 import org.bukkit.EntityEffect;
@@ -13,12 +17,16 @@ import org.bukkit.Material;
 import org.bukkit.Nameable;
 import org.bukkit.Server;
 import org.bukkit.Sound;
+import org.bukkit.SoundCategory;
 import org.bukkit.World;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.PistonMoveReaction;
 import org.bukkit.command.CommandSender;
+import org.bukkit.damage.DamageSource;
+import org.bukkit.damage.DamageType;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityRemoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.Directional;
@@ -37,7 +45,7 @@ import org.jetbrains.annotations.Nullable;
  * Not all methods are guaranteed to work/may have side effects when
  * {@link #isInWorld()} is false.
  */
-public interface Entity extends Metadatable, CommandSender, Nameable, PersistentDataHolder, net.kyori.adventure.text.event.HoverEventSource<net.kyori.adventure.text.event.HoverEvent.ShowEntity>, net.kyori.adventure.sound.Sound.Emitter, DataComponentView { // Paper
+public interface Entity extends Metadatable, CommandSender, Nameable, PersistentDataHolder, HoverEventSource<HoverEvent.ShowEntity>, net.kyori.adventure.sound.Sound.Emitter, net.kyori.adventure.sound.Sound.Source.Provider, DataComponentView {
 
     /**
      * Gets the entity's current position
@@ -132,12 +140,28 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
      *
      * @param yaw the yaw
      * @param pitch the pitch
+     * @see #setRotation(Angle, Angle)
      */
     public void setRotation(float yaw, float pitch);
+
+    /**
+     * Sets the entity's rotation.
+     * <p>
+     * Note that if the entity is affected by AI, it may override this rotation.
+     *
+     * @param yaw the yaw
+     * @param pitch the pitch
+     */
+    void setRotation(@NotNull Angle yaw, @NotNull Angle pitch);
 
     // Paper start - Teleport API
     /**
      * Teleports this entity to the given location.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause this to return false. This behavior may
+     * change in future versions.
      *
      * @param location New location to teleport this entity to
      * @param teleportFlags Flags to be used in this teleportation
@@ -149,6 +173,11 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
 
     /**
      * Teleports this entity to the given location.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause this to return false. This behavior may
+     * change in future versions.
      *
      * @param location New location to teleport this entity to
      * @param cause The cause of this teleportation
@@ -179,8 +208,12 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     // Paper end - Teleport API
 
     /**
-     * Teleports this entity to the given location. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the given location.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause this to return false. This behavior may
+     * change in future versions.
      *
      * @param location New location to teleport this entity to
      * @return <code>true</code> if the teleport was successful
@@ -188,8 +221,12 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     public boolean teleport(@NotNull Location location);
 
     /**
-     * Teleports this entity to the given location. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the given location.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause this to return false. This behavior may
+     * change in future versions.
      *
      * @param location New location to teleport this entity to
      * @param cause The cause of this teleportation
@@ -198,8 +235,12 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     public boolean teleport(@NotNull Location location, @NotNull TeleportCause cause);
 
     /**
-     * Teleports this entity to the target Entity. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the target Entity.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause this to return false. This behavior may
+     * change in future versions.
      *
      * @param destination Entity to teleport this entity to
      * @return <code>true</code> if the teleport was successful
@@ -207,8 +248,12 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     public boolean teleport(@NotNull Entity destination);
 
     /**
-     * Teleports this entity to the target Entity. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
+     * Teleports this entity to the target Entity.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause this to return false. This behavior may
+     * change in future versions.
      *
      * @param destination Entity to teleport this entity to
      * @param cause The cause of this teleportation
@@ -219,6 +264,12 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     // Paper start
     /**
      * Loads/Generates(in 1.13+) the Chunk asynchronously, and then teleports the entity when the chunk is ready.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause the future to return false. This behavior may
+     * change in future versions.
+     *
      * @param loc Location to teleport to
      * @return A future that will be completed with the result of the teleport
      */
@@ -228,6 +279,12 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
 
     /**
      * Loads/Generates(in 1.13+) the Chunk asynchronously, and then teleports the entity when the chunk is ready.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause the future to return false. This behavior may
+     * change in future versions.
+     *
      * @param loc Location to teleport to
      * @param cause Reason for teleport
      * @return A future that will be completed with the result of the teleport
@@ -241,9 +298,32 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
 
     /**
      * Loads/Generates(in 1.13+) the Chunk asynchronously, and then teleports the entity when the chunk is ready.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause the future to return false. This behavior may
+     * change in future versions.
+     *
+     * @param loc Location to teleport to
+     * @param teleportFlags Flags to be used in this teleportation
+     * @return A future that will be completed with the result of the teleport
+     */
+    default java.util.concurrent.@NotNull CompletableFuture<Boolean> teleportAsync(@NotNull Location loc, @NotNull io.papermc.paper.entity.TeleportFlag @NotNull... teleportFlags) {
+        return this.teleportAsync(loc, TeleportCause.PLUGIN, teleportFlags);
+    }
+
+    /**
+     * Loads/Generates(in 1.13+) the Chunk asynchronously, and then teleports the entity when the chunk is ready.
+     * <p>
+     * Note: This uses default in game behavior for teleportation, especially in regard to handling
+     * passengers and vehicles across dimensions. It should be noted at this moment, teleporting a {@link Player}
+     * with passengers across dimensions is not supported and will cause the future to return false. This behavior may
+     * change in future versions.
+     *
      * @param loc Location to teleport to
      * @param cause Reason for teleport
      * @param teleportFlags Flags to be used in this teleportation
+     *
      * @return A future that will be completed with the result of the teleport
      */
     java.util.concurrent.@NotNull CompletableFuture<Boolean> teleportAsync(@NotNull Location loc, @NotNull TeleportCause cause, @NotNull io.papermc.paper.entity.TeleportFlag @NotNull... teleportFlags);
@@ -386,7 +466,7 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     boolean isInvisible();
 
     /**
-     * Sets this entities no physics status.
+     * Sets this entity no physics status.
      *
      * @param noPhysics boolean indicating if the entity should not have physics.
      */
@@ -423,6 +503,19 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
      * @throws UnsupportedOperationException if you try to remove a {@link Player} use {@link Player#kick(net.kyori.adventure.text.Component)} in this case instead
      */
     public void remove();
+
+    /**
+     * Gets the cause used for this entity's remove event.
+     *
+     * @return the remove event cause, or null if this entity has not been removed or no event cause was supplied
+     */
+    @Nullable
+    EntityRemoveEvent.Cause getRemoveEventCause();
+
+    /**
+     * {@return the reason this entity was removed}
+     */
+    @Nullable RemovalReason getRemovalReason();
 
     /**
      * Returns true if this entity has been marked for removal.
@@ -583,6 +676,17 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     public EntityDamageEvent getLastDamageCause();
 
     /**
+     * Gets the item being used as a weapon by this entity.
+     * <p>
+     * Note: In most cases this is the item in the entity's main hand, but
+     * it may be the offhand if for ex: the entity is using the riptide
+     * enchantment on a trident.
+     *
+     * @return The weapon item
+     */
+    @Nullable ItemStack getWeapon();
+
+    /**
      * Returns a unique and persistent id for this entity
      *
      * @return unique id
@@ -627,6 +731,14 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
      */
     @NotNull
     public EntityType getType();
+
+    /**
+     * Get the {@link SoundCategory} this entity will use when playing its sounds.
+     *
+     * @return the sound category for this entity
+     */
+    @NotNull
+    SoundCategory getSoundCategory();
 
     /**
      * Get the {@link Sound} this entity makes while swimming.
@@ -767,19 +879,44 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     /**
      * Sets whether the entity is invulnerable or not.
      * <p>
-     * When an entity is invulnerable it can only be damaged by players in
+     * When an entity is invulnerable, it can only be damaged by players in
      * creative mode.
      *
      * @param flag if the entity is invulnerable
      */
-    public void setInvulnerable(boolean flag);
+    void setInvulnerable(boolean flag);
 
     /**
-     * Gets whether the entity is invulnerable or not.
+     * Gets the current invulnerability state of the entity set by {@link #setInvulnerable(boolean)}.
      *
-     * @return whether the entity is
+     * @return whether the entity is invulnerable
+     * @see #isInvulnerableTo(DamageSource)
      */
-    public boolean isInvulnerable();
+    boolean isMarkedInvulnerable();
+
+    /**
+     * Determines if the entity is invulnerable to the specified damage source.
+     * <p>
+     * Using this method with {@code DamageSource.builder(DamageType.GENERIC).build()} is equivalent to {@link #isInvulnerable()}
+     *
+     * @param source the damage source to check against
+     * @return {@code true} if the entity is invulnerable to the given damage source, {@code false} otherwise
+     */
+    boolean isInvulnerableTo(@NotNull DamageSource source);
+
+    /**
+     * Gets whether the entity is invulnerable or not
+     *
+     * @return whether the entity is invulnerable
+     * @see #isInvulnerableTo(DamageSource)
+     * @deprecated This method does not reflect the invulnerability state set by
+     *   {@link #setInvulnerable(boolean)}, use {@link #isMarkedInvulnerable()} for that instead.
+     *   Use {@link #isInvulnerableTo(DamageSource)} with {@code DamageSource.builder(DamageType.GENERIC).build()} as a direct replacement to this method.
+     */
+    @Deprecated(since = "26.3")
+    default boolean isInvulnerable() {
+        return this.isInvulnerableTo(DamageSource.builder(DamageType.GENERIC).build());
+    }
 
     /**
      * Gets whether the entity is silent or not.
@@ -810,6 +947,27 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
      * @param gravity whether gravity should apply
      */
     void setGravity(boolean gravity);
+
+    /**
+     * Returns the default acceleration due to gravity (in blocks per tick). Ignores {@link Entity#hasGravity()}.
+     *
+     * @return the default acceleration due to gravity
+     */
+    double getDefaultGravity();
+
+    /**
+     * Returns the acceleration due to gravity (in blocks per tick). If {@link Entity#hasGravity()} is false, returns 0.
+     *
+     * @return the acceleration due to gravity
+     */
+    double getGravity();
+
+    /**
+     * Returns the air drag factor applied to this entity.
+     *
+     * @return the air drag factor
+     */
+    float getAirDrag();
 
     /**
      * Gets the period of time (in ticks) before this entity can use a portal.
@@ -1025,7 +1183,7 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     @NotNull
     @Override
     default net.kyori.adventure.text.event.HoverEvent<net.kyori.adventure.text.event.HoverEvent.ShowEntity> asHoverEvent(final @NotNull java.util.function.UnaryOperator<net.kyori.adventure.text.event.HoverEvent.ShowEntity> op) {
-        return net.kyori.adventure.text.event.HoverEvent.showEntity(op.apply(net.kyori.adventure.text.event.HoverEvent.ShowEntity.of(this.getType().getKey(), this.getUniqueId(), this.customName())));
+        return net.kyori.adventure.text.event.HoverEvent.showEntity(op.apply(net.kyori.adventure.text.event.HoverEvent.ShowEntity.showEntity(this.getType().getKey(), this.getUniqueId(), this.customName())));
     }
 
     /**
@@ -1057,10 +1215,9 @@ public interface Entity extends Metadatable, CommandSender, Nameable, Persistent
     }
 
     /**
-     * @return The {@link org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason} that initially spawned this entity. <!-- Paper - added "initially" to clarify that the SpawnReason doesn't change after the Entity was initially spawned" -->
+     * {@return the {@link org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason} that initially spawned this entity or null if not yet spawned}
      */
-    @NotNull
-    org.bukkit.event.entity.CreatureSpawnEvent.SpawnReason getEntitySpawnReason();
+    org.bukkit.event.entity.CreatureSpawnEvent.@Nullable SpawnReason getEntitySpawnReason();
 
     /**
      * Check if entity is underwater
