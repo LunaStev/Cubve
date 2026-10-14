@@ -46,8 +46,8 @@ jobs:
             echo "BUILD_NUMBER=$patch" >> "$GITHUB_ENV"
           fi
           echo "BUILD_STARTED_AT=$(git show -s --format=%cI HEAD)" >> "$GITHUB_ENV"
-          git config user.name "Cubve CI"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Cubve CI"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Apply patches
         run: ./gradlew applyPatches --stacktrace
       - name: Verify maintenance and release rules
