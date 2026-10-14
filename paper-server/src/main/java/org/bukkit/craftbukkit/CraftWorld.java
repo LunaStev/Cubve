@@ -909,7 +909,16 @@ public class CraftWorld extends CraftRegionAccessor implements World {
 
     @Override
     public void setBiome(int x, int z, Biome bio) {
-        for (int y = this.getMinHeight(); y < this.getMaxHeight(); y++) {
+        // Cubve - Biomes occupy 4x4x4 cells. Write each vertical cell once,
+        // including partially covered cells at unaligned height boundaries.
+        final int minHeight = this.getMinHeight();
+        final int maxHeight = this.getMaxHeight();
+        if (minHeight >= maxHeight) {
+            return;
+        }
+        final int maxQuartY = QuartPos.fromBlock(maxHeight - 1);
+        for (int quartY = QuartPos.fromBlock(minHeight); quartY <= maxQuartY; quartY++) {
+            final int y = Math.max(minHeight, QuartPos.toBlock(quartY));
             this.setBiome(x, y, z, bio);
         }
     }

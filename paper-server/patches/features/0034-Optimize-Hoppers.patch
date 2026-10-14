@@ -48,10 +48,10 @@ index 0000000000000000000000000000000000000000..24a2090e068ad3c0d08705050944abdf
 +    }
 +}
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index b675e9322234761a69e71e9e8b9d41364caf34b6..c3bf41af0273e902f881cc070fcef6dd64abb063 100644
+index 4ddad5bb3fb33c574d4c72fd0b9599cb7ec7aeda..1f51791b35b7de836413a36df8c8502a01f1a364 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
-@@ -1797,6 +1797,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1798,6 +1798,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
              level.hasPhysicsEvent = org.bukkit.event.block.BlockPhysicsEvent.getHandlerList().getRegisteredListeners().length > 0; // Paper - BlockPhysicsEvent
              level.hasEntityMoveEvent = io.papermc.paper.event.entity.EntityMoveEvent.getHandlerList().getRegisteredListeners().length > 0; // Paper - Add EntityMoveEvent
              level.updateLagCompensationTick(); // Paper - lag compensation
@@ -104,7 +104,7 @@ index d3f17088d8f0592ef1231cf3f8bb3ca83170de0b..ddda24a55201de2136fc6dd2cb863d60
          }
      }
 diff --git a/net/minecraft/world/level/block/entity/HopperBlockEntity.java b/net/minecraft/world/level/block/entity/HopperBlockEntity.java
-index 30f681ba31c3b7997ef0d1d6153e9339fb4b2d3b..17c28fbedde81aaf792508af1d0e33ef521e4ef0 100644
+index 99de11c40df085ff7aa978dd21d4e030728b48e4..d5d42cfd93c5a90299a57d4305a53cb3dd1ec7f5 100644
 --- a/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 +++ b/net/minecraft/world/level/block/entity/HopperBlockEntity.java
 @@ -142,6 +142,43 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
@@ -554,7 +554,7 @@ index 30f681ba31c3b7997ef0d1d6153e9339fb4b2d3b..17c28fbedde81aaf792508af1d0e33ef
              result = getEntityContainer(level, x, y, z);
          }
  
-@@ -557,14 +717,14 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
+@@ -559,14 +719,14 @@ public class HopperBlockEntity extends RandomizableContainerBlockEntity implemen
      }
  
      private static @Nullable Container getEntityContainer(final Level level, final double x, final double y, final double z) {

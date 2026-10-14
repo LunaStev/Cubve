@@ -25297,7 +25297,7 @@ index df28b83ab34b2e44a6ce2dbb903ef94db5496aaa..f961326218d56f1455df8d3b7b6079e2
          assert isValidNamespace(namespace);
          assert isValidPath(path);
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index c4adc7266f41057bc93e8c34929c079c9c468d0b..255e01251005a547088aba437ca27ce06fc996e5 100644
+index 0a18ed85bb97c7700a60222e15650c2c46999e98..829255f660c8bb9cf819e263987a8c106c22422a 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -187,7 +187,7 @@ import net.minecraft.world.scores.ScoreboardSaveData;
@@ -25524,7 +25524,7 @@ index c4adc7266f41057bc93e8c34929c079c9c468d0b..255e01251005a547088aba437ca27ce0
              return true;
          }
  
-@@ -1518,6 +1630,13 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1519,6 +1631,13 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          // Paper - improve tick loop - moved into runAllTasksAtTickStart
          this.runAllTasksAtTickStart(); // Paper - improve tick loop
          this.tickServer(sprinting ? () -> false : this::haveTime);
@@ -25538,7 +25538,7 @@ index c4adc7266f41057bc93e8c34929c079c9c468d0b..255e01251005a547088aba437ca27ce0
          this.tickFrame.end();
          this.recordEndOfTick(); // Paper - improve tick loop
          profiler.pop();
-@@ -2559,6 +2678,12 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -2560,6 +2679,12 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          }
      }
  
@@ -28557,7 +28557,7 @@ index e7ddd956a7f942f682f60062eecf0fad95b18749..267259a79c7668da85d206f9dcbde16b
          List<Entity> passengers = this.entity.getPassengers();
          if (!passengers.equals(this.lastPassengers)) {
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index 47a0e17e4fed94828e02c7f4159d32195158f6cc..46e7478bd96e42487cf0fc467b6b9b83f2887d10 100644
+index 9193fc073a6dbf0f7dcdd2b06ddf59a4e4355428..5090c9780ada3c8a7fd070bc6aec3ff1af034d73 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -183,7 +183,7 @@ import net.minecraft.world.waypoints.WaypointTransmitter;

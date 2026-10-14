@@ -1,14 +1,5 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+Cubve maintains its selected Minecraft version with reviewed Paper security, data-loss and critical crash fixes. The current base and selected fixes are recorded in `build-data/`.
 
-We generally only fully support the latest version, the same applies to exploits such as server crashes and item
-duplication bugs. In the transition period during larger Minecraft updates, we may still backport important fixes to the
-last minor or major release.
-
-## Reporting a Vulnerability
-
-For any issues that are NOT duplication bugs, server/client crashes, or otherwise serious exploits, please open an issue
-through the [Issues tab](https://github.com/PaperMC/Paper/issues).
-For exploits, please [join our Discord](https://discord.gg/papermc) and see the [#paper-exploit-report channel](https://discord.com/channels/289587909051416579/1208749386348101682) for
-further instructions.
+Report ordinary Cubve bugs through [Cubve issues](https://github.com/LunaStev/Cubve/issues). For vulnerabilities, use GitHub private vulnerability reporting when available, or contact the Cubve maintainer privately before disclosing exploit details. Cubve-specific issues should be investigated in this fork before reporting an upstream issue.

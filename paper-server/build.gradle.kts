@@ -162,6 +162,7 @@ dependencies {
 }
 
 tasks.jar {
+    archiveBaseName.set("cubve-server")
     manifest {
         val git = Git(rootProject.layout.projectDirectory.path)
         val mcVersion = rootProject.providers.gradleProperty("mcVersion").get()
@@ -178,8 +179,8 @@ tasks.jar {
             "Implementation-Vendor" to date,
             "Specification-Title" to "Cubve",
             "Specification-Version" to project.version,
-            "Specification-Vendor" to "Paper Team",
-            "Brand-Id" to "papermc:paper",
+            "Specification-Vendor" to "Cubve",
+            "Brand-Id" to "cubve:cubve",
             "Brand-Name" to "Cubve",
             "Build-Number" to (build ?: ""),
             "Build-Time" to buildTime.toString(),
@@ -190,6 +191,17 @@ tasks.jar {
             attributes("$tld/bukkit", "Sealed" to true)
         }
     }
+}
+
+tasks.createPaperclipJar {
+    val patch = providers.environmentVariable("BUILD_NUMBER").orNull
+    val mcVersion = providers.gradleProperty("mcVersion").get()
+    val filename = if (patch == null) "cubve-paperclip-${project.version}.jar" else "cubve-$mcVersion-$patch.jar"
+    outputZip.set(layout.buildDirectory.file("libs/$filename"))
+}
+
+tasks.createBundlerJar {
+    outputZip.set(layout.buildDirectory.file("libs/cubve-bundler-${project.version}.jar"))
 }
 
 // Compile tests with -parameters for better junit parameterized test names
@@ -341,7 +353,7 @@ tasks.registerRunTask("runPaperclip") {
 }
 
 fill {
-    project("paper")
+    project("cubve")
     versionFamily(paperweight.minecraftVersion.map { it.split(".", "-").takeWhile { part -> part.toIntOrNull() != null }.take(2).joinToString(".") })
     version(paperweight.minecraftVersion)
 
@@ -354,5 +366,34 @@ fill {
                 nameResolver.set { project, _, version, build -> "$project-$version-$build.jar" }
             }
         }
+    }
+}
+
+// Opt-in microbenchmarks; JMH and test fixtures are never shipped with the server.
+if (providers.gradleProperty("cubveBenchmarks").isPresent) {
+    val benchmarks = sourceSets.create("benchmarks") {
+        compileClasspath += sourceSets.test.get().output + sourceSets.test.get().runtimeClasspath
+        runtimeClasspath += sourceSets.test.get().output + sourceSets.test.get().runtimeClasspath
+    }
+    dependencies {
+        add(benchmarks.implementationConfigurationName, "org.openjdk.jmh:jmh-core:1.37")
+        add(benchmarks.annotationProcessorConfigurationName, "org.openjdk.jmh:jmh-generator-annprocess:1.37")
+    }
+    tasks.register<JavaExec>("benchmark") {
+        group = "verification"
+        description = "Measure actual server API paths with isolated JMH forks"
+        classpath = benchmarks.runtimeClasspath
+        mainClass.set("org.openjdk.jmh.Main")
+        javaLauncher.set(project.javaToolchains.launcherFor { languageVersion.set(JavaLanguageVersion.of(25)) })
+        val agent = objects.newInstance<MockitoAgentProvider>()
+        agent.fileCollection.from(mockitoAgent)
+        jvmArgumentProviders.add(agent)
+        jvmArgs("-Xms1g", "-Xmx1g", "--enable-native-access=ALL-UNNAMED", "-Djoml.nounsafe=true")
+        val label = providers.gradleProperty("cubveBenchmarkLabel").getOrElse("current")
+        val resultFile = layout.buildDirectory.file("reports/benchmarks/$label.json")
+        val filter = providers.gradleProperty("cubveBenchmarkFilter").getOrElse("io.github.lunastev.cubve.benchmark.*")
+        args(filter, "-wi", "3", "-i", "5", "-w", "1s", "-r", "1s",
+            "-f", "2", "-t", "1", "-prof", "gc", "-rf", "json", "-rff", resultFile.get().asFile.absolutePath)
+        doFirst { resultFile.get().asFile.parentFile.mkdirs() }
     }
 }

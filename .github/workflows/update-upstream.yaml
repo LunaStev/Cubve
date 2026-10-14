@@ -1,0 +1,90 @@
+name: Update Paper upstream
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Reviewed same-version fixes or a Minecraft version upgrade'
+        type: choice
+        options: [fixes, version]
+        default: fixes
+      category:
+        description: 'Classification of the reviewed fixes'
+        type: choice
+        options: [security, data-loss, crash]
+        default: security
+      commits:
+        description: 'Space-separated reviewed Paper SHAs, dependencies first (fixes mode)'
+        type: string
+      upstream_ref:
+        description: 'Paper ref for a Minecraft version upgrade (version mode)'
+        type: string
+        default: main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: cubve-upstream
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      UPDATE_MODE: ${{ inputs.mode }}
+      FIX_CATEGORY: ${{ inputs.category }}
+      FIX_COMMITS: ${{ inputs.commits }}
+      UPSTREAM_REF: ${{ inputs.upstream_ref }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: master
+          fetch-depth: 0
+      - uses: actions/setup-java@v5
+        with:
+          distribution: zulu
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v6
+      - name: Apply reviewed upstream changes
+        id: update
+        run: |
+          git config user.name "Cubve CI"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "upstream/paper-${GITHUB_RUN_ID}"
+          before=$(git rev-parse HEAD)
+          if [[ "$UPDATE_MODE" == version ]]; then
+            scripts/update-upstream.sh version "$UPSTREAM_REF"
+          else
+            read -r -a commits <<< "$FIX_COMMITS"
+            scripts/update-upstream.sh fixes "$FIX_CATEGORY" "${commits[@]}"
+          fi
+          if [[ "$(git rev-parse HEAD)" != "$before" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Validate candidate
+        if: steps.update.outputs.changed == 'true'
+        run: |
+          python3 -m unittest discover -s scripts/tests -v
+          ./gradlew applyPatches --stacktrace
+          ./gradlew check createPaperclipJar --stacktrace
+      - name: Open Cubve update pull request
+        if: steps.update.outputs.changed == 'true'
+        run: |
+          branch=$(git branch --show-current)
+          printf 'Reviewed Paper update.\n\nMode: %s\nCategory: %s\nSelected fixes: %s\nVersion ref: %s\n\nValidation: applyPatches, check, createPaperclipJar.\n\nInspect the changes and runtime compatibility before merging.\n' "$UPDATE_MODE" "$FIX_CATEGORY" "$FIX_COMMITS" "$UPSTREAM_REF" > /tmp/upstream-pr-body.md
+          git push origin "HEAD:refs/heads/$branch"
+          gh pr create --repo "$GH_REPO" --base master --head "$branch" --title "Update Paper upstream ($UPDATE_MODE)" --body-file /tmp/upstream-pr-body.md
+      - name: Upload verification reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: upstream-verification-${{ github.run_id }}
+          path: |
+            **/build/test-results/test/TEST-*.xml
+            **/build/reports/checkstyle/*.xml
+          if-no-files-found: ignore

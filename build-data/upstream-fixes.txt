@@ -1,0 +1,2 @@
+# Reviewed Paper fixes: full commit SHA followed by security, data-loss or crash.
+# Version upgrades are recorded separately in upstream.properties.

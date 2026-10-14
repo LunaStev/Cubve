@@ -1,101 +1,52 @@
-Paper [![Version](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fartifactory.papermc.io%2Fartifactory%2Funiverse%2Fio%2Fpapermc%2Fpaper%2Fpaper-api%2Fmaven-metadata.xml&strategy=highestVersion&filter=26.3.*&label=version&color=%23344ceb
-)](https://papermc.io/downloads/paper)
-[![Paper Build Status](https://img.shields.io/github/actions/workflow/status/PaperMC/Paper/release-26.3.yaml?branch=main)](https://github.com/PaperMC/Paper/actions)
-[![Discord](https://img.shields.io/discord/289587909051416579.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/papermc)
-[![GitHub Sponsors](https://img.shields.io/github/sponsors/papermc?label=GitHub%20Sponsors)](https://github.com/sponsors/PaperMC)
-[![Open Collective](https://img.shields.io/opencollective/all/papermc?label=OpenCollective%20Sponsors)](https://opencollective.com/papermc)
-===========
+# Cubve
 
-The most widely used, high-performance Minecraft server that aims to fix gameplay and mechanics inconsistencies.
+Cubve is an independent Minecraft server based on Paper, with its own built-in commands, branding and planned optimizations. It currently targets Minecraft **26.3** and **Java 25**.
 
+Paper and Bukkit API packages are retained for plugin compatibility. Cubve identifies itself as `cubve:cubve` and declares compatibility with Paper. Plugins using server internals still need testing against the target Minecraft version.
 
-**Support and Project Discussion:**
-- [Our forums](https://forums.papermc.io/) or [Discord](https://discord.gg/papermc)
+## Build
 
-How To (Server Admins)
-------
-Paperclip is a jar file that you can download and run just like a normal jar file.
+Clone the repository with Git and use JDK 25:
 
-Download Paper from our [downloads page](https://papermc.io/downloads/paper).
-
-Run the Paperclip jar directly from your server. Just like old times.
-
-* Documentation on using Paper: [docs.papermc.io](https://docs.papermc.io)
-* For a sneak peek at upcoming features, [see here](https://github.com/PaperMC/Paper/projects)
-
-How To (Plugin Developers)
-------
-* See our API [here](paper-api)
-* See upcoming, pending, and recently added API [here](https://github.com/orgs/PaperMC/projects/2/views/4)
-* Paper API javadocs here: [papermc.io/javadocs](https://papermc.io/javadocs/)
-#### Repository (for paper-api)
-See [the docs](https://docs.papermc.io/paper/dev/project-setup/#adding-paper-as-a-dependency) for more details.
-##### Gradle
-```kotlin
-repositories {
-    maven {
-        url = uri("https://repo.papermc.io/repository/maven-public/")
-    }
-}
-
-dependencies {
-    compileOnly("io.papermc.paper:paper-api:26.3.build.+")
-}
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(25))
-}
-```
-##### Maven
-
-```xml
-<repository>
-    <id>papermc</id>
-    <url>https://repo.papermc.io/repository/maven-public/</url>
-</repository>
+```sh
+./gradlew applyPatches
+./gradlew check createPaperclipJar
 ```
 
-```xml
-<dependency>
-    <groupId>io.papermc.paper</groupId>
-    <artifactId>paper-api</artifactId>
-    <version>[26.3.build,)</version>
-    <scope>provided</scope>
-</dependency>
+Download the runnable server from [Cubve releases](https://github.com/LunaStev/Cubve/releases). Release files use `cubve-<minecraft-version>-<patch>.jar`, for example `cubve-26.3-1.jar`; each release also includes `SHA256SUMS`.
+
+```sh
+java -jar cubve-26.3-1.jar --nogui
 ```
 
-How To (Compiling Jar From Source)
-------
-To compile Paper, you need JDK 25 and an internet connection.
+On a push to Cubve's `master`, CI applies patches, runs the maintenance/release tests and Gradle checks, then executes the exact distribution JAR with `--version`. Only after those jobs pass does it publish a release. Patches increment within each Minecraft version and start at 1 for a new version. PRs, other branches and manually dispatched validation builds do not publish.
 
-Clone this repo, run `./gradlew applyPatches`, then `./gradlew createPaperclipJar` from your terminal. You can find the compiled jar in the `paper-server/build/libs` directory.
+Local development builds remain in `paper-server/build/libs/`. CI development artifacts are available from [Actions](https://github.com/LunaStev/Cubve/actions).
 
-To get a full list of tasks, run `./gradlew tasks`.
+## Built-in commands
 
-How To (Pull Request)
-------
-See [Contributing](CONTRIBUTING.md)
+| Command | Purpose | Permission |
+| --- | --- | --- |
+| `/version` | Cubve version and published-release update status; plugin versions remain supported | `bukkit.command.version` |
+| `/status` | TPS, MSPT, players, worlds and heap usage | `cubve.command.status` (operators) |
+| `/server` | Operating system and JVM heap usage / maximum | `cubve.command.server` (everyone) |
 
-Old Versions (1.21.3 and below)
-------
-For branches of versions 1.8-1.21.3, please see our [archive repository](https://github.com/PaperMC/Paper-archive).
+The existing `/paper` administration commands remain available. All commands above are registered by the server itself.
 
-Support Us
-------
-First of all, thank you for considering helping out, we really appreciate that!
+## Development and upstream
 
-PaperMC has various recurring expenses, mostly related to infrastructure. Paper uses [Open Collective](https://opencollective.com/) via the [Open Source Collective fiscal host](https://opencollective.com/opensource) to manage expenses. Open Collective allows us to be extremely transparent, so you can always see how your donations are used. You can read more about financially supporting PaperMC [on our website](https://papermc.io/sponsors).
+See [DEVELOPMENT.md](DEVELOPMENT.md) for local development, patch maintenance, the selective upstream policy and optimization validation.
 
-You can find our collective [here](https://opencollective.com/papermc), or you can donate via GitHub Sponsors [here](https://github.com/sponsors/PaperMC), which will also go towards the collective.
+Measured API optimizations are documented in [PERFORMANCE.md](PERFORMANCE.md). The plugin-free survival profiling baseline and its reproducible test runner are described in [SURVIVAL-PERFORMANCE.md](SURVIVAL-PERFORMANCE.md).
 
-Special Thanks To:
--------------
+Cubve accepts complete Paper bases when upgrading Minecraft. Between upgrades, only reviewed security fixes, data-loss fixes and critical crash fixes are selected. General upstream changes are not automatically merged.
 
-[![CI powered by namespace badge](https://assets.papermc.io/sponsors/namespace-oss-badge.svg)](https://namespace.so/github-actions/?utm_source=oss&utm_campaign=papermc)
+## API and publishing
 
-[![YourKit-Logo](https://www.yourkit.com/images/yklogo.png)](https://www.yourkit.com/)
+The API publication is `io.github.lunastev.cubve:cubve-api`. No public Cubve Maven repository is configured yet. Local publication is available with `./gradlew :paper-api:publishToMavenLocal`.
 
-[YourKit](https://www.yourkit.com/), makers of the outstanding java profiler, support open source projects of all kinds with their full featured [Java](https://www.yourkit.com/java/profiler) and [.NET](https://www.yourkit.com/.net/profiler) application profilers. We thank them for granting Paper an OSS license so that we can make our software the best it can be.
+An external Maven destination must be explicitly supplied with `-PcubveMavenUrl=<url>` and the Gradle credentials `cubveReleasesUsername` / `cubveReleasesPassword`.
 
-All our sponsors!  
-[![Sponsor Image](https://raw.githubusercontent.com/PaperMC/papermc.io/data/sponsors.png)](https://papermc.io/sponsors)
+## Credits and license
+
+Cubve builds on [Paper](https://github.com/PaperMC/Paper), Bukkit, CraftBukkit, Spigot and their contributors. Original attribution and licenses are preserved. See [LICENSE.md](LICENSE.md) and [licenses/](licenses/).

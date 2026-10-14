@@ -30,7 +30,8 @@ public record ServerBuildInfoImpl(
     private static final String ATTRIBUTE_GIT_BRANCH = "Git-Branch";
     private static final String ATTRIBUTE_GIT_COMMIT = "Git-Commit";
 
-    private static final String BRAND_PAPER_NAME = "Cubve";
+    private static final Key BRAND_CUBVE_ID = Key.key("cubve", "cubve");
+    private static final String BRAND_CUBVE_NAME = "Cubve";
 
     private static final String BUILD_DEV = "DEV";
 
@@ -42,9 +43,9 @@ public record ServerBuildInfoImpl(
         this(
             getManifestAttribute(manifest, ATTRIBUTE_BRAND_ID)
                 .map(Key::key)
-                .orElse(BRAND_PAPER_ID),
+                .orElse(BRAND_CUBVE_ID),
             getManifestAttribute(manifest, ATTRIBUTE_BRAND_NAME)
-                .orElse(BRAND_PAPER_NAME),
+                .orElse(BRAND_CUBVE_NAME),
             SharedConstants.getCurrentVersion().id(),
             SharedConstants.getCurrentVersion().name(),
             getManifestAttribute(manifest, ATTRIBUTE_BUILD_NUMBER)
@@ -61,7 +62,8 @@ public record ServerBuildInfoImpl(
 
     @Override
     public boolean isBrandCompatible(final @NotNull Key brandId) {
-        return brandId.equals(this.brandId);
+        return brandId.equals(this.brandId)
+            || (this.brandId.equals(BRAND_CUBVE_ID) && brandId.equals(BRAND_PAPER_ID));
     }
 
     @Override

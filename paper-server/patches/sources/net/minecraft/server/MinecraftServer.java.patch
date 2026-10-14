@@ -1011,7 +1011,7 @@
          this.tickCount++;
          this.tickRateManager.tick();
          this.tickChildren(haveTime);
-@@ -976,11 +_,18 @@
+@@ -976,13 +_,21 @@
          }
  
          this.ticksUntilAutosave--;
@@ -1030,7 +1030,10 @@
 +        this.server.spark.tickEnd(((double)(endTime - this.currentTickStart) / 1000000D)); // Paper - spark
          profiler.push("tallying");
          long tickTime = Util.getNanos() - nano;
++        io.github.lunastev.cubve.profiling.TickProfiler.recordTick(tickTime); // Cubve - opt-in per-tick JFR profiling
          int tickIndex = this.tickCount % 100;
+         this.aggregatedTickTimesNanos = this.aggregatedTickTimesNanos - this.tickTimesNanos[tickIndex];
+         this.aggregatedTickTimesNanos += tickTime;
 @@ -996,16 +_,16 @@
          ProfilerFiller profiler = Profiler.get();
          profiler.push("tick");

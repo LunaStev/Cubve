@@ -1,0 +1,24 @@
+{
+  "baseCommit": "dfa0a06cf50e3bcea82488ef85970fbab75efc9c",
+  "date": "2026-10-14",
+  "timezone": "Asia/Seoul",
+  "cpu": "AMD Ryzen 5 2600X Six-Core Processor (12 logical CPUs)",
+  "scope": "Actual CraftInventoryCustom.addItem with 54 full cobblestone stacks and a 64-diamond input; registry test fixtures, no running Minecraft world.",
+  "notes": [
+    "The working tree also contains the earlier Cubve setup changes.",
+    "candidate-trial.json includes the subsequently reverted item-flag candidate and an inventory implementation before preserving custom firstEmpty overrides.",
+    "inventory-final.json measures the final inventory implementation, including custom firstEmpty compatibility.",
+    "Labels only name result files; they do not switch algorithm implementations.",
+    "No live-server TPS/MSPT gain has been established."
+  ],
+  "sourceHashes": {
+    "paper-server/src/main/java/org/bukkit/craftbukkit/inventory/CraftInventory.java": {
+      "baseline": "b49a0fa6ce08e6fcf3955efec22f6f9b0003a273f0d68e14d105a1d9370bd45f",
+      "final": "1e6d1dbad666b890ea8cd3bc7c7b7bbb66150cc8c61481f930eee6bfa69fc4a8"
+    },
+    "paper-server/src/main/java/org/bukkit/craftbukkit/CraftWorld.java": {
+      "baseline": "2b4292c4519fef49f29ee4ffc29b2697f1e0e9d45135bfbe995dc635ce28f886",
+      "final": "7819e63af7b653052652234714f2ee1f6496ab2d23586146c9a3c05f41d74898"
+    }
+  }
+}

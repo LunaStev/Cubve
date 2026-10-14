@@ -13,6 +13,10 @@ java {
     withJavadocJar()
 }
 
+tasks.withType<Jar>().configureEach {
+    archiveBaseName.set("cubve-api")
+}
+
 val projectCustomJavadocTags = setOf(
     JavadocTag("apiNote", "a", "API Note:"),
 )
@@ -121,7 +125,7 @@ sourceSets {
 }
 
 val outgoingVariants = arrayOf("runtimeElements", "apiElements", "sourcesElements", "javadocElements")
-val mainCapability = "${project.group}:${project.name}:${project.version}"
+val mainCapability = "${project.group}:cubve-api:${project.version}"
 configurations {
     val outgoing = outgoingVariants.map { named(it) }
     for (config in outgoing) {
@@ -131,6 +135,9 @@ configurations {
             }
             outgoing {
                 capability(mainCapability)
+                // Keep project dependencies and Paper API conflict detection working.
+                capability("${project.group}:${project.name}:${project.version}")
+                capability("io.papermc.paper:paper-api:${project.version}")
                 // Paper-MojangAPI has been merged into Paper-API
                 capability("io.papermc.paper:paper-mojangapi:${project.version}")
                 capability("com.destroystokyo.paper:paper-mojangapi:${project.version}")
@@ -145,6 +152,7 @@ configurations {
 
 configure<PublishingExtension> {
     publications.create<MavenPublication>("maven") {
+        artifactId = "cubve-api"
         // For Brigadier API
         outgoingVariants.forEach {
             suppressPomMetadataWarningsFor(it)

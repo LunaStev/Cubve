@@ -22,6 +22,7 @@ public final class PaperCommands {
     private static final Map<String, Command> COMMANDS = new HashMap<>();
 
     public static void registerCommands(final MinecraftServer server) {
+        io.github.lunastev.cubve.command.CubveCommands.registerPermissions();
         COMMANDS.put("paper", new PaperCommand("paper"));
 
         COMMANDS.forEach((s, command) -> {
@@ -30,6 +31,7 @@ public final class PaperCommands {
     }
 
     public static void registerCommands() {
+        io.github.lunastev.cubve.command.CubveCommands.registerCommands();
         // Paper commands go here
         registerInternalCommand(PaperMSPTCommand.create(), "paper", PaperMSPTCommand.DESCRIPTION, List.of(), Set.of());
         registerInternalCommand(PaperVersionCommand.create(), "bukkit", PaperVersionCommand.DESCRIPTION, List.of("ver", "about"), Set.of());

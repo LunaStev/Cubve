@@ -71,11 +71,14 @@ subprojects {
         maven(paperMavenPublicUrl)
     }
 
-    extensions.configure<PublishingExtension> {
-        repositories {
-            maven("https://artifactory.papermc.io/artifactory/releases/") {
-                name = "paperReleases"
-                credentials(PasswordCredentials::class)
+    // Publishing is opt-in; forks must never publish to Paper's repository.
+    providers.gradleProperty("cubveMavenUrl").orNull?.let { repositoryUrl ->
+        extensions.configure<PublishingExtension> {
+            repositories {
+                maven(repositoryUrl) {
+                    name = "cubveReleases"
+                    credentials(PasswordCredentials::class)
+                }
             }
         }
     }

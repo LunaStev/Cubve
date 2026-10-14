@@ -1,0 +1,897 @@
+{
+  "seed": 8142026,
+  "seconds": 30,
+  "warmupSeconds": 15,
+  "players": 0,
+  "plugins": [],
+  "port": 39017,
+  "jar": "/mnt/hdd/Cubve/paper-server/build/libs/cubve-paperclip-26.3.local-SNAPSHOT.jar",
+  "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/survival-20261014T063228Z-cf7047",
+  "persistenceRestartVerified": true,
+  "scenarios": [
+    {
+      "name": "idle",
+      "startMs": 1791959590108,
+      "endMs": 1791959620389,
+      "ticks": 606,
+      "meanMs": 0.28427,
+      "p95Ms": 0.46674,
+      "p99Ms": 0.93342,
+      "maxMs": 1.75744,
+      "executionSamples": 24,
+      "mainThreadSamples": 21,
+      "chunkStageEvents": 0,
+      "gcCount": 0,
+      "gcMs": 0.0,
+      "mainThreadFrames": [
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 21
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.runServer",
+          "samples": 21
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer$$Lambda.0x00000000050cab88.run",
+          "samples": 21
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 21
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.lambda$spin$0",
+          "samples": 21
+        },
+        {
+          "frame": "net.minecraft.server.dedicated.DedicatedServer.tickServer",
+          "samples": 20
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.processPacketsAndTick",
+          "samples": 20
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickServer",
+          "samples": 20
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickChildren",
+          "samples": 16
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel.tick",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerChunkCache.tick",
+          "samples": 8
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerChunkCache.tickChunks",
+          "samples": 4
+        }
+      ],
+      "allThreadFrames": [
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 24
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 24
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.runServer",
+          "samples": 21
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.lambda$spin$0",
+          "samples": 21
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer$$Lambda.0x00000000050cab88.run",
+          "samples": 21
+        },
+        {
+          "frame": "net.minecraft.server.dedicated.DedicatedServer.tickServer",
+          "samples": 20
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.processPacketsAndTick",
+          "samples": 20
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickServer",
+          "samples": 20
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickChildren",
+          "samples": 16
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel.tick",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerChunkCache.tick",
+          "samples": 8
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerChunkCache.tickChunks",
+          "samples": 4
+        }
+      ],
+      "ticksOver50Ms": 0,
+      "mainHotPathFrames": [
+        {
+          "frame": "net.minecraft.world.attribute.EnvironmentAttributeSystem.getDimensionValue",
+          "samples": 2
+        },
+        {
+          "frame": "net.minecraft.world.level.Level.updateSkyBrightness",
+          "samples": 2
+        },
+        {
+          "frame": "net.minecraft.world.attribute.EnvironmentAttributeSystem$ValueSampler.computeValueNotPositional",
+          "samples": 2
+        },
+        {
+          "frame": "net.minecraft.world.attribute.EnvironmentAttributeSystem$ValueSampler.getDimensionValue",
+          "samples": 2
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.ChunkHolderManager.tick",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.LevelReader.getBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunkSection.getNoiseBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.PalettedContainer.readPalette",
+          "samples": 1
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.ChunkHolderManager.autoSave",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.biome.BiomeManager.getBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.ChunkAccess.getNoiseBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.timeline.AttributeTrackSampler.applyTimeBased",
+          "samples": 1
+        }
+      ],
+      "allHotPathFrames": [
+        {
+          "frame": "net.minecraft.world.attribute.EnvironmentAttributeSystem.getDimensionValue",
+          "samples": 2
+        },
+        {
+          "frame": "net.minecraft.world.level.Level.updateSkyBrightness",
+          "samples": 2
+        },
+        {
+          "frame": "net.minecraft.world.attribute.EnvironmentAttributeSystem$ValueSampler.computeValueNotPositional",
+          "samples": 2
+        },
+        {
+          "frame": "net.minecraft.world.attribute.EnvironmentAttributeSystem$ValueSampler.getDimensionValue",
+          "samples": 2
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.ChunkHolderManager.tick",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.LevelReader.getBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunkSection.getNoiseBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.PalettedContainer.readPalette",
+          "samples": 1
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.ChunkHolderManager.autoSave",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.biome.BiomeManager.getBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.ChunkAccess.getNoiseBiome",
+          "samples": 1
+        },
+        {
+          "frame": "net.minecraft.world.timeline.AttributeTrackSampler.applyTimeBased",
+          "samples": 1
+        }
+      ]
+    },
+    {
+      "name": "new-chunks",
+      "startMs": 1791959620389,
+      "endMs": 1791959651540,
+      "ticks": 611,
+      "meanMs": 2.21337,
+      "p95Ms": 1.80068,
+      "p99Ms": 4.6326,
+      "maxMs": 856.78321,
+      "executionSamples": 370,
+      "mainThreadSamples": 55,
+      "chunkStageEvents": 1700,
+      "gcCount": 0,
+      "gcMs": 0.0,
+      "mainThreadFrames": [
+        {
+          "frame": "net.minecraft.server.MinecraftServer.runServer",
+          "samples": 55
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 55
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.lambda$spin$0",
+          "samples": 55
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer$$Lambda.0x00000000050cab88.run",
+          "samples": 55
+        },
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 55
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.processPacketsAndTick",
+          "samples": 49
+        },
+        {
+          "frame": "net.minecraft.server.dedicated.DedicatedServer.tickServer",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickServer",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickChildren",
+          "samples": 44
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel.tick",
+          "samples": 35
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel$$Lambda.0x00000000054b6578.accept",
+          "samples": 16
+        },
+        {
+          "frame": "net.minecraft.world.level.entity.EntityTickList.forEach",
+          "samples": 16
+        }
+      ],
+      "allThreadFrames": [
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 370
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 370
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.queue.PrioritisedTaskQueue$PrioritisedQueuedTask.execute",
+          "samples": 314
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.thread.BalancedPrioritisedThreadPool$WorkerThread.pollTasks",
+          "samples": 311
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.QueueExecutorRunnable.run",
+          "samples": 311
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.util.LazyRunnable.run",
+          "samples": 311
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.QueueExecutorRunnable.doRun",
+          "samples": 311
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.QueueExecutorRunnable.mainLoop",
+          "samples": 311
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.thread.BalancedPrioritisedThreadPool$OrderedStreamGroup.executeTask",
+          "samples": 311
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.thread.BalancedPrioritisedThreadPool$OrderedStreamGroup$Queue$$Lambda.0x000000000536c5c0.run",
+          "samples": 310
+        },
+        {
+          "frame": "ca.spottedleaf.concurrentutil.executor.thread.BalancedPrioritisedThreadPool$OrderedStreamGroup$Queue.lambda$createTask$0",
+          "samples": 310
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.task.ChunkUpgradeGenericStatusTask.run",
+          "samples": 298
+        }
+      ],
+      "ticksOver50Ms": 1,
+      "mainHotPathFrames": [
+        {
+          "frame": "net.minecraft.world.level.Level.guardEntityTick",
+          "samples": 16
+        },
+        {
+          "frame": "net.minecraft.world.level.entity.EntityTickList.forEach",
+          "samples": 16
+        },
+        {
+          "frame": "net.minecraft.world.entity.vehicle.minecart.AbstractMinecart.tick",
+          "samples": 14
+        },
+        {
+          "frame": "net.minecraft.world.entity.vehicle.minecart.OldMinecartBehavior.tick",
+          "samples": 13
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.ChunkHolderManager.processTicketUpdates",
+          "samples": 8
+        },
+        {
+          "frame": "net.minecraft.world.level.Level.getChunk",
+          "samples": 7
+        },
+        {
+          "frame": "net.minecraft.world.entity.vehicle.minecart.AbstractMinecart.applyEffectsFromBlocks",
+          "samples": 6
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.NewChunkHolder.handleFullStatusChange",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.entity.vehicle.minecart.OldMinecartBehavior.moveAlongTrack",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk.postProcessGeneration",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.entity.Entity.applyEffectsFromBlocks",
+          "samples": 6
+        },
+        {
+          "frame": "ca.spottedleaf.moonrise.paper.util.BaseChunkSystemHooks.onChunkTicking",
+          "samples": 6
+        }
+      ],
+      "allHotPathFrames": [
+        {
+          "frame": "ca.spottedleaf.moonrise.patches.chunk_system.scheduling.task.ChunkUpgradeGenericStatusTask.run",
+          "samples": 298
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.status.ChunkStep.apply",
+          "samples": 288
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.status.ChunkStatusTasks.buildTerrain",
+          "samples": 224
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator.buildTerrain",
+          "samples": 220
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator.lambda$buildTerrain$1",
+          "samples": 219
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator.doFill",
+          "samples": 111
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.NoiseBasedChunkGenerator.buildSurface",
+          "samples": 91
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.material.MaterialSystem.buildSurface",
+          "samples": 91
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.densityfunction.DensitySampler$Bound.sampleVolume",
+          "samples": 69
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.densityfunction.op.RangeChoiceFunction$Sampler.sampleVolume",
+          "samples": 59
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.densityfunction.op.BinaryFunction$AddSampler.sampleVolume",
+          "samples": 59
+        },
+        {
+          "frame": "net.minecraft.world.level.levelgen.densityfunction.op.BinaryFunction$MinSampler.sampleVolume",
+          "samples": 54
+        }
+      ]
+    },
+    {
+      "name": "1024-hoppers",
+      "startMs": 1791959683343,
+      "endMs": 1791959713655,
+      "ticks": 606,
+      "meanMs": 0.82261,
+      "p95Ms": 1.1656,
+      "p99Ms": 1.83015,
+      "maxMs": 18.48405,
+      "executionSamples": 46,
+      "mainThreadSamples": 45,
+      "chunkStageEvents": 0,
+      "gcCount": 0,
+      "gcMs": 0.0,
+      "mainThreadFrames": [
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.processPacketsAndTick",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.runServer",
+          "samples": 45
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.lambda$spin$0",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer$$Lambda.0x00000000050cab88.run",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.dedicated.DedicatedServer.tickServer",
+          "samples": 44
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickServer",
+          "samples": 44
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickChildren",
+          "samples": 41
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel.tick",
+          "samples": 40
+        },
+        {
+          "frame": "net.minecraft.world.level.Level.tickBlockEntities",
+          "samples": 37
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick",
+          "samples": 28
+        }
+      ],
+      "allThreadFrames": [
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 46
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 46
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.processPacketsAndTick",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.runServer",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.lambda$spin$0",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer$$Lambda.0x00000000050cab88.run",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.server.dedicated.DedicatedServer.tickServer",
+          "samples": 44
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickServer",
+          "samples": 44
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickChildren",
+          "samples": 41
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel.tick",
+          "samples": 40
+        },
+        {
+          "frame": "net.minecraft.world.level.Level.tickBlockEntities",
+          "samples": 37
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick",
+          "samples": 28
+        }
+      ],
+      "ticksOver50Ms": 0,
+      "mainHotPathFrames": [
+        {
+          "frame": "net.minecraft.world.level.Level.tickBlockEntities",
+          "samples": 37
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick",
+          "samples": 28
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick",
+          "samples": 28
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.tryMoveItems",
+          "samples": 22
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.pushItemsTick",
+          "samples": 22
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.ejectItems",
+          "samples": 12
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.getContainerAt",
+          "samples": 10
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.getBlockContainer",
+          "samples": 7
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.lambda$pushItemsTick$0",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.getAttachedContainer",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.suckInItems",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk.getBlockEntity",
+          "samples": 6
+        }
+      ],
+      "allHotPathFrames": [
+        {
+          "frame": "net.minecraft.world.level.Level.tickBlockEntities",
+          "samples": 37
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick",
+          "samples": 28
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick",
+          "samples": 28
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.tryMoveItems",
+          "samples": 22
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.pushItemsTick",
+          "samples": 22
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.ejectItems",
+          "samples": 12
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.getContainerAt",
+          "samples": 10
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.getBlockContainer",
+          "samples": 7
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.lambda$pushItemsTick$0",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.getAttachedContainer",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.level.block.entity.HopperBlockEntity.suckInItems",
+          "samples": 6
+        },
+        {
+          "frame": "net.minecraft.world.level.chunk.LevelChunk.getBlockEntity",
+          "samples": 6
+        }
+      ]
+    },
+    {
+      "name": "256-passive-entities",
+      "startMs": 1791959744348,
+      "endMs": 1791959774641,
+      "ticks": 606,
+      "meanMs": 1.43198,
+      "p95Ms": 2.1133,
+      "p99Ms": 2.83634,
+      "maxMs": 5.08482,
+      "executionSamples": 77,
+      "mainThreadSamples": 74,
+      "chunkStageEvents": 0,
+      "gcCount": 0,
+      "gcMs": 0.0,
+      "mainThreadFrames": [
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 74
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.runServer",
+          "samples": 74
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 74
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.lambda$spin$0",
+          "samples": 74
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer$$Lambda.0x00000000050cab88.run",
+          "samples": 74
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.processPacketsAndTick",
+          "samples": 73
+        },
+        {
+          "frame": "net.minecraft.server.dedicated.DedicatedServer.tickServer",
+          "samples": 71
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickServer",
+          "samples": 71
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickChildren",
+          "samples": 69
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel.tick",
+          "samples": 66
+        },
+        {
+          "frame": "net.minecraft.world.level.entity.EntityTickList.forEach",
+          "samples": 54
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel$$Lambda.0x00000000054b6578.accept",
+          "samples": 52
+        }
+      ],
+      "allThreadFrames": [
+        {
+          "frame": "java.lang.Thread.run",
+          "samples": 76
+        },
+        {
+          "frame": "java.lang.Thread.runWith",
+          "samples": 76
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.runServer",
+          "samples": 74
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.lambda$spin$0",
+          "samples": 74
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer$$Lambda.0x00000000050cab88.run",
+          "samples": 74
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.processPacketsAndTick",
+          "samples": 73
+        },
+        {
+          "frame": "net.minecraft.server.dedicated.DedicatedServer.tickServer",
+          "samples": 71
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickServer",
+          "samples": 71
+        },
+        {
+          "frame": "net.minecraft.server.MinecraftServer.tickChildren",
+          "samples": 69
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel.tick",
+          "samples": 66
+        },
+        {
+          "frame": "net.minecraft.world.level.entity.EntityTickList.forEach",
+          "samples": 54
+        },
+        {
+          "frame": "net.minecraft.server.level.ServerLevel$$Lambda.0x00000000054b6578.accept",
+          "samples": 52
+        }
+      ],
+      "ticksOver50Ms": 0,
+      "mainHotPathFrames": [
+        {
+          "frame": "net.minecraft.world.level.entity.EntityTickList.forEach",
+          "samples": 54
+        },
+        {
+          "frame": "net.minecraft.world.level.Level.guardEntityTick",
+          "samples": 50
+        },
+        {
+          "frame": "net.minecraft.world.entity.Mob.tick",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.world.entity.LivingEntity.tick",
+          "samples": 44
+        },
+        {
+          "frame": "net.minecraft.world.entity.animal.Animal.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.Mob.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.AgeableMob.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.LivingEntity.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.Entity.tick",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.world.entity.Entity.applyEffectsFromBlocks",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.world.entity.Mob.baseTick",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.world.entity.LivingEntity.baseTick",
+          "samples": 12
+        }
+      ],
+      "allHotPathFrames": [
+        {
+          "frame": "net.minecraft.world.level.entity.EntityTickList.forEach",
+          "samples": 54
+        },
+        {
+          "frame": "net.minecraft.world.level.Level.guardEntityTick",
+          "samples": 50
+        },
+        {
+          "frame": "net.minecraft.world.entity.Mob.tick",
+          "samples": 45
+        },
+        {
+          "frame": "net.minecraft.world.entity.LivingEntity.tick",
+          "samples": 44
+        },
+        {
+          "frame": "net.minecraft.world.entity.animal.Animal.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.Mob.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.AgeableMob.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.LivingEntity.aiStep",
+          "samples": 30
+        },
+        {
+          "frame": "net.minecraft.world.entity.Entity.tick",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.world.entity.Entity.applyEffectsFromBlocks",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.world.entity.Mob.baseTick",
+          "samples": 13
+        },
+        {
+          "frame": "net.minecraft.world.entity.LivingEntity.baseTick",
+          "samples": 12
+        }
+      ]
+    }
+  ],
+  "jarSha256": "74adbf2dcbcc475001707a8306b6185debee04f6878b290fffb88b57224c26af",
+  "javaVersion": "openjdk version \"25.0.4.1\" 2026-08-18\nOpenJDK Runtime Environment (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1)\nOpenJDK 64-Bit Server VM (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1, mixed mode, sharing)",
+  "host": "Linux-7.2.9-100.fc43.x86_64-x86_64-with-glibc2.42",
+  "cpu": "AMD Ryzen 5 2600X Six-Core Processor (12 logical CPUs)",
+  "jvmFlags": [
+    "-Xms2g",
+    "-Xmx2g",
+    "-Dcubve.profile.ticks=true"
+  ],
+  "baseCommit": "dfa0a06cf50e3bcea82488ef85970fbab75efc9c",
+  "paperBase": "cc7ee9aebdfc9e4acc3ef8f38c35944872fd1f87",
+  "workingTreeModified": true,
+  "notes": [
+    "Single diagnostic run with no connected players; not a before/after optimization comparison.",
+    "Forced new-chunk command includes synchronous loading; chunk-stage counts include dependency chunks.",
+    "Cows have NoAI, NoGravity and PersistenceRequired; their phase measures passive bookkeeping, not active mob AI.",
+    "Hoppers start with one 64-cobblestone stack each, facing east; contents evolve during warm-up and measurement.",
+    "Tick durations measure tickServer work, excluding inter-tick waits and tasks outside that method.",
+    "CPU frame counts are inclusive sampled stacks; GC durations are event durations, not measured stop-the-world pause time."
+  ]
+}

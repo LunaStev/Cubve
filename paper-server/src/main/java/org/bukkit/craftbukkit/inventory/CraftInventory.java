@@ -33,6 +33,19 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 public class CraftInventory implements Inventory {
+    // Cubve - Respect custom inventories that override the public slot selection method.
+    // ClassValue avoids retaining plugin classes after their class loaders are unloaded.
+    private static final ClassValue<Boolean> DEFAULT_FIRST_EMPTY = new ClassValue<>() {
+        @Override
+        protected Boolean computeValue(Class<?> type) {
+            try {
+                return type.getMethod("firstEmpty").getDeclaringClass() == CraftInventory.class;
+            } catch (NoSuchMethodException impossible) {
+                throw new AssertionError(impossible);
+            }
+        }
+    };
+    private final boolean usesDefaultFirstEmpty = DEFAULT_FIRST_EMPTY.get(this.getClass());
     protected final Container inventory;
 
     public CraftInventory(Container inventory) {
@@ -247,7 +260,10 @@ public class CraftInventory implements Inventory {
 
     @Override
     public int firstEmpty() {
-        ItemStack[] inventory = this.getStorageContents();
+        return firstEmpty(this.getStorageContents());
+    }
+
+    private static int firstEmpty(ItemStack[] inventory) {
         for (int i = 0; i < inventory.length; i++) {
             if (inventory[i] == null) {
                 return i;
@@ -261,12 +277,10 @@ public class CraftInventory implements Inventory {
         return this.inventory.isEmpty();
     }
 
-    private int firstPartial(ItemStack item) {
-        ItemStack[] inventory = this.getStorageContents();
-        ItemStack filteredItem = item.clone();
+    private int firstPartial(ItemStack item, ItemStack[] inventory) {
         for (int i = 0; i < inventory.length; i++) {
             ItemStack cItem = inventory[i];
-            if (cItem != null && cItem.getAmount() < this.getMaxItemStack(cItem) && cItem.isSimilar(filteredItem)) {
+            if (cItem != null && cItem.getAmount() < this.getMaxItemStack(cItem) && cItem.isSimilar(item)) {
                 return i;
             }
         }
@@ -288,13 +302,16 @@ public class CraftInventory implements Inventory {
             ItemStack item = items[i];
             Preconditions.checkArgument(item != null, "ItemStack cannot be null");
             while (true) {
+                // Cubve - Both searches precede any write. Refresh after each write,
+                // preserving specialized storage contents and virtual setItem behavior.
+                ItemStack[] storageContents = this.getStorageContents();
                 // Do we already have a stack of it?
-                int firstPartial = this.firstPartial(item);
+                int firstPartial = this.firstPartial(item, storageContents);
 
                 // Drat! no partial stack
                 if (firstPartial == -1) {
                     // Find a free spot!
-                    int firstFree = this.firstEmpty();
+                    int firstFree = this.usesDefaultFirstEmpty ? firstEmpty(storageContents) : this.firstEmpty();
 
                     if (firstFree == -1) {
                         // No space at all!

@@ -1,0 +1,17 @@
+{
+  "baseCommit": "dfa0a06cf50e3bcea82488ef85970fbab75efc9c",
+  "date": "2026-10-14",
+  "timezone": "Asia/Seoul",
+  "cpu": "AMD Ryzen 5 2600X (12 logical CPUs)",
+  "scope": "Actual private HopperBlockEntity.getBlockContainer via a constant MethodHandle, 32 rotating positions, AIR/STONE, real concurrent loaded-chunk map. No world construction, transfers or Mockito calls in the timed method.",
+  "sourceHashes": {
+    "baseline": "dc866de9a2c3ce013d439abb454612bacb991ff432fe1552587002e92734da14",
+    "candidate": "ea8c3629a445e5f61a782213d90b85c8b2cf95ba3cfa7e1011d476d0d5707514"
+  },
+  "notes": [
+    "Registry fixtures and constructor-free real ServerLevel/ServerChunkCache objects are prepared before measurement. Only fields read by this non-container path are initialized.",
+    "Each cached chunk is a non-null sentinel, never accessed by the benchmark.",
+    "No allocations removed by this candidate; both paths are effectively allocation-free.",
+    "This measures a small lookup helper, not hopper transfer cost or server TPS."
+  ]
+}

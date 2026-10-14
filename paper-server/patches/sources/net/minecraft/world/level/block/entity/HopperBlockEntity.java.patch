@@ -293,11 +293,13 @@
      }
  
      public static List<ItemEntity> getItemsAtAndAbove(final Level level, final Hopper hopper) {
-@@ -374,6 +_,7 @@
-     }
+@@ -375,6 +_,9 @@
  
      private static @Nullable Container getBlockContainer(final Level level, final BlockPos pos, final BlockState state) {
-+        if (!level.spigotConfig.hopperCanLoadChunks && !level.hasChunkAt(pos)) return null; // Spigot
          Block block = state.getBlock();
++        // Cubve - non-container blocks need no loaded-chunk probe; entity searches still follow normally.
++        if (!(block instanceof WorldlyContainerHolder) && !state.hasBlockEntity()) return null;
++        if (!level.spigotConfig.hopperCanLoadChunks && !level.hasChunkAt(pos)) return null; // Spigot
          if (block instanceof WorldlyContainerHolder worldlyContainerHolder) {
              return worldlyContainerHolder.getContainer(state, level, pos);
+         } else if (state.hasBlockEntity() && level.getBlockEntity(pos) instanceof Container container) {
