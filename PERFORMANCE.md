@@ -2,6 +2,8 @@
 
 ## Scope
 
+The subsequent chunk-generation allocation measurements and terrain/persistence comparisons are documented in [CHUNK-PERFORMANCE.md](CHUNK-PERFORMANCE.md).
+
 This pass inspected plugin-facing inventory operations, biome writes, item metadata, entity queries and event dispatch in the current Paper 26.3 base. Source inspection identifies candidates, not the dominant bottleneck of a live server. No representative production world, plugin workload or spark trace was supplied, so the measured results below are API-level findings rather than a claim about overall TPS or MSPT.
 
 Existing Cubve setup changes were retained. The base commit is `dfa0a06cf`; the performance changes were measured in the working tree. Source hashes and raw JMH results are in [benchmarks/results/2026-10-14](benchmarks/results/2026-10-14).

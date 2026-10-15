@@ -45,6 +45,8 @@ See [DEVELOPMENT.md](DEVELOPMENT.md) for local development, patch maintenance, t
 
 Measured API optimizations are documented in [PERFORMANCE.md](PERFORMANCE.md). The plugin-free survival profiling baseline and its reproducible test runner are described in [SURVIVAL-PERFORMANCE.md](SURVIVAL-PERFORMANCE.md).
 
+The measured chunk-generation allocation reduction and same-seed terrain/save validation are documented in [CHUNK-PERFORMANCE.md](CHUNK-PERFORMANCE.md).
+
 Cubve accepts complete Paper bases when upgrading Minecraft. Between upgrades, only reviewed security fixes, data-loss fixes and critical crash fixes are selected. General upstream changes are not automatically merged.
 
 ## API and publishing

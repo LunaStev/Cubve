@@ -114,3 +114,20 @@ JMH is enabled only by `-PcubveBenchmarks`; it is not included in production JAR
 ```
 
 Results are written to `paper-server/build/reports/benchmarks/<label>.json`. A label names the output only; it does not select a baseline implementation. Compare the pre-change and post-change sources using the same harness, JDK, JVM flags, host and input. The task uses two JVM forks, three warm-up iterations, five measurement iterations and JMH's GC profiler. Do not run builds or other benchmarks concurrently with a measurement.
+
+## Chunk generation comparisons
+
+`ChunkFillBenchmark` measures the real noise-filling path on fresh ProtoChunk/NoiseChunk instances. The reported time excludes invocation setup; JMH's GC profiler includes that setup, so bytes/op describe the whole fresh fixture. See [CHUNK-PERFORMANCE.md](CHUNK-PERFORMANCE.md) for the measured scope and golden terrain checks.
+
+```sh
+./gradlew :paper-server:benchmark -PcubveBenchmarks -PcubveBenchmarkFilter='.*ChunkFillBenchmark.*' -PcubveBenchmarkLabel=chunk-fill-current
+# With the previously reviewed Minecraft EULA accepted, use separate disposable worlds:
+python3 scripts/run-chunk-benchmark.py --accept-eula --jar /path/to/baseline.jar --label baseline --batch-width 8
+python3 scripts/run-chunk-benchmark.py --accept-eula --jar /path/to/candidate.jar --label candidate --batch-width 8 --compare-summary /path/to/baseline-fixture/summary.json
+```
+
+The runner binds to loopback, installs no plugins and freezes ticks while synchronously force-loading separate new areas. Its temporary configuration uses one generation worker by default to control feature-order variation; production defaults are unchanged. Repeat the baseline first to verify that its terrain is repeatable. `--worker-threads -1` selects automatic workers for separate diagnostics, and reports with different worker policies cannot be compared.
+
+Measured chunks remain force-loaded through saving. Before the first flush, native chunk-debug snapshots must show every target at ENTITY_TICKING, which follows generation postprocessing. Flushed and closed-world snapshots also reject pending postprocessing. The runner then removes and saves its test force-load tickets, so restart cannot load those chunks before ticks are frozen again. These completion checks are outside the timed batches. The runner preserves the closed world before restart, decodes all saved block/biome cells and includes heightmaps, structures and block entities in terrain hashes. Volatile lighting/tick/entity metadata is excluded explicitly in the report. It restarts and reloads the same world, then generates an additional fresh area after restart. Every invocation uses a unique directory under `run/benchmarks/`; the comparison never overwrites a prior fixture or mixes reports with different completion policies.
+
+Requested-chunk throughput includes neighbor generation work in its elapsed time but counts only the requested full chunks. Frozen console loading is a diagnostic and does not model connected-player exploration or normal gameplay. Compare matched runs with the same seed, areas, JDK/JVM flags and instrumentation, without concurrent builds or measurements.

@@ -1,0 +1,69 @@
+--- a/net/minecraft/world/level/levelgen/Aquifer.java
++++ b/net/minecraft/world/level/levelgen/Aquifer.java
+@@ -20,7 +_,6 @@
+ import net.minecraft.world.level.levelgen.densityfunction.DensitySamplerSet;
+ import net.minecraft.world.level.levelgen.densityfunction.DensityVolume;
+ import net.minecraft.world.level.levelgen.densityfunction.ScopedDensityBuffer;
+-import org.apache.commons.lang3.mutable.MutableDouble;
+ import org.jspecify.annotations.Nullable;
+ 
+ public interface Aquifer {
+@@ -122,6 +_,7 @@
+         private final int gridSizeX;
+         private final int gridSizeZ;
+         private final DensitySampler.Bound surfaceLevel;
++        private double barrierNoiseValue; // Cubve - per-block pressure cache owned by this chunk-local aquifer
+         private final Long2IntMap surfaceLevelCache = new Long2IntOpenHashMap();
+         private static final int[][] SURFACE_SAMPLING_OFFSETS_IN_CHUNKS = new int[][]{
+             {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
+@@ -305,9 +_,9 @@
+                     return actualFluidState;
+                 }
+ 
+-                MutableDouble barrierNoiseValue = new MutableDouble(Double.NaN);
++                this.barrierNoiseValue = Double.NaN; // Cubve - reset before the first pressure calculation for each block
+                 Aquifer.FluidStatus closestStatus2 = this.getAquiferStatus(closestIndex2);
+-                double barrier12 = similarity12 * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus1, closestStatus2);
++                double barrier12 = similarity12 * this.calculatePressure(blockX, blockY, blockZ, closestStatus1, closestStatus2);
+                 if (density + barrier12 > 0.0) {
+                     this.shouldScheduleFluidUpdate = false;
+                     return null;
+@@ -318,7 +_,7 @@
+                 if (similarity13 > 0.0) {
+                     double barrier13 = similarity12
+                         * similarity13
+-                        * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus1, closestStatus3);
++                        * this.calculatePressure(blockX, blockY, blockZ, closestStatus1, closestStatus3);
+                     if (density + barrier13 > 0.0) {
+                         this.shouldScheduleFluidUpdate = false;
+                         return null;
+@@ -329,7 +_,7 @@
+                 if (similarity23 > 0.0) {
+                     double barrier23 = similarity12
+                         * similarity23
+-                        * this.calculatePressure(blockX, blockY, blockZ, barrierNoiseValue, closestStatus2, closestStatus3);
++                        * this.calculatePressure(blockX, blockY, blockZ, closestStatus2, closestStatus3);
+                     if (density + barrier23 > 0.0) {
+                         this.shouldScheduleFluidUpdate = false;
+                         return null;
+@@ -365,7 +_,6 @@
+             final int blockX,
+             final int blockY,
+             final int blockZ,
+-            final MutableDouble barrierNoiseValue,
+             final Aquifer.FluidStatus statusClosest1,
+             final Aquifer.FluidStatus statusClosest2
+         ) {
+@@ -407,10 +_,10 @@
+                 double amplitude = 2.0;
+                 double noiseValue;
+                 if (!(gradient < -2.0) && !(gradient > 2.0)) {
+-                    double currentNoiseValue = barrierNoiseValue.doubleValue();
++                    double currentNoiseValue = this.barrierNoiseValue;
+                     if (Double.isNaN(currentNoiseValue)) {
+                         double barrierNoise = this.barrierNoise.sampleValue(blockX, blockY, blockZ);
+-                        barrierNoiseValue.setValue(barrierNoise);
++                        this.barrierNoiseValue = barrierNoise;
+                         noiseValue = barrierNoise;
+                     } else {
+                         noiseValue = currentNoiseValue;

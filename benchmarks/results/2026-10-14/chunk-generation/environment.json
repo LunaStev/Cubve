@@ -1,0 +1,48 @@
+{
+  "baseCommit": "0df19dfb2f13d18476df43d5ca3aee55bcf4e06a",
+  "java": "openjdk version \"25.0.4.1\" 2026-08-18\nOpenJDK Runtime Environment (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1)\nOpenJDK 64-Bit Server VM (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1, mixed mode, sharing)",
+  "host": "Linux-7.2.9-100.fc43.x86_64-x86_64-with-glibc2.42",
+  "cpu": "AMD Ryzen 5 2600X Six-Core Processor",
+  "jmhFlags": [
+    "-Xms1g",
+    "-Xmx1g"
+  ],
+  "liveFlags": [
+    "-Xms2g",
+    "-Xmx2g"
+  ],
+  "baselineJar": "dist/cubve-26.3-2/cubve-26.3-2.jar",
+  "sources": {
+    "NoiseBasedChunkGenerator_baselineAndFinal": "5de6aea59e5bc3a443f6cbbe43602622497de3f69dc32eb54fb736026c9f043a",
+    "Aquifer_baseline": "91ee6ee0693b75c2ef35ca077c26a94ff8693453d8d2047b12e6411f49674e25",
+    "Aquifer_sectionTrial": "91ee6ee0693b75c2ef35ca077c26a94ff8693453d8d2047b12e6411f49674e25",
+    "NoiseBasedChunkGenerator_sectionTrial": "ead699e3ec246182669d12204b11e472bf445f41b68c62ecbd0cb50464107b46",
+    "Aquifer_holderTrial": "f632bf98560ac2e2dfe0a3d132c97be9ce515fcef931305abf3b902bf8df4987",
+    "Aquifer_primitiveFinal": "6a9870a76950f068c73760c31d9a5beb50af196b6db137f093f2a155bc9c4c9f",
+    "ChunkFillBenchmark": "2b9fa4e9f5d24f089c0a27535c0ff1dc15cbdb19fb7b8aeb27ce234919fd08ed",
+    "ChunkFillFixture": "07daf5dd78f9583ee46dd8f9784c1ca5e21abfc3db899b705f5fcd8977b1a74d"
+  },
+  "jmh": {
+    "forks": 2,
+    "warmupIterations": 3,
+    "measurementIterations": 5,
+    "warmupSeconds": 1,
+    "measurementSeconds": 1,
+    "threads": 1,
+    "gcProfilerIncludesInvocationSetup": true,
+    "hostShared": true
+  },
+  "terrainComparisonWorkerThreads": 1,
+  "baselineRepeatControlRequired": true,
+  "candidateJarSha256": "b44c15585f7e904992fbb9ffbfb9e3b90653d9409d72804d8d47f9aa96e18630",
+  "liveHarnessSha256": "35fd93aa5e2612c9b99ec814352dbc927e9a29da2baaa8a1a45727cc73355dfb",
+  "liveFixturePolicy": "entity-ticking-before-save;remove-force-tickets-before-stop;reload-after-freeze",
+  "liveSeeds": [
+    8142026,
+    -8675309
+  ],
+  "liveComparedChunks": 400,
+  "liveGeneratedAfterRestartChunks": 80,
+  "scriptTestsPassed": 64,
+  "terrainGoldenInputs": 18
+}
