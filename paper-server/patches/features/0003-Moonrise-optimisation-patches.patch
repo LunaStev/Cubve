@@ -34849,7 +34849,7 @@ index 56612c4fd3fb32b6cfc5ccb82070c47fcfb5a05c..e482afb37a061ab720b72c4604dfafa4
  
      private @Nullable BlockEntity promotePendingBlockEntity(final BlockPos pos, final CompoundTag tag) {
 diff --git a/net/minecraft/world/level/chunk/LevelChunkSection.java b/net/minecraft/world/level/chunk/LevelChunkSection.java
-index f2117549758ad859d400ef649fe20db3ce4b5e81..1bf8189f25bd301bb655899e2015ccd37a4f5585 100644
+index 8dd74a37b7349046e0897a5e990dadcf7fc12fe5..f0c74c12c52caedb6c96d7fd1c60ea62758b3f56 100644
 --- a/net/minecraft/world/level/chunk/LevelChunkSection.java
 +++ b/net/minecraft/world/level/chunk/LevelChunkSection.java
 @@ -8,7 +8,7 @@ import net.minecraft.world.level.biome.BiomeResolver;
@@ -34938,7 +34938,7 @@ index f2117549758ad859d400ef649fe20db3ce4b5e81..1bf8189f25bd301bb655899e2015ccd3
      public BlockState setBlockState(final int sectionX, final int sectionY, final int sectionZ, final BlockState state, final boolean checkThreading) {
          BlockState previous;
          if (checkThreading) {
-@@ -95,6 +158,8 @@ public class LevelChunkSection {
+@@ -101,6 +164,8 @@ public class LevelChunkSection {
              }
          }
  
@@ -34947,7 +34947,7 @@ index f2117549758ad859d400ef649fe20db3ce4b5e81..1bf8189f25bd301bb655899e2015ccd3
          return previous;
      }
  
-@@ -119,37 +184,69 @@ public class LevelChunkSection {
+@@ -125,37 +190,69 @@ public class LevelChunkSection {
      }
  
      public void recalcBlockCounts() {
@@ -35042,7 +35042,7 @@ index f2117549758ad859d400ef649fe20db3ce4b5e81..1bf8189f25bd301bb655899e2015ccd3
      }
  
      public PalettedContainer<BlockState> getStates() {
-@@ -167,6 +264,11 @@ public class LevelChunkSection {
+@@ -173,6 +270,11 @@ public class LevelChunkSection {
          PalettedContainer<Holder<Biome>> biomes = this.biomes.recreate();
          biomes.read(buffer);
          this.biomes = biomes;
@@ -35054,7 +35054,7 @@ index f2117549758ad859d400ef649fe20db3ce4b5e81..1bf8189f25bd301bb655899e2015ccd3
      }
  
      public void readBiomes(final FriendlyByteBuf buffer) {
-@@ -201,18 +303,30 @@ public class LevelChunkSection {
+@@ -207,18 +309,30 @@ public class LevelChunkSection {
      // CraftBukkit end
  
      public void fillBiomesFromNoise(final BiomeResolver biomeResolver, final int quartMinX, final int quartMinY, final int quartMinZ) {

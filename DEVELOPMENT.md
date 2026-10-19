@@ -28,6 +28,8 @@ For a per-file Minecraft change:
 ./gradlew rebuildPatches
 ```
 
+Run patching steps as separate Gradle invocations. Combining `fixupSourcePatches` with `rebuildPatches` can overlap Git operations in the generated checkout; combining `applyPatches` with `check` can fail Gradle's resource-task ordering validation. Complete patch application before running checks and packaging.
+
 Commit the resulting tracked patches, not only generated sources. See the inherited [CONTRIBUTING.md](CONTRIBUTING.md) for patch mechanics; its Paper contribution process does not define Cubve's own development process.
 
 ## Upstream policy

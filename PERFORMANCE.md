@@ -2,7 +2,7 @@
 
 ## Scope
 
-The subsequent chunk-generation allocation measurements and terrain/persistence comparisons are documented in [CHUNK-PERFORMANCE.md](CHUNK-PERFORMANCE.md).
+The subsequent chunk-generation allocation measurements and terrain/persistence comparisons are documented in [CHUNK-PERFORMANCE.md](CHUNK-PERFORMANCE.md). Building-server source findings and isolated long-tick diagnostics are documented in [BUILDING-PERFORMANCE.md](BUILDING-PERFORMANCE.md).
 
 This pass inspected plugin-facing inventory operations, biome writes, item metadata, entity queries and event dispatch in the current Paper 26.3 base. Source inspection identifies candidates, not the dominant bottleneck of a live server. No representative production world, plugin workload or spark trace was supplied, so the measured results below are API-level findings rather than a claim about overall TPS or MSPT.
 
@@ -99,3 +99,9 @@ python3 scripts/run-survival-benchmark.py --accept-eula --validate-hoppers
 Regression cases cover ordinary non-container blocks, loaded/unloaded real containers, chunk loading enabled, replacement block entities, composter-style containers without block entities, and minecart fallback with both occluding-block settings. Live validation results are recorded in [SURVIVAL-PERFORMANCE.md](SURVIVAL-PERFORMANCE.md).
 
 The retained patch passed reapplication and `check createPaperclipJar`. All nine lookup regression cases and ten Python tests passed. A fresh plugin-free server verified double-chest transfers across a chunk boundary, redstone lock/resume, destination replacement, composter output, minecart collection and item-count conservation across clean saving/restart. The follow-up 1,024-hopper window recorded a 0.658ms mean and 1.276ms p99; this single window is validation data, not a measured server-wide improvement percentage.
+
+## Building follow-up — 2026-10-20
+
+`LevelChunkSection.setBlockState` now skips redundant counter bookkeeping for identical states after retaining the actual palette mutation. Actual-method JMH comparisons measured 17.84–23.91% less time for repeated stone/water/leaves writes, with non-overlapping 99.9% confidence intervals. Changed-state and mixed controls had overlapping intervals; no server-wide TPS, allocation or GC improvement is claimed. Ten checked/unchecked regressions cover counters, fluid/ticking/collision tracking, palette growth, copy and packet-read behavior.
+
+The native `/clone` source-clearing list is now populated only for MOVE. Two combined trials used approximately 24 fewer allocated bytes per copied cell than the section-only implementation, offsetting the allocation increase observed in that intermediate configuration. The retained combination keeps native clone allocation near the original level; no original-to-final clone allocation or CPU reduction is established. Original, section-only and both combined trials preserved native mode behavior, overlapping block-entity moves, pending block ticks and saved/restarted contents in the disposable fixtures. Detailed comparisons, limits and raw evidence are in [BUILDING-PERFORMANCE.md](BUILDING-PERFORMANCE.md).

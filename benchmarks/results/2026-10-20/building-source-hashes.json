@@ -1,0 +1,12 @@
+{
+  "CloneCommands": {
+    "baselineSha256": "4c0989905ef1203555fda80f213500447d742c4d52ae87ca65773a4dea89da99",
+    "combinedMeasuredSha256": "d79356074ff315f02cc23f6aca1815907a05e7cf354daa9c2635be631dcc599f",
+    "finalSha256": "d79356074ff315f02cc23f6aca1815907a05e7cf354daa9c2635be631dcc599f"
+  },
+  "LevelChunkSection": {
+    "baselineSha256": "e6b167c0661e3455722ecc35163681b3045fb399aa39e04b44a8b4411ecd4191",
+    "combinedMeasuredSha256": "152ca19552737da58cc5c6985e4bcecf10881d9f8bdd41d7996d16640f04a79f",
+    "finalSha256": "152ca19552737da58cc5c6985e4bcecf10881d9f8bdd41d7996d16640f04a79f"
+  }
+}

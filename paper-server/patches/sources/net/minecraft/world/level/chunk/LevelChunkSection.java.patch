@@ -33,6 +33,19 @@
      }
  
      public void acquire() {
+@@ -65,6 +_,12 @@
+             previous = this.states.getAndSetUnchecked(sectionX, sectionY, sectionZ, state);
+         }
+ 
++        // Cubve start - skip unchanged section bookkeeping after the palette write
++        if (previous == state) {
++            return previous;
++        }
++        // Cubve end - skip unchanged section bookkeeping after the palette write
++
+         if (!previous.isAir()) {
+             this.nonEmptyBlockCount--;
+             if (previous.isRandomlyTicking()) {
 @@ -193,6 +_,12 @@
      public Holder<Biome> getNoiseBiome(final int quartX, final int quartY, final int quartZ) {
          return this.biomes.get(quartX, quartY, quartZ);

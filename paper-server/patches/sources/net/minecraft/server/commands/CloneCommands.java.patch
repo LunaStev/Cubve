@@ -1,0 +1,37 @@
+--- a/net/minecraft/server/commands/CloneCommands.java
++++ b/net/minecraft/server/commands/CloneCommands.java
+@@ -218,6 +_,7 @@
+                         BlockState blockState = block.getState();
+                         if (predicate.test(block)) {
+                             BlockEntity blockEntity = fromDimension.getBlockEntity(sourcePos);
++                            // Cubve start - only track source clearing positions for move
+                             if (blockEntity != null) {
+                                 TagValueOutput output = TagValueOutput.createWithContext(reporter.forChild(blockEntity.problemPath()), source.registryAccess());
+                                 blockEntity.saveCustomOnly(output);
+@@ -227,16 +_,23 @@
+                                 blockEntitiesList.add(
+                                     new CloneCommands.CloneBlockInfo(destinationPos, blockState, blockEntityInfo, toDimension.getBlockState(destinationPos))
+                                 );
+-                                clearBlocksList.addLast(sourcePos);
++                                if (mode == CloneCommands.Mode.MOVE) {
++                                    clearBlocksList.addLast(sourcePos);
++                                }
+                             } else if (!blockState.isSolidRender() && !blockState.isCollisionShapeFullBlock(fromDimension, sourcePos)) {
+                                 otherBlocksList.add(
+                                     new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos))
+                                 );
+-                                clearBlocksList.addFirst(sourcePos);
++                                if (mode == CloneCommands.Mode.MOVE) {
++                                    clearBlocksList.addFirst(sourcePos);
++                                }
+                             } else {
+                                 solidList.add(new CloneCommands.CloneBlockInfo(destinationPos, blockState, null, toDimension.getBlockState(destinationPos)));
+-                                clearBlocksList.addLast(sourcePos);
++                                if (mode == CloneCommands.Mode.MOVE) {
++                                    clearBlocksList.addLast(sourcePos);
++                                }
+                             }
++                            // Cubve end - only track source clearing positions for move
+                         }
+                     }
+                 }

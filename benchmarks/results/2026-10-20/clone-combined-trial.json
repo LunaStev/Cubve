@@ -1,0 +1,1964 @@
+{
+  "schemaVersion": 1,
+  "scope": "native clone only; not WorldEdit or production TPS",
+  "label": "candidate",
+  "seed": 8142026,
+  "jar": "/mnt/hdd/Cubve/run/benchmarks/building-optimization-20261020/candidate.jar",
+  "jarSha256": "c7c9965264ec2d1a0b2061a66f9c7f33dd92ac47ac5e673791d31710686482d9",
+  "probeSha256": "2c6880a0ea936b99e2b419ff58908eb348d83ab778fbc997c16c071bc5495dde",
+  "host": "Linux-7.2.11-100.fc43.x86_64-x86_64-with-glibc2.42",
+  "javaVersion": "openjdk version \"25.0.4.1\" 2026-08-18\nOpenJDK Runtime Environment (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1)\nOpenJDK 64-Bit Server VM (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1, mixed mode, sharing)",
+  "jvmFlags": [
+    "-Xms2g",
+    "-Xmx2g"
+  ],
+  "jfrEnabled": false,
+  "generationWorkerThreads": 1,
+  "warmup": 10,
+  "samples": 20,
+  "scenarioDefinitions": [
+    [
+      "normal16K",
+      135,
+      "",
+      16384
+    ],
+    [
+      "normal32K",
+      151,
+      "",
+      32768
+    ],
+    [
+      "force32K",
+      151,
+      "replace force",
+      32768
+    ],
+    [
+      "strict32K",
+      151,
+      "strict replace normal",
+      32768
+    ],
+    [
+      "move16K",
+      135,
+      "replace move",
+      16384
+    ]
+  ],
+  "players": 0,
+  "plugins": [
+    "CubveCloneProbe"
+  ],
+  "ticksFrozen": true,
+  "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/clone-candidate-20261019T152943Z-673bea",
+  "limitations": [
+    "No connected clients or WorldEdit",
+    "Only current-thread synchronous allocation/time",
+    "No lighting, packet, client, undo or production-spike improvement claim",
+    "Pending block ticks preserved while frozen; redstone execution after unfreeze not tested"
+  ],
+  "scenarios": [
+    {
+      "name": "normal16K",
+      "warmup": [
+        {
+          "label": "candidate-normal16K-000",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 24938736,
+          "nanos": 128906785
+        },
+        {
+          "label": "candidate-normal16K-001",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23874320,
+          "nanos": 35753842
+        },
+        {
+          "label": "candidate-normal16K-002",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23859720,
+          "nanos": 35925446
+        },
+        {
+          "label": "candidate-normal16K-003",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23878072,
+          "nanos": 25267652
+        },
+        {
+          "label": "candidate-normal16K-004",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23871752,
+          "nanos": 36411467
+        },
+        {
+          "label": "candidate-normal16K-005",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23394792,
+          "nanos": 40893294
+        },
+        {
+          "label": "candidate-normal16K-006",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23601384,
+          "nanos": 35876754
+        },
+        {
+          "label": "candidate-normal16K-007",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23335200,
+          "nanos": 28603089
+        },
+        {
+          "label": "candidate-normal16K-008",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23347072,
+          "nanos": 41193252
+        },
+        {
+          "label": "candidate-normal16K-009",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23351880,
+          "nanos": 36600795
+        }
+      ],
+      "measurements": [
+        {
+          "label": "candidate-normal16K-010",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23328720,
+          "nanos": 25243316
+        },
+        {
+          "label": "candidate-normal16K-011",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23379144,
+          "nanos": 25888518
+        },
+        {
+          "label": "candidate-normal16K-012",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23339560,
+          "nanos": 28784452
+        },
+        {
+          "label": "candidate-normal16K-013",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23361728,
+          "nanos": 28499493
+        },
+        {
+          "label": "candidate-normal16K-014",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23361424,
+          "nanos": 39925101
+        },
+        {
+          "label": "candidate-normal16K-015",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23378344,
+          "nanos": 24146079
+        },
+        {
+          "label": "candidate-normal16K-016",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23349888,
+          "nanos": 26979124
+        },
+        {
+          "label": "candidate-normal16K-017",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23365880,
+          "nanos": 28658855
+        },
+        {
+          "label": "candidate-normal16K-018",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23344944,
+          "nanos": 52337628
+        },
+        {
+          "label": "candidate-normal16K-019",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23357584,
+          "nanos": 31036578
+        },
+        {
+          "label": "candidate-normal16K-020",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23344240,
+          "nanos": 89766852
+        },
+        {
+          "label": "candidate-normal16K-021",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23335592,
+          "nanos": 40536990
+        },
+        {
+          "label": "candidate-normal16K-022",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23355776,
+          "nanos": 22034159
+        },
+        {
+          "label": "candidate-normal16K-023",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23343192,
+          "nanos": 20358766
+        },
+        {
+          "label": "candidate-normal16K-024",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23329232,
+          "nanos": 33698899
+        },
+        {
+          "label": "candidate-normal16K-025",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23356792,
+          "nanos": 39895975
+        },
+        {
+          "label": "candidate-normal16K-026",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23354344,
+          "nanos": 34053181
+        },
+        {
+          "label": "candidate-normal16K-027",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23379368,
+          "nanos": 45245917
+        },
+        {
+          "label": "candidate-normal16K-028",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23377056,
+          "nanos": 51106596
+        },
+        {
+          "label": "candidate-normal16K-029",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 23329400,
+          "nanos": 24022454
+        }
+      ],
+      "allocatedBytesMedian": 23355060.0,
+      "nanosMedian": 29910515.0
+    },
+    {
+      "name": "normal32K",
+      "warmup": [
+        {
+          "label": "candidate-normal32K-000",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46722112,
+          "nanos": 70746460
+        },
+        {
+          "label": "candidate-normal32K-001",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46740392,
+          "nanos": 60822317
+        },
+        {
+          "label": "candidate-normal32K-002",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46777224,
+          "nanos": 76336887
+        },
+        {
+          "label": "candidate-normal32K-003",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46696248,
+          "nanos": 65231075
+        },
+        {
+          "label": "candidate-normal32K-004",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46775896,
+          "nanos": 62398431
+        },
+        {
+          "label": "candidate-normal32K-005",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46769352,
+          "nanos": 59937270
+        },
+        {
+          "label": "candidate-normal32K-006",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46785928,
+          "nanos": 72641349
+        },
+        {
+          "label": "candidate-normal32K-007",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46793456,
+          "nanos": 41702757
+        },
+        {
+          "label": "candidate-normal32K-008",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46755160,
+          "nanos": 43351199
+        },
+        {
+          "label": "candidate-normal32K-009",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46722496,
+          "nanos": 45958166
+        }
+      ],
+      "measurements": [
+        {
+          "label": "candidate-normal32K-010",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46725160,
+          "nanos": 61503656
+        },
+        {
+          "label": "candidate-normal32K-011",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46829480,
+          "nanos": 62773652
+        },
+        {
+          "label": "candidate-normal32K-012",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46724176,
+          "nanos": 43828923
+        },
+        {
+          "label": "candidate-normal32K-013",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46708760,
+          "nanos": 41714059
+        },
+        {
+          "label": "candidate-normal32K-014",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46747480,
+          "nanos": 58031951
+        },
+        {
+          "label": "candidate-normal32K-015",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46696672,
+          "nanos": 43317315
+        },
+        {
+          "label": "candidate-normal32K-016",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46703520,
+          "nanos": 57681197
+        },
+        {
+          "label": "candidate-normal32K-017",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46706000,
+          "nanos": 43678449
+        },
+        {
+          "label": "candidate-normal32K-018",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46748384,
+          "nanos": 79749341
+        },
+        {
+          "label": "candidate-normal32K-019",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46748912,
+          "nanos": 48334887
+        },
+        {
+          "label": "candidate-normal32K-020",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46756040,
+          "nanos": 67066641
+        },
+        {
+          "label": "candidate-normal32K-021",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46755920,
+          "nanos": 46924456
+        },
+        {
+          "label": "candidate-normal32K-022",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46712800,
+          "nanos": 65683442
+        },
+        {
+          "label": "candidate-normal32K-023",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46741944,
+          "nanos": 53927829
+        },
+        {
+          "label": "candidate-normal32K-024",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46779192,
+          "nanos": 43343505
+        },
+        {
+          "label": "candidate-normal32K-025",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46768936,
+          "nanos": 41183173
+        },
+        {
+          "label": "candidate-normal32K-026",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46735552,
+          "nanos": 40671484
+        },
+        {
+          "label": "candidate-normal32K-027",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46774856,
+          "nanos": 49634248
+        },
+        {
+          "label": "candidate-normal32K-028",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46712496,
+          "nanos": 49782369
+        },
+        {
+          "label": "candidate-normal32K-029",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46711976,
+          "nanos": 60652264
+        }
+      ],
+      "allocatedBytesMedian": 46738748.0,
+      "nanosMedian": 49708308.5
+    },
+    {
+      "name": "force32K",
+      "warmup": [
+        {
+          "label": "candidate-force32K-000",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 47854432,
+          "nanos": 91668073
+        },
+        {
+          "label": "candidate-force32K-001",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46708432,
+          "nanos": 42181504
+        },
+        {
+          "label": "candidate-force32K-002",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46718368,
+          "nanos": 43159757
+        },
+        {
+          "label": "candidate-force32K-003",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46752824,
+          "nanos": 46320472
+        },
+        {
+          "label": "candidate-force32K-004",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46757472,
+          "nanos": 43828152
+        },
+        {
+          "label": "candidate-force32K-005",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46736088,
+          "nanos": 58804695
+        },
+        {
+          "label": "candidate-force32K-006",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46782048,
+          "nanos": 47123693
+        },
+        {
+          "label": "candidate-force32K-007",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46772808,
+          "nanos": 58259903
+        },
+        {
+          "label": "candidate-force32K-008",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46712232,
+          "nanos": 54830488
+        },
+        {
+          "label": "candidate-force32K-009",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46701120,
+          "nanos": 55817418
+        }
+      ],
+      "measurements": [
+        {
+          "label": "candidate-force32K-010",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46741008,
+          "nanos": 56918964
+        },
+        {
+          "label": "candidate-force32K-011",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46706136,
+          "nanos": 58633601
+        },
+        {
+          "label": "candidate-force32K-012",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46766840,
+          "nanos": 63404977
+        },
+        {
+          "label": "candidate-force32K-013",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46746864,
+          "nanos": 56525158
+        },
+        {
+          "label": "candidate-force32K-014",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46782600,
+          "nanos": 55285901
+        },
+        {
+          "label": "candidate-force32K-015",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46789016,
+          "nanos": 44089467
+        },
+        {
+          "label": "candidate-force32K-016",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46668248,
+          "nanos": 54604511
+        },
+        {
+          "label": "candidate-force32K-017",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46761480,
+          "nanos": 55656933
+        },
+        {
+          "label": "candidate-force32K-018",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46788936,
+          "nanos": 42547447
+        },
+        {
+          "label": "candidate-force32K-019",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46716728,
+          "nanos": 62194505
+        },
+        {
+          "label": "candidate-force32K-020",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46671192,
+          "nanos": 60065904
+        },
+        {
+          "label": "candidate-force32K-021",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46713352,
+          "nanos": 50536326
+        },
+        {
+          "label": "candidate-force32K-022",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46789512,
+          "nanos": 51614077
+        },
+        {
+          "label": "candidate-force32K-023",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46757504,
+          "nanos": 44123100
+        },
+        {
+          "label": "candidate-force32K-024",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46753312,
+          "nanos": 64240018
+        },
+        {
+          "label": "candidate-force32K-025",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46799008,
+          "nanos": 54976075
+        },
+        {
+          "label": "candidate-force32K-026",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46696600,
+          "nanos": 49696676
+        },
+        {
+          "label": "candidate-force32K-027",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46753216,
+          "nanos": 43374904
+        },
+        {
+          "label": "candidate-force32K-028",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46737520,
+          "nanos": 60559028
+        },
+        {
+          "label": "candidate-force32K-029",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 46756768,
+          "nanos": 58839571
+        }
+      ],
+      "allocatedBytesMedian": 46753264.0,
+      "nanosMedian": 55471417.0
+    },
+    {
+      "name": "strict32K",
+      "warmup": [
+        {
+          "label": "candidate-strict32K-000",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7977192,
+          "nanos": 18178968
+        },
+        {
+          "label": "candidate-strict32K-001",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7894584,
+          "nanos": 30311675
+        },
+        {
+          "label": "candidate-strict32K-002",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7925368,
+          "nanos": 12652071
+        },
+        {
+          "label": "candidate-strict32K-003",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7913736,
+          "nanos": 18147959
+        },
+        {
+          "label": "candidate-strict32K-004",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7968160,
+          "nanos": 16166567
+        },
+        {
+          "label": "candidate-strict32K-005",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 8007312,
+          "nanos": 27075306
+        },
+        {
+          "label": "candidate-strict32K-006",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7900280,
+          "nanos": 18588173
+        },
+        {
+          "label": "candidate-strict32K-007",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7933848,
+          "nanos": 17343906
+        },
+        {
+          "label": "candidate-strict32K-008",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7895656,
+          "nanos": 16375863
+        },
+        {
+          "label": "candidate-strict32K-009",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7964368,
+          "nanos": 14216634
+        }
+      ],
+      "measurements": [
+        {
+          "label": "candidate-strict32K-010",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7951968,
+          "nanos": 19901349
+        },
+        {
+          "label": "candidate-strict32K-011",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7976160,
+          "nanos": 16960350
+        },
+        {
+          "label": "candidate-strict32K-012",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7966424,
+          "nanos": 21376554
+        },
+        {
+          "label": "candidate-strict32K-013",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7898480,
+          "nanos": 30927360
+        },
+        {
+          "label": "candidate-strict32K-014",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7932504,
+          "nanos": 22781023
+        },
+        {
+          "label": "candidate-strict32K-015",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7926352,
+          "nanos": 14297186
+        },
+        {
+          "label": "candidate-strict32K-016",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7932120,
+          "nanos": 16061007
+        },
+        {
+          "label": "candidate-strict32K-017",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7973320,
+          "nanos": 12041655
+        },
+        {
+          "label": "candidate-strict32K-018",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7957912,
+          "nanos": 26384888
+        },
+        {
+          "label": "candidate-strict32K-019",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7957712,
+          "nanos": 26886057
+        },
+        {
+          "label": "candidate-strict32K-020",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7970504,
+          "nanos": 31272234
+        },
+        {
+          "label": "candidate-strict32K-021",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7909568,
+          "nanos": 26481401
+        },
+        {
+          "label": "candidate-strict32K-022",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7942280,
+          "nanos": 23180660
+        },
+        {
+          "label": "candidate-strict32K-023",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7901288,
+          "nanos": 15196770
+        },
+        {
+          "label": "candidate-strict32K-024",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7948128,
+          "nanos": 15262735
+        },
+        {
+          "label": "candidate-strict32K-025",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7933184,
+          "nanos": 15135233
+        },
+        {
+          "label": "candidate-strict32K-026",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7956256,
+          "nanos": 24237691
+        },
+        {
+          "label": "candidate-strict32K-027",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7996792,
+          "nanos": 26117181
+        },
+        {
+          "label": "candidate-strict32K-028",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7949480,
+          "nanos": 24795398
+        },
+        {
+          "label": "candidate-strict32K-029",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 32768,
+          "allocatedBytes": 7929600,
+          "nanos": 17476888
+        }
+      ],
+      "allocatedBytesMedian": 7948804.0,
+      "nanosMedian": 22078788.5
+    },
+    {
+      "name": "move16K",
+      "warmup": [
+        {
+          "label": "candidate-move16K-000",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45960600,
+          "nanos": 58492715
+        },
+        {
+          "label": "candidate-move16K-001",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45968664,
+          "nanos": 47316238
+        },
+        {
+          "label": "candidate-move16K-002",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 46003112,
+          "nanos": 62301468
+        },
+        {
+          "label": "candidate-move16K-003",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45898288,
+          "nanos": 50256526
+        },
+        {
+          "label": "candidate-move16K-004",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45948360,
+          "nanos": 64755695
+        },
+        {
+          "label": "candidate-move16K-005",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45818624,
+          "nanos": 64977315
+        },
+        {
+          "label": "candidate-move16K-006",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45718400,
+          "nanos": 69718484
+        },
+        {
+          "label": "candidate-move16K-007",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45657920,
+          "nanos": 62843584
+        },
+        {
+          "label": "candidate-move16K-008",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45472384,
+          "nanos": 61072841
+        },
+        {
+          "label": "candidate-move16K-009",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45674744,
+          "nanos": 69150158
+        }
+      ],
+      "measurements": [
+        {
+          "label": "candidate-move16K-010",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45786760,
+          "nanos": 61788366
+        },
+        {
+          "label": "candidate-move16K-011",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45645152,
+          "nanos": 55513933
+        },
+        {
+          "label": "candidate-move16K-012",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45541008,
+          "nanos": 43300734
+        },
+        {
+          "label": "candidate-move16K-013",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45546200,
+          "nanos": 45770061
+        },
+        {
+          "label": "candidate-move16K-014",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45433032,
+          "nanos": 48715768
+        },
+        {
+          "label": "candidate-move16K-015",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45486416,
+          "nanos": 44280579
+        },
+        {
+          "label": "candidate-move16K-016",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45494616,
+          "nanos": 41179336
+        },
+        {
+          "label": "candidate-move16K-017",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45445496,
+          "nanos": 40539865
+        },
+        {
+          "label": "candidate-move16K-018",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45390032,
+          "nanos": 40601462
+        },
+        {
+          "label": "candidate-move16K-019",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45780448,
+          "nanos": 54386989
+        },
+        {
+          "label": "candidate-move16K-020",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45540600,
+          "nanos": 43781745
+        },
+        {
+          "label": "candidate-move16K-021",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45501296,
+          "nanos": 60854878
+        },
+        {
+          "label": "candidate-move16K-022",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45750392,
+          "nanos": 64684510
+        },
+        {
+          "label": "candidate-move16K-023",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45692360,
+          "nanos": 55436547
+        },
+        {
+          "label": "candidate-move16K-024",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45458104,
+          "nanos": 40987343
+        },
+        {
+          "label": "candidate-move16K-025",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45456592,
+          "nanos": 46449227
+        },
+        {
+          "label": "candidate-move16K-026",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45445104,
+          "nanos": 44262595
+        },
+        {
+          "label": "candidate-move16K-027",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45559008,
+          "nanos": 58426439
+        },
+        {
+          "label": "candidate-move16K-028",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45552928,
+          "nanos": 53538822
+        },
+        {
+          "label": "candidate-move16K-029",
+          "iteration": 0,
+          "dispatch": true,
+          "success": true,
+          "result": 16384,
+          "allocatedBytes": 45551224,
+          "nanos": 42788784
+        }
+      ],
+      "allocatedBytesMedian": 45540804.0,
+      "nanosMedian": 46109644.0
+    }
+  ],
+  "initialSave": {
+    "attempts": 1,
+    "elapsedSeconds": 1.7304885429985006,
+    "pendingChunkCounts": [
+      0
+    ],
+    "statusAttempts": 1,
+    "statusElapsedSeconds": 0.10886875699361553,
+    "statusPendingChunkCounts": [
+      0
+    ],
+    "statusDumpFiles": [
+      "/mnt/hdd/Cubve/run/benchmarks/clone-candidate-20261019T152943Z-673bea/debug/chunks-2026-10-20_00.30.53.txt"
+    ]
+  },
+  "savedBeforeRestart": {
+    "stoneCells": 65536,
+    "regressionCells": {
+      "0,120,4160": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4160": {
+        "Name": "minecraft:glass"
+      },
+      "2,120,4160": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "3,120,4160": {
+        "Name": "minecraft:gold_block"
+      },
+      "16,120,4160": {
+        "Name": "minecraft:stone"
+      },
+      "17,120,4160": {
+        "Name": "minecraft:glass"
+      },
+      "18,120,4160": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "19,120,4160": {
+        "Name": "minecraft:gold_block"
+      },
+      "0,120,4162": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4162": {
+        "Name": "minecraft:air"
+      },
+      "2,120,4162": {
+        "Name": "minecraft:glass"
+      },
+      "3,120,4162": {
+        "Name": "minecraft:air"
+      },
+      "16,120,4162": {
+        "Name": "minecraft:stone"
+      },
+      "17,120,4162": {
+        "Name": "minecraft:dirt"
+      },
+      "18,120,4162": {
+        "Name": "minecraft:glass"
+      },
+      "19,120,4162": {
+        "Name": "minecraft:dirt"
+      },
+      "0,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4164": {
+        "Name": "minecraft:glass"
+      },
+      "2,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "3,120,4164": {
+        "Name": "minecraft:glass"
+      },
+      "16,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "17,120,4164": {
+        "Name": "minecraft:dirt"
+      },
+      "18,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "19,120,4164": {
+        "Name": "minecraft:dirt"
+      },
+      "0,120,4166": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4166": {
+        "Name": "minecraft:glass"
+      },
+      "2,120,4166": {
+        "Name": "minecraft:stone"
+      },
+      "3,120,4166": {
+        "Name": "minecraft:glass"
+      },
+      "4,120,4166": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "5,120,4166": {
+        "Name": "minecraft:gold_block"
+      },
+      "0,120,4168": {
+        "Name": "minecraft:air"
+      },
+      "1,120,4168": {
+        "Name": "minecraft:air"
+      },
+      "2,120,4168": {
+        "Name": "minecraft:stone"
+      },
+      "3,120,4168": {
+        "Name": "minecraft:glass"
+      },
+      "4,120,4168": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "5,120,4168": {
+        "Name": "minecraft:gold_block"
+      },
+      "2,120,4170": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "3,120,4170": {
+        "Name": "minecraft:gold_block"
+      },
+      "4,120,4170": {
+        "Name": "minecraft:air"
+      },
+      "5,120,4170": {
+        "Name": "minecraft:air"
+      },
+      "0,120,4170": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4170": {
+        "Name": "minecraft:glass"
+      },
+      "0,120,4172": {
+        "Name": "minecraft:chest"
+      },
+      "16,120,4172": {
+        "Name": "minecraft:chest"
+      },
+      "1,120,4172": {
+        "Name": "minecraft:oak_sign"
+      },
+      "17,120,4172": {
+        "Name": "minecraft:oak_sign"
+      },
+      "2,120,4172": {
+        "Name": "minecraft:decorated_pot"
+      },
+      "18,120,4172": {
+        "Name": "minecraft:decorated_pot"
+      },
+      "19,120,4172": {
+        "Name": "minecraft:air"
+      },
+      "8,120,4174": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "8,119,4174": {
+        "Name": "minecraft:redstone_block"
+      },
+      "24,120,4174": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "24,119,4174": {
+        "Name": "minecraft:redstone_block"
+      }
+    },
+    "blockEntities": [
+      {
+        "id": "minecraft:chest",
+        "Items": [
+          {
+            "Slot": 0,
+            "id": "minecraft:diamond",
+            "count": 17
+          }
+        ],
+        "components": {}
+      },
+      {
+        "id": "minecraft:sign",
+        "front_text": {
+          "has_glowing_text": 0,
+          "color": "black",
+          "messages": [
+            "Cubve clone",
+            "",
+            "",
+            ""
+          ]
+        },
+        "is_waxed": 0,
+        "components": {},
+        "back_text": {
+          "has_glowing_text": 0,
+          "color": "black",
+          "messages": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      },
+      {
+        "id": "minecraft:decorated_pot",
+        "item": {
+          "id": "minecraft:diamond",
+          "count": 5
+        },
+        "components": {}
+      }
+    ],
+    "pendingTicks": [
+      {
+        "t": 2,
+        "p": 0,
+        "i": "minecraft:redstone_torch"
+      },
+      {
+        "t": 2,
+        "p": 0,
+        "i": "minecraft:redstone_torch"
+      }
+    ]
+  },
+  "restartSave": {
+    "attempts": 1,
+    "elapsedSeconds": 2.877092235998134,
+    "pendingChunkCounts": [
+      0
+    ],
+    "statusAttempts": 2,
+    "statusElapsedSeconds": 1.3122922469992773,
+    "statusPendingChunkCounts": [
+      8,
+      0
+    ],
+    "statusDumpFiles": [
+      "/mnt/hdd/Cubve/run/benchmarks/clone-candidate-20261019T152943Z-673bea/debug/chunks-2026-10-20_00.31.11.txt",
+      "/mnt/hdd/Cubve/run/benchmarks/clone-candidate-20261019T152943Z-673bea/debug/chunks-2026-10-20_00.31.12.txt"
+    ]
+  },
+  "savedAfterRestart": {
+    "stoneCells": 65536,
+    "regressionCells": {
+      "0,120,4160": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4160": {
+        "Name": "minecraft:glass"
+      },
+      "2,120,4160": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "3,120,4160": {
+        "Name": "minecraft:gold_block"
+      },
+      "16,120,4160": {
+        "Name": "minecraft:stone"
+      },
+      "17,120,4160": {
+        "Name": "minecraft:glass"
+      },
+      "18,120,4160": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "19,120,4160": {
+        "Name": "minecraft:gold_block"
+      },
+      "0,120,4162": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4162": {
+        "Name": "minecraft:air"
+      },
+      "2,120,4162": {
+        "Name": "minecraft:glass"
+      },
+      "3,120,4162": {
+        "Name": "minecraft:air"
+      },
+      "16,120,4162": {
+        "Name": "minecraft:stone"
+      },
+      "17,120,4162": {
+        "Name": "minecraft:dirt"
+      },
+      "18,120,4162": {
+        "Name": "minecraft:glass"
+      },
+      "19,120,4162": {
+        "Name": "minecraft:dirt"
+      },
+      "0,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4164": {
+        "Name": "minecraft:glass"
+      },
+      "2,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "3,120,4164": {
+        "Name": "minecraft:glass"
+      },
+      "16,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "17,120,4164": {
+        "Name": "minecraft:dirt"
+      },
+      "18,120,4164": {
+        "Name": "minecraft:stone"
+      },
+      "19,120,4164": {
+        "Name": "minecraft:dirt"
+      },
+      "0,120,4166": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4166": {
+        "Name": "minecraft:glass"
+      },
+      "2,120,4166": {
+        "Name": "minecraft:stone"
+      },
+      "3,120,4166": {
+        "Name": "minecraft:glass"
+      },
+      "4,120,4166": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "5,120,4166": {
+        "Name": "minecraft:gold_block"
+      },
+      "0,120,4168": {
+        "Name": "minecraft:air"
+      },
+      "1,120,4168": {
+        "Name": "minecraft:air"
+      },
+      "2,120,4168": {
+        "Name": "minecraft:stone"
+      },
+      "3,120,4168": {
+        "Name": "minecraft:glass"
+      },
+      "4,120,4168": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "5,120,4168": {
+        "Name": "minecraft:gold_block"
+      },
+      "2,120,4170": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "3,120,4170": {
+        "Name": "minecraft:gold_block"
+      },
+      "4,120,4170": {
+        "Name": "minecraft:air"
+      },
+      "5,120,4170": {
+        "Name": "minecraft:air"
+      },
+      "0,120,4170": {
+        "Name": "minecraft:stone"
+      },
+      "1,120,4170": {
+        "Name": "minecraft:glass"
+      },
+      "0,120,4172": {
+        "Name": "minecraft:chest"
+      },
+      "16,120,4172": {
+        "Name": "minecraft:chest"
+      },
+      "1,120,4172": {
+        "Name": "minecraft:oak_sign"
+      },
+      "17,120,4172": {
+        "Name": "minecraft:oak_sign"
+      },
+      "2,120,4172": {
+        "Name": "minecraft:decorated_pot"
+      },
+      "18,120,4172": {
+        "Name": "minecraft:decorated_pot"
+      },
+      "19,120,4172": {
+        "Name": "minecraft:air"
+      },
+      "8,120,4174": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "8,119,4174": {
+        "Name": "minecraft:redstone_block"
+      },
+      "24,120,4174": {
+        "Name": "minecraft:redstone_torch"
+      },
+      "24,119,4174": {
+        "Name": "minecraft:redstone_block"
+      }
+    },
+    "blockEntities": [
+      {
+        "id": "minecraft:chest",
+        "Items": [
+          {
+            "Slot": 0,
+            "id": "minecraft:diamond",
+            "count": 17
+          }
+        ],
+        "components": {}
+      },
+      {
+        "id": "minecraft:sign",
+        "front_text": {
+          "has_glowing_text": 0,
+          "color": "black",
+          "messages": [
+            "Cubve clone",
+            "",
+            "",
+            ""
+          ]
+        },
+        "is_waxed": 0,
+        "components": {},
+        "back_text": {
+          "has_glowing_text": 0,
+          "color": "black",
+          "messages": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      },
+      {
+        "id": "minecraft:decorated_pot",
+        "item": {
+          "id": "minecraft:diamond",
+          "count": 5
+        },
+        "components": {}
+      }
+    ],
+    "pendingTicks": [
+      {
+        "t": 2,
+        "p": 0,
+        "i": "minecraft:redstone_torch"
+      },
+      {
+        "t": 2,
+        "p": 0,
+        "i": "minecraft:redstone_torch"
+      }
+    ]
+  },
+  "saveRestartVerified": true,
+  "comparison": {
+    "normal16K": {
+      "allocatedBytesMedianRatio": 0.9997856170624161,
+      "nanosMedianRatio": 0.9044694414944444,
+      "performancePassThreshold": null
+    },
+    "normal32K": {
+      "allocatedBytesMedianRatio": 0.9998012323083492,
+      "nanosMedianRatio": 0.9536796735752856,
+      "performancePassThreshold": null
+    },
+    "force32K": {
+      "allocatedBytesMedianRatio": 0.9993420833821035,
+      "nanosMedianRatio": 0.9625532117213325,
+      "performancePassThreshold": null
+    },
+    "strict32K": {
+      "allocatedBytesMedianRatio": 1.0020720168302832,
+      "nanosMedianRatio": 0.9887248728127992,
+      "performancePassThreshold": null
+    },
+    "move16K": {
+      "allocatedBytesMedianRatio": 1.0006253248569223,
+      "nanosMedianRatio": 0.8173331265316252,
+      "performancePassThreshold": null
+    }
+  }
+}

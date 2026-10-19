@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 2,
+  "dateAsiaSeoul": "2026-10-20",
+  "sourceBaseCommit": "f6c452416ae68923870fde69cda40b95312ad04b",
+  "workingTreeNote": "Measurements and local validation used the base HEAD plus both retained source patches and earlier building diagnostic documents, before committing the optimization work.",
+  "decision": {
+    "retained": [
+      "unchanged LevelChunkSection bookkeeping fast return after actual palette write",
+      "native clone source-clearing-list appends only in MOVE mode, retained with section change"
+    ],
+    "evidence": "Same-state section method time reduced 17.84-23.91%; clone guards prevent the copy-allocation increase measured in section-only control. Combined clone allocation remains near original baseline. Cause of the interaction is not established."
+  },
+  "sources": {
+    "CloneCommands": {
+      "baselineSha256": "4c0989905ef1203555fda80f213500447d742c4d52ae87ca65773a4dea89da99",
+      "combinedMeasuredSha256": "d79356074ff315f02cc23f6aca1815907a05e7cf354daa9c2635be631dcc599f",
+      "finalSha256": "d79356074ff315f02cc23f6aca1815907a05e7cf354daa9c2635be631dcc599f"
+    },
+    "LevelChunkSection": {
+      "baselineSha256": "e6b167c0661e3455722ecc35163681b3045fb399aa39e04b44a8b4411ecd4191",
+      "combinedMeasuredSha256": "152ca19552737da58cc5c6985e4bcecf10881d9f8bdd41d7996d16640f04a79f",
+      "finalSha256": "152ca19552737da58cc5c6985e4bcecf10881d9f8bdd41d7996d16640f04a79f"
+    }
+  },
+  "finalArtifact": {
+    "path": "run/benchmarks/building-optimization-20261020/retained.jar",
+    "sha256": "54d7cd6ca1217ec99978f6b107916f6dea187ca5b14b4e2bc38728d3d542f941",
+    "measuredCombinedJarSha256": "c7c9965264ec2d1a0b2061a66f9c7f33dd92ac47ac5e673791d31710686482d9",
+    "identicalPaperclipJarToMeasuredCombined": false,
+    "allRuntimeServerJarEntriesIdenticalToMeasuredCombined": true,
+    "runtimeClassSha256": {
+      "CloneCommands": "f209b09597aaf40366f5a9bf5732923067d22580b0c36c1d2a0523ec673b7d41",
+      "LevelChunkSection": "bfd30965fe049c6e73ef76381f79a23bb799753180f245043104075365321524"
+    },
+    "allPaperclipEntriesIdenticalToMeasuredCombined": true,
+    "outerZipNote": "Full JAR SHA differs, but all uncompressed entry names and contents are identical, including executable code and patch payloads."
+  },
+  "harnessAndPatchSha256": {
+    "paper-server/src/benchmarks/java/io/github/lunastev/cubve/benchmark/ChunkSectionWriteBenchmark.java": "aed1d04551e34c770fbe0a2d7b613f306265a6fdd8e3d5b8c2285d1f3054f7be",
+    "paper-server/src/test/java/io/github/lunastev/cubve/ChunkSectionWriteTest.java": "5024b3fe04f8deeff3de5cf31ee162b12caa2db632d035023b11d5bf027a0b40",
+    "scripts/run-clone-benchmark.py": "ca64a3e5c2b06af81af31f95f1de03cb79bdd61210e77256b69c7c8803093795",
+    "scripts/fixtures/building-probe/CloneCommandProbe.java": "ab2cd9eade0f4e0ee6f05154f76a4267761d942adc718b0b1fb40571dc39d8f5",
+    "paper-server/patches/sources/net/minecraft/server/commands/CloneCommands.java.patch": "cbc58e8eb4535e1398bc67a5c3a792308f8e948eb2bc7cd4e3cf2c7e6378101c",
+    "paper-server/patches/sources/net/minecraft/world/level/chunk/LevelChunkSection.java.patch": "9311711e7108dd2c23ecc6aa9531cb5523353ff834ecbafecd5de4c0401872b6"
+  },
+  "sectionBenchmarkScope": "actual checked LevelChunkSection.setBlockState,4096 writes/invocation,ns/write",
+  "sectionResults": [
+    {
+      "workload": "same-stone",
+      "baselineNsPerWrite": 17.22082149097773,
+      "baselineError999": 1.1689873949563907,
+      "candidateNsPerWrite": 13.872528870173067,
+      "candidateError999": 0.7907927630648185,
+      "meanReductionPercent": 19.443280464633407,
+      "confidenceIntervalsOverlap": false
+    },
+    {
+      "workload": "same-water",
+      "baselineNsPerWrite": 18.658864429445035,
+      "baselineError999": 0.5256653534628701,
+      "candidateNsPerWrite": 14.198304526625412,
+      "candidateError999": 1.4059993256156704,
+      "meanReductionPercent": 23.90584871703413,
+      "confidenceIntervalsOverlap": false
+    },
+    {
+      "workload": "same-leaves",
+      "baselineNsPerWrite": 17.773548166344764,
+      "baselineError999": 0.5810293488704584,
+      "candidateNsPerWrite": 14.60323549716102,
+      "candidateError999": 1.4031514556244364,
+      "meanReductionPercent": 17.83725252556444,
+      "confidenceIntervalsOverlap": false
+    },
+    {
+      "workload": "changed",
+      "baselineNsPerWrite": 17.302017114920858,
+      "baselineError999": 1.4248658577255293,
+      "candidateNsPerWrite": 17.587671096325735,
+      "candidateError999": 0.7940183308817763,
+      "meanReductionPercent": -1.6509865844401173,
+      "confidenceIntervalsOverlap": true
+    },
+    {
+      "workload": "mixed",
+      "baselineNsPerWrite": 17.59654447123128,
+      "baselineError999": 0.6946200641019884,
+      "candidateNsPerWrite": 16.692291788853762,
+      "candidateError999": 0.7280579191226824,
+      "meanReductionPercent": 5.138808269179707,
+      "confidenceIntervalsOverlap": true
+    }
+  ],
+  "nativeCloneVariants": {
+    "originalB": {
+      "jarSha256": "7995360f455cfe4283ec59b48cd96553eb2abd2dae7a18c094f260be5ca1693b",
+      "probeSha256": "2c6880a0ea936b99e2b419ff58908eb348d83ab778fbc997c16c071bc5495dde",
+      "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/clone-baseline-b-20261019T152755Z-56f1ca",
+      "saveRestartVerified": true,
+      "stoneCells": 65536,
+      "runnerSha256": "ca64a3e5c2b06af81af31f95f1de03cb79bdd61210e77256b69c7c8803093795"
+    },
+    "sectionOnlyControl": {
+      "jarSha256": "5b28f6935b3183a42a428130e97a643ac9387aba0a33702a046639fa7e1ff1e0",
+      "probeSha256": "2c6880a0ea936b99e2b419ff58908eb348d83ab778fbc997c16c071bc5495dde",
+      "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/clone-final-20261019T153952Z-ee014e",
+      "saveRestartVerified": true,
+      "stoneCells": 65536,
+      "runnerSha256": "ca64a3e5c2b06af81af31f95f1de03cb79bdd61210e77256b69c7c8803093795"
+    },
+    "combinedTrial": {
+      "jarSha256": "c7c9965264ec2d1a0b2061a66f9c7f33dd92ac47ac5e673791d31710686482d9",
+      "probeSha256": "2c6880a0ea936b99e2b419ff58908eb348d83ab778fbc997c16c071bc5495dde",
+      "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/clone-candidate-20261019T152943Z-673bea",
+      "saveRestartVerified": true,
+      "stoneCells": 65536,
+      "runnerSha256": "ca64a3e5c2b06af81af31f95f1de03cb79bdd61210e77256b69c7c8803093795"
+    },
+    "combinedRepeat": {
+      "jarSha256": "c7c9965264ec2d1a0b2061a66f9c7f33dd92ac47ac5e673791d31710686482d9",
+      "probeSha256": "2c6880a0ea936b99e2b419ff58908eb348d83ab778fbc997c16c071bc5495dde",
+      "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/clone-combined-repeat-20261019T154305Z-1d1710",
+      "saveRestartVerified": true,
+      "stoneCells": 65536,
+      "runnerSha256": "ca64a3e5c2b06af81af31f95f1de03cb79bdd61210e77256b69c7c8803093795"
+    }
+  },
+  "nativeCloneResults": [
+    {
+      "scenario": "normal16K",
+      "selectedCells": 16384,
+      "variants": {
+        "originalB": {
+          "allocatedBytesMedian": 23360068.0,
+          "allocatedBytesRange": [
+            23325536,
+            23383080
+          ],
+          "millisecondsMedian": 33.06968
+        },
+        "sectionOnlyControl": {
+          "allocatedBytesMedian": 23748328.0,
+          "allocatedBytesRange": [
+            23729160,
+            23774936
+          ],
+          "millisecondsMedian": 35.6567295
+        },
+        "combinedTrial": {
+          "allocatedBytesMedian": 23355060.0,
+          "allocatedBytesRange": [
+            23328720,
+            23379368
+          ],
+          "millisecondsMedian": 29.910515
+        },
+        "combinedRepeat": {
+          "allocatedBytesMedian": 23358472.0,
+          "allocatedBytesRange": [
+            23330464,
+            23383376
+          ],
+          "millisecondsMedian": 42.1474125
+        }
+      },
+      "sectionOnlyMinusCombinedRepeatBytes": 389856.0,
+      "sectionOnlyMinusCombinedRepeatBytesPerCell": 23.794921875,
+      "combinedRepeatVsOriginalAllocationPercent": -0.006832171892645622,
+      "sectionOnlyAllocationRangesOverlapCombined": {
+        "combinedTrial": false,
+        "combinedRepeat": false
+      }
+    },
+    {
+      "scenario": "normal32K",
+      "selectedCells": 32768,
+      "variants": {
+        "originalB": {
+          "allocatedBytesMedian": 46748040.0,
+          "allocatedBytesRange": [
+            46703224,
+            46803408
+          ],
+          "millisecondsMedian": 52.1226465
+        },
+        "sectionOnlyControl": {
+          "allocatedBytesMedian": 47531932.0,
+          "allocatedBytesRange": [
+            47502792,
+            47619896
+          ],
+          "millisecondsMedian": 61.114752
+        },
+        "combinedTrial": {
+          "allocatedBytesMedian": 46738748.0,
+          "allocatedBytesRange": [
+            46696672,
+            46829480
+          ],
+          "millisecondsMedian": 49.7083085
+        },
+        "combinedRepeat": {
+          "allocatedBytesMedian": 46744640.0,
+          "allocatedBytesRange": [
+            46665216,
+            46894688
+          ],
+          "millisecondsMedian": 63.403797
+        }
+      },
+      "sectionOnlyMinusCombinedRepeatBytes": 787292.0,
+      "sectionOnlyMinusCombinedRepeatBytesPerCell": 24.0262451171875,
+      "combinedRepeatVsOriginalAllocationPercent": -0.007273032195576068,
+      "sectionOnlyAllocationRangesOverlapCombined": {
+        "combinedTrial": false,
+        "combinedRepeat": false
+      }
+    },
+    {
+      "scenario": "force32K",
+      "selectedCells": 32768,
+      "variants": {
+        "originalB": {
+          "allocatedBytesMedian": 46784044.0,
+          "allocatedBytesRange": [
+            46711504,
+            46842144
+          ],
+          "millisecondsMedian": 57.629455
+        },
+        "sectionOnlyControl": {
+          "allocatedBytesMedian": 47538168.0,
+          "allocatedBytesRange": [
+            47477144,
+            47583616
+          ],
+          "millisecondsMedian": 50.790648
+        },
+        "combinedTrial": {
+          "allocatedBytesMedian": 46753264.0,
+          "allocatedBytesRange": [
+            46668248,
+            46799008
+          ],
+          "millisecondsMedian": 55.471417
+        },
+        "combinedRepeat": {
+          "allocatedBytesMedian": 46753024.0,
+          "allocatedBytesRange": [
+            46700816,
+            46802744
+          ],
+          "millisecondsMedian": 60.045973
+        }
+      },
+      "sectionOnlyMinusCombinedRepeatBytes": 785144.0,
+      "sectionOnlyMinusCombinedRepeatBytesPerCell": 23.960693359375,
+      "combinedRepeatVsOriginalAllocationPercent": -0.06630465720320888,
+      "sectionOnlyAllocationRangesOverlapCombined": {
+        "combinedTrial": false,
+        "combinedRepeat": false
+      }
+    },
+    {
+      "scenario": "strict32K",
+      "selectedCells": 32768,
+      "variants": {
+        "originalB": {
+          "allocatedBytesMedian": 7932368.0,
+          "allocatedBytesRange": [
+            7888464,
+            7996912
+          ],
+          "millisecondsMedian": 22.3305685
+        },
+        "sectionOnlyControl": {
+          "allocatedBytesMedian": 8714824.0,
+          "allocatedBytesRange": [
+            8678280,
+            8802264
+          ],
+          "millisecondsMedian": 18.2747875
+        },
+        "combinedTrial": {
+          "allocatedBytesMedian": 7948804.0,
+          "allocatedBytesRange": [
+            7898480,
+            7996792
+          ],
+          "millisecondsMedian": 22.0787885
+        },
+        "combinedRepeat": {
+          "allocatedBytesMedian": 7935760.0,
+          "allocatedBytesRange": [
+            7892096,
+            7995856
+          ],
+          "millisecondsMedian": 24.043268
+        }
+      },
+      "sectionOnlyMinusCombinedRepeatBytes": 779064.0,
+      "sectionOnlyMinusCombinedRepeatBytesPerCell": 23.775146484375,
+      "combinedRepeatVsOriginalAllocationPercent": 0.04276150576978388,
+      "sectionOnlyAllocationRangesOverlapCombined": {
+        "combinedTrial": false,
+        "combinedRepeat": false
+      }
+    },
+    {
+      "scenario": "move16K",
+      "selectedCells": 16384,
+      "variants": {
+        "originalB": {
+          "allocatedBytesMedian": 45512344.0,
+          "allocatedBytesRange": [
+            45420848,
+            45702016
+          ],
+          "millisecondsMedian": 56.41475
+        },
+        "sectionOnlyControl": {
+          "allocatedBytesMedian": 45493004.0,
+          "allocatedBytesRange": [
+            45426368,
+            45751688
+          ],
+          "millisecondsMedian": 55.257939
+        },
+        "combinedTrial": {
+          "allocatedBytesMedian": 45540804.0,
+          "allocatedBytesRange": [
+            45390032,
+            45786760
+          ],
+          "millisecondsMedian": 46.109644
+        },
+        "combinedRepeat": {
+          "allocatedBytesMedian": 45502232.0,
+          "allocatedBytesRange": [
+            45443464,
+            45751936
+          ],
+          "millisecondsMedian": 57.6842095
+        }
+      },
+      "sectionOnlyMinusCombinedRepeatBytes": -9228.0,
+      "sectionOnlyMinusCombinedRepeatBytesPerCell": -0.563232421875,
+      "combinedRepeatVsOriginalAllocationPercent": -0.022218148113839487,
+      "sectionOnlyAllocationRangesOverlapCombined": {
+        "combinedTrial": true,
+        "combinedRepeat": true
+      }
+    }
+  ],
+  "verification": {
+    "retainedPatchReapplication": true,
+    "retainedGradleCheckAndPaperclipJar": true,
+    "gradleTestsReusedMatchingSuccessfulCandidateCache": true,
+    "pythonTests": 64,
+    "sectionRegressionCasesBaselineAndCandidate": 10,
+    "currentJUnitReports": {
+      "ChunkSectionWriteTest": {
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "DecoratedPotUpdateSerializationTest": {
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ChunkFillBenchmarkFixtureTest": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "testProbeAndBenchmarkExcludedFromServerJar": true,
+    "matchedNativeCloneSavedSnapshotsAllEqual": true,
+    "finalRuntimeServerIdenticalToTwoMeasuredCombinedRuns": true,
+    "logs": [
+      "/tmp/cubve-building-retained-fixup.log",
+      "/tmp/cubve-building-retained-rebuild.log",
+      "/tmp/cubve-building-retained-apply.log",
+      "/tmp/cubve-building-retained-check.log",
+      "/tmp/cubve-building-python-tests.log"
+    ],
+    "finalExecutableEntriesIdenticalToTwoMeasuredCombinedRuns": true
+  },
+  "limitations": [
+    "No production TPS/MSPT, WorldEdit or lag-spike-fix claim.",
+    "Section timings are ns per checked write in a hot small-palette section; changed/mixed confidence intervals overlap.",
+    "Section method allocation is at profiler floor; no GC or allocation saving claim.",
+    "Native clone measures synchronous current-thread allocation/time only; other-thread and deferred work excluded.",
+    "Clone timing varied across runs; no established CPU improvement. Original B and combined allocation ranges overlap.",
+    "Only one section-only control process; the two combined processes reproduce its allocation difference in copy modes, not MOVE.",
+    "Pending torch ticks remained frozen; full redstone after unfreeze, lighting, connected clients and WorldEdit/FAWE not tested.",
+    "Original A predates additional correctness scenarios and is not the matched saved-world reference."
+  ]
+}

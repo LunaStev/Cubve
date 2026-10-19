@@ -1,0 +1,13 @@
+name: CubveCloneProbe
+version: '1'
+main: io.github.lunastev.cubve.benchmark.CloneCommandProbe
+api-version: '26.3'
+description: Disposable native-clone allocation and execution probe
+commands:
+  cubvecloneprobe:
+    description: Measure actual native clone commands on the server thread
+    usage: /cubvecloneprobe <label> <repetitions> <native clone arguments...>
+    permission: cubve.benchmark.clone
+permissions:
+  cubve.benchmark.clone:
+    default: op
