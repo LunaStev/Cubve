@@ -376,9 +376,20 @@ public final class CraftServer implements Server {
         CraftEntityFactory.instance();
     }
 
+    private final io.github.lunastev.cubve.permission.OwnerRegistry cubveOwners;
+
+    public io.github.lunastev.cubve.permission.OwnerRegistry cubveOwners() {
+        return this.cubveOwners;
+    }
+
     public CraftServer(DedicatedServer console, PlayerList playerList) {
         this.console = console;
         this.playerList = (DedicatedPlayerList) playerList;
+        try {
+            this.cubveOwners = new io.github.lunastev.cubve.permission.OwnerRegistry(java.nio.file.Path.of("owners.json"));
+        } catch (java.io.IOException exception) {
+            throw new java.io.UncheckedIOException(exception);
+        }
         this.playerView = MCUtil.transformUnmodifiable(playerList.getPlayers(), ServerPlayer::getBukkitEntity);
         this.serverVersion = io.papermc.paper.ServerBuildInfo.buildInfo().asString(io.papermc.paper.ServerBuildInfo.StringRepresentation.VERSION_SIMPLE); // Paper - improve version
         this.structureManager = new CraftStructureManager(console.getStructureTemplateManager(), console.registryAccess());
@@ -2104,6 +2115,10 @@ public final class CraftServer implements Server {
 
         for (ServerOpListEntry entry : this.playerList.getOps().getEntries()) {
             result.add(this.getOfflinePlayer(entry.getUser()));
+        }
+
+        for (io.github.lunastev.cubve.permission.OwnerRegistry.Entry entry : this.cubveOwners.entries()) {
+            result.add(this.getOfflinePlayer(entry.id()));
         }
 
         return result;

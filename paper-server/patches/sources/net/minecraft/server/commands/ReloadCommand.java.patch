@@ -18,11 +18,10 @@
          Collection<String> selected = Lists.newArrayList(currentPacks);
          Collection<String> disabled = worldData.getDataConfiguration().dataPacks().getDisabled();
  
-@@ -36,6 +_,16 @@
- 
+@@ -37,9 +_,20 @@
          return selected;
      }
-+
+ 
 +    // CraftBukkit start
 +    public static void reload(MinecraftServer server) {
 +        PackRepository packRepository = server.getPackRepository();
@@ -32,6 +31,11 @@
 +        server.reloadResources(collection, io.papermc.paper.event.server.ServerResourcesReloadedEvent.Cause.PLUGIN); // Paper - Add ServerResourcesReloadedEvent
 +    }
 +    // CraftBukkit end
- 
++
      public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
          dispatcher.register(Commands.literal("reload").requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS)).executes(s -> {
+             CommandSourceStack source = s.getSource();
++            io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - owner-only server control
+             MinecraftServer server = source.getServer();
+             PackRepository packRepository = server.getPackRepository();
+             WorldData worldData = server.getWorldData();

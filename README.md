@@ -30,8 +30,11 @@ Local development builds remain in `paper-server/build/libs/`. CI development ar
 | `/version` | Cubve version and published-release update status; plugin versions remain supported | `bukkit.command.version` |
 | `/status` | TPS, MSPT, players, worlds and heap usage | `cubve.command.status` (operators) |
 | `/server` | Operating system and JVM heap usage / maximum | `cubve.command.server` (everyone) |
+| `/owner add <online-player-or-uuid>`, `/owner remove <uuid>`, `/owner list` | Persistent server ownership | Console / RCON only |
 
 The existing `/paper` administration commands remain available. All commands above are registered by the server itself.
+
+Cubve distinguishes owners from ordinary operators. Owners retain operator capabilities; ordinary operators can moderate normal players but cannot ban or kick owners, promote operators, stop/restart the server or reload its configuration. **Existing OP status does not automatically grant ownership.** Assign your owner UUID from the console before using owner-only controls in game. See [OWNERS.md](OWNERS.md) for setup, the complete restricted-command list and compatibility limits.
 
 ## Server list
 

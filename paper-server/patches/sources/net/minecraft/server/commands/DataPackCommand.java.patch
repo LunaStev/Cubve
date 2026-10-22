@@ -1,0 +1,28 @@
+--- a/net/minecraft/server/commands/DataPackCommand.java
++++ b/net/minecraft/server/commands/DataPackCommand.java
+@@ -172,6 +_,7 @@
+     }
+ 
+     private static int createPack(final CommandSourceStack source, final String id, final Component description) throws CommandSyntaxException {
++        io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - data packs can run server-owned functions
+         Path datapackDir = source.getServer().getWorldPath(LevelResource.DATAPACK_DIR);
+         if (!FileUtil.isValidPathSegment(id)) {
+             throw ERROR_PACK_INVALID_NAME.create(id);
+@@ -220,6 +_,7 @@
+     }
+ 
+     private static int enablePack(final CommandSourceStack source, final Pack unopened, final DataPackCommand.Inserter inserter) throws CommandSyntaxException {
++        io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - data packs can run server-owned functions
+         PackRepository packRepository = source.getServer().getPackRepository();
+         List<Pack> selected = Lists.newArrayList(packRepository.getSelectedPacks());
+         inserter.apply(selected, unopened);
+@@ -228,7 +_,8 @@
+         return selected.size();
+     }
+ 
+-    private static int disablePack(final CommandSourceStack source, final Pack unopened) {
++    private static int disablePack(final CommandSourceStack source, final Pack unopened) throws CommandSyntaxException {
++        io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - data packs can run server-owned functions
+         PackRepository packRepository = source.getServer().getPackRepository();
+         List<Pack> selected = Lists.newArrayList(packRepository.getSelectedPacks());
+         selected.remove(unopened);

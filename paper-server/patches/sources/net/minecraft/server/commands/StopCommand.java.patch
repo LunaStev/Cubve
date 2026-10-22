@@ -1,0 +1,10 @@
+--- a/net/minecraft/server/commands/StopCommand.java
++++ b/net/minecraft/server/commands/StopCommand.java
+@@ -9,6 +_,7 @@
+ public class StopCommand {
+     public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
+         dispatcher.register(Commands.literal("stop").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)).executes(c -> {
++            io.github.lunastev.cubve.permission.OwnerAccess.requireControl(c.getSource()); // Cubve - owner-only server control
+             c.getSource().sendSuccess(() -> Component.translatable("commands.stop.stopping"), true);
+             c.getSource().getServer().halt(false);
+             return Command.SINGLE_SUCCESS;

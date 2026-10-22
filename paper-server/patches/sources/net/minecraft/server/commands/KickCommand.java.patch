@@ -1,7 +1,15 @@
 --- a/net/minecraft/server/commands/KickCommand.java
 +++ b/net/minecraft/server/commands/KickCommand.java
-@@ -43,7 +_,7 @@
+@@ -41,9 +_,15 @@
  
+         int count = 0;
+ 
++        // Cubve start - reject protected targets before changing any player
++        for (ServerPlayer player : players) {
++            io.github.lunastev.cubve.permission.OwnerAccess.requireUnprotected(source.getServer().server, player.getUUID());
++        }
++        // Cubve end - reject protected targets before changing any player
++
          for (ServerPlayer player : players) {
              if (!source.getServer().isSingleplayerOwner(player.nameAndId())) {
 -                player.connection.disconnect(reason);

@@ -49,6 +49,9 @@ import org.jspecify.annotations.Nullable;
 @ApiStatus.Internal
 public interface InternalAPIBridge {
 
+    // Cubve - internal authorization bridge for the inherited API-side reload command
+    boolean canControlServer(CommandSender sender);
+
     /**
      * Yields the instance of this API bridge by lazily requesting it from the java service loader API.
      *

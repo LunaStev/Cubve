@@ -660,12 +660,14 @@ public class CraftPlayer extends CraftHumanEntity implements Player, PluginMessa
 
     @Override
     public void kickPlayer(String message) {
+        io.github.lunastev.cubve.permission.OwnerAccess.checkModerationTarget(this.server, this.getUniqueId());
         org.spigotmc.AsyncCatcher.catchOp("player kick"); // Spigot
         this.getHandle().connection.disconnect(CraftChatMessage.fromStringOrEmpty(message, true), org.bukkit.event.player.PlayerKickEvent.Cause.PLUGIN); // Paper - kick event cause
     }
 
     @Override
     public void kick(net.kyori.adventure.text.Component message, org.bukkit.event.player.PlayerKickEvent.Cause cause) {
+        io.github.lunastev.cubve.permission.OwnerAccess.checkModerationTarget(this.server, this.getUniqueId());
         org.spigotmc.AsyncCatcher.catchOp("player kick");
         final ServerGamePacketListenerImpl connection = this.getHandle().connection;
         if (connection != null) {

@@ -1,0 +1,12 @@
+name: CubveOwnerProbe
+version: '1'
+main: io.github.lunastev.cubve.fixture.OwnerProbe
+api-version: '26.3'
+description: Disposable owner-policy integration fixture
+commands:
+  cubveownerprobe:
+    description: Validate synthetic owner and operator command sources
+    permission: cubve.fixture.owner
+permissions:
+  cubve.fixture.owner:
+    default: op

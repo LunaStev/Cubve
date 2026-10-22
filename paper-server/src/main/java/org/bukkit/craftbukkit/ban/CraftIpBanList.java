@@ -40,6 +40,11 @@ public class CraftIpBanList implements org.bukkit.ban.IpBanList {
     public BanEntry<InetAddress> addBan(String target, String reason, Date expires, String source) {
         Preconditions.checkArgument(target != null, "Ban target cannot be null");
 
+        final net.minecraft.server.MinecraftServer server = net.minecraft.server.MinecraftServer.getServer();
+        for (net.minecraft.server.level.ServerPlayer player : server.getPlayerList().getPlayersWithAddress(target)) {
+            io.github.lunastev.cubve.permission.OwnerAccess.checkModerationTarget(server.server, player.getUUID());
+        }
+
         IpBanListEntry entry = new IpBanListEntry(target, new Date(),
                 (source == null || source.isBlank()) ? null : source, expires,
                 (reason == null || reason.isBlank()) ? null : reason);

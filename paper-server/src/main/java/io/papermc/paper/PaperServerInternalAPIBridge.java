@@ -80,6 +80,11 @@ import org.jspecify.annotations.Nullable;
 
 @NullMarked
 public class PaperServerInternalAPIBridge implements InternalAPIBridge {
+    @Override
+    public boolean canControlServer(final org.bukkit.command.CommandSender sender) {
+        return io.github.lunastev.cubve.permission.OwnerAccess.checkControl(sender);
+    }
+
     public static final PaperServerInternalAPIBridge INSTANCE = new PaperServerInternalAPIBridge();
 
     @Override

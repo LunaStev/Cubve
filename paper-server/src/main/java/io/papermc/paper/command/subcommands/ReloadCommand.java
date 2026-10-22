@@ -16,6 +16,7 @@ import static net.kyori.adventure.text.format.NamedTextColor.RED;
 public final class ReloadCommand implements PaperSubcommand {
     @Override
     public boolean execute(final CommandSender sender, final String subCommand, final String[] args) {
+        if (!io.github.lunastev.cubve.permission.OwnerAccess.checkControl(sender)) return true;
         this.doReload(sender);
         return true;
     }

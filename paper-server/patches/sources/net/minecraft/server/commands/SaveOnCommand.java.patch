@@ -1,0 +1,10 @@
+--- a/net/minecraft/server/commands/SaveOnCommand.java
++++ b/net/minecraft/server/commands/SaveOnCommand.java
+@@ -12,6 +_,7 @@
+ 
+     public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
+         dispatcher.register(Commands.literal("save-on").requires(Commands.hasPermission(Commands.LEVEL_OWNERS)).executes(c -> {
++            io.github.lunastev.cubve.permission.OwnerAccess.requireControl(c.getSource()); // Cubve - owner-only server control
+             CommandSourceStack source = c.getSource();
+             boolean success = source.getServer().setAutoSave(true);
+             if (!success) {

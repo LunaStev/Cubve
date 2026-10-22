@@ -20,6 +20,7 @@ public class SpigotCommand extends Command {
 
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+        if (!io.github.lunastev.cubve.permission.OwnerAccess.checkControl(sender)) return true;
         if (!this.testPermission(sender)) return true;
 
         if (args.length != 1 || !args[0].equals("reload")) {

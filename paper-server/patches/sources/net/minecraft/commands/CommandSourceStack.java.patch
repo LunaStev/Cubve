@@ -9,18 +9,73 @@
      public static final SimpleCommandExceptionType ERROR_NOT_PLAYER = new SimpleCommandExceptionType(Component.translatable("permissions.requires.player"));
      public static final SimpleCommandExceptionType ERROR_NOT_ENTITY = new SimpleCommandExceptionType(Component.translatable("permissions.requires.entity"));
      public final CommandSource source;
-@@ -64,6 +_,7 @@
+@@ -64,6 +_,8 @@
      private final Vec2 rotation;
      private final CommandSigningContext signingContext;
      private final TaskChainer chatMessageChainer;
++    private final CommandSource cubveOriginalSource; // Cubve - retain the caller through execute/functions
 +    public boolean bypassSelectorPermissions = false; // Paper - add bypass for selector permissions
  
      public CommandSourceStack(
          final CommandSource source,
-@@ -206,6 +_,29 @@
+@@ -112,7 +_,8 @@
+             CommandResultCallback.EMPTY,
+             EntityAnchorArgument.Anchor.FEET,
+             CommandSigningContext.ANONYMOUS,
+-            TaskChainer.immediate(server)
++            TaskChainer.immediate(server),
++            source // Cubve - initial caller
+         );
+     }
+ 
+@@ -129,7 +_,8 @@
+         final CommandResultCallback resultCallback,
+         final EntityAnchorArgument.Anchor anchor,
+         final CommandSigningContext signingContext,
+-        final TaskChainer chatMessageChainer
++        final TaskChainer chatMessageChainer,
++        final CommandSource cubveOriginalSource // Cubve - retained caller
+     ) {
+         this.source = source;
+         this.worldPosition = position;
+@@ -144,6 +_,7 @@
+         this.rotation = rotation;
+         this.signingContext = signingContext;
+         this.chatMessageChainer = chatMessageChainer;
++        this.cubveOriginalSource = cubveOriginalSource; // Cubve - retained caller
+     }
+ 
+     public CommandSourceStack withSource(final CommandSource source) {
+@@ -162,7 +_,8 @@
+                 this.resultCallback,
+                 this.anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
              );
      }
  
+@@ -182,7 +_,8 @@
+                 this.resultCallback,
+                 this.anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             );
+     }
+ 
+@@ -202,9 +_,34 @@
+                 this.resultCallback,
+                 this.anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             );
+     }
++
 +    // Paper start - Expose 'with' functions from the CommandSourceStack
 +    @Override
 +    public CommandSourceStack withLocation(org.bukkit.Location location) {
@@ -39,15 +94,85 @@
 +            this.resultCallback,
 +            this.anchor,
 +            this.signingContext,
-+            this.chatMessageChainer
++            this.chatMessageChainer,
++            this.cubveOriginalSource // Cubve - retained caller
 +        );
 +    }
 +    // Paper end - Expose 'with' functions from the CommandSourceStack
-+
+ 
      public CommandSourceStack withRotation(final Vec2 rotation) {
          return this.rotation.equals(rotation)
-             ? this
-@@ -388,6 +_,32 @@
+@@ -222,7 +_,8 @@
+                 this.resultCallback,
+                 this.anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             );
+     }
+ 
+@@ -243,7 +_,8 @@
+                 resultCallback,
+                 this.anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             );
+     }
+ 
+@@ -267,7 +_,8 @@
+                 this.resultCallback,
+                 this.anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             )
+             : this;
+     }
+@@ -288,7 +_,8 @@
+                 this.resultCallback,
+                 this.anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             );
+     }
+ 
+@@ -312,7 +_,8 @@
+                 this.resultCallback,
+                 anchor,
+                 this.signingContext,
+-                this.chatMessageChainer
++                this.chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             );
+     }
+ 
+@@ -336,7 +_,8 @@
+             this.resultCallback,
+             this.anchor,
+             this.signingContext,
+-            this.chatMessageChainer
++            this.chatMessageChainer,
++            this.cubveOriginalSource // Cubve - retained caller
+         );
+     }
+ 
+@@ -371,7 +_,8 @@
+                 this.resultCallback,
+                 this.anchor,
+                 signingContext,
+-                chatMessageChainer
++                chatMessageChainer,
++                this.cubveOriginalSource // Cubve - retained caller
+             );
+     }
+ 
+@@ -388,6 +_,37 @@
          return this.permissions;
      }
  
@@ -58,7 +183,12 @@
 +    // Paper end - Fix permission levels for command blocks
 +
 +    // CraftBukkit start
++    public org.bukkit.command.CommandSender cubveOriginalSender() {
++        return this.cubveOriginalSource.getBukkitSender(this);
++    }
++
 +    public boolean hasPermission(net.minecraft.server.permissions.Permission permission, String bukkitPermission) {
++        if (!io.github.lunastev.cubve.permission.OwnerAccess.allowsPermission(this, bukkitPermission)) return false; // Cubve - owner-only server control
 +        // Paper start - Fix permission levels for command blocks
 +        final java.util.function.BooleanSupplier hasBukkitPerm = () -> this.source == CommandSource.NULL /*treat NULL as having all bukkit perms*/ || this.getBukkitSender().hasPermission(bukkitPermission); // lazily check bukkit perms to the benefit of custom permission setups
 +        // if the server is null, we must check the vanilla perm level system

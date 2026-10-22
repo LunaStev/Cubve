@@ -25297,7 +25297,7 @@ index df28b83ab34b2e44a6ce2dbb903ef94db5496aaa..f961326218d56f1455df8d3b7b6079e2
          assert isValidNamespace(namespace);
          assert isValidPath(path);
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 0a18ed85bb97c7700a60222e15650c2c46999e98..829255f660c8bb9cf819e263987a8c106c22422a 100644
+index c2fe8b5fbf19dae56a3238cf29198b6ba5bcb91c..cfb40c8a1c1a8d45e63b07d902b58b238c5154d4 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -187,7 +187,7 @@ import net.minecraft.world.scores.ScoreboardSaveData;
@@ -25538,7 +25538,7 @@ index 0a18ed85bb97c7700a60222e15650c2c46999e98..829255f660c8bb9cf819e263987a8c10
          this.tickFrame.end();
          this.recordEndOfTick(); // Paper - improve tick loop
          profiler.pop();
-@@ -2560,6 +2679,12 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -2565,6 +2684,12 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          }
      }
  
@@ -30081,7 +30081,7 @@ index 3271c83bd103bea9b9ffcd6882b52896ea4da770..f6601bc30fa37a309923ea9883b04233
                  PrepareSpawnTask.this.loadListener.updateFocus(this.spawnLevel.dimension(), spawnChunk);
              }
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 3798b820166e8b3a8e09e94a8a339c212d6620e0..8957b3957d67ac2b1d2cfadc86ce729a485a68e2 100644
+index 2d8ce65ca06e84cb569f9fec166e506ff84be979..70d15fe21fc1fa91a95255878b7e069956590a5b 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -987,8 +987,8 @@ public abstract class PlayerList {

@@ -1,5 +1,17 @@
 --- a/net/minecraft/server/commands/BanIpCommands.java
 +++ b/net/minecraft/server/commands/BanIpCommands.java
+@@ -55,6 +_,11 @@
+         }
+ 
+         List<ServerPlayer> players = source.getServer().getPlayerList().getPlayersWithAddress(ip);
++        // Cubve start - do not kick an online owner through an IP ban
++        for (ServerPlayer player : players) {
++            io.github.lunastev.cubve.permission.OwnerAccess.requireUnprotected(source.getServer().server, player.getUUID());
++        }
++        // Cubve end - do not kick an online owner through an IP ban
+         IpBanListEntry entry = new IpBanListEntry(ip, null, source.getTextName(), null, reason == null ? null : reason.getString());
+         list.add(entry);
+         source.sendSuccess(() -> Component.translatable("commands.banip.success", ip, entry.getReasonMessage()), true);
 @@ -63,7 +_,7 @@
          }
  

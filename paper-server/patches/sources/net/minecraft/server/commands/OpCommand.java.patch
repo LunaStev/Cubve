@@ -1,0 +1,10 @@
+--- a/net/minecraft/server/commands/OpCommand.java
++++ b/net/minecraft/server/commands/OpCommand.java
+@@ -35,6 +_,7 @@
+     }
+ 
+     private static int opPlayers(final CommandSourceStack source, final Collection<NameAndId> players) throws CommandSyntaxException {
++        io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - owner-only server control
+         PlayerList list = source.getServer().getPlayerList();
+         int count = 0;
+ 

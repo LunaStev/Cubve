@@ -26,6 +26,7 @@ public class ReloadCommand extends BukkitCommand {
     @Override
     public boolean execute(@NotNull CommandSender sender, @NotNull String currentAlias, @NotNull String[] args) { // Paper
         if (!testPermission(sender)) return true;
+        if (!io.papermc.paper.InternalAPIBridge.get().canControlServer(sender)) return true; // Cubve - owner-only server control
 
         boolean confirmed = System.getProperty("LetMeReload") != null;
         if (args.length == 1) {

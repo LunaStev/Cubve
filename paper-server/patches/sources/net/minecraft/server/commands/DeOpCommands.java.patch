@@ -1,0 +1,18 @@
+--- a/net/minecraft/server/commands/DeOpCommands.java
++++ b/net/minecraft/server/commands/DeOpCommands.java
+@@ -28,8 +_,15 @@
+     }
+ 
+     private static int deopPlayers(final CommandSourceStack source, final Collection<NameAndId> players) throws CommandSyntaxException {
++        io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - owner-only server control
+         PlayerList list = source.getServer().getPlayerList();
+         int count = 0;
++
++        // Cubve start - reject protected targets before changing any player
++        for (NameAndId player : players) {
++            io.github.lunastev.cubve.permission.OwnerAccess.requireUnprotected(source.getServer().server, player.id());
++        }
++        // Cubve end - reject protected targets before changing any player
+ 
+         for (NameAndId player : players) {
+             if (list.isOp(player)) {

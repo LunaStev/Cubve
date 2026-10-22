@@ -176,6 +176,8 @@ public class CraftProfileBanList implements ProfileBanList {
             return null;
         }
 
+        io.github.lunastev.cubve.permission.OwnerAccess.checkModerationTarget(MinecraftServer.getServer().server, profile.id());
+
         UserBanListEntry entry = new UserBanListEntry(profile, new Date(),
                 (source == null || source.isBlank()) ? null : source, expires,
                 (reason == null || reason.isBlank()) ? null : reason);

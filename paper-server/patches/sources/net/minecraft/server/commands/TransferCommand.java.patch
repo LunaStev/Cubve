@@ -1,0 +1,16 @@
+--- a/net/minecraft/server/commands/TransferCommand.java
++++ b/net/minecraft/server/commands/TransferCommand.java
+@@ -60,6 +_,13 @@
+     }
+ 
+     private static int transfer(final CommandSourceStack source, final String hostname, final int port, final Collection<ServerPlayer> players) throws CommandSyntaxException {
++        // Cubve start - prevent forced transfer from bypassing owner kick protection
++        if (!io.github.lunastev.cubve.permission.OwnerAccess.canControl(source)) {
++            for (ServerPlayer player : players) {
++                io.github.lunastev.cubve.permission.OwnerAccess.requireUnprotected(source.getServer().server, player.getUUID());
++            }
++        }
++        // Cubve end - prevent forced transfer from bypassing owner kick protection
+         CommandResponseTracker<ServerPlayer> tracker = CommandResponseTracker.create();
+ 
+         for (ServerPlayer player : players) {

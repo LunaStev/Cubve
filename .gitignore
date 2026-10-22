@@ -42,6 +42,7 @@ out/
 # other stuff
 run/
 logs/
+/owners.json
 
 !gradle/wrapper/gradle-wrapper.jar
 

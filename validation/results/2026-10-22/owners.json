@@ -1,0 +1,118 @@
+{
+  "dateAsiaSeoul": "2026-10-22",
+  "scope": "Cubve owner authority and moderation validation; not a performance benchmark",
+  "sourceBaseCommit": "37cefca1db8a5ff3db92951469c8e49527267b3d",
+  "uncommittedFeatureChanges": true,
+  "finalExecutable": "paper-server/build/libs/cubve-paperclip-26.3.local-SNAPSHOT.jar",
+  "finalExecutableSha256": "4c7691c35213dcd6d13e04d2f21287a63868e2320c52dcd1e7fd0a3146937bdb",
+  "runtime": {
+    "sourceCommit": "37cefca1db8a5ff3db92951469c8e49527267b3d",
+    "sourceWorkingTreeModified": true,
+    "jarSha256": "4c7691c35213dcd6d13e04d2f21287a63868e2320c52dcd1e7fd0a3146937bdb",
+    "probeSha256": "f4188368cb60903fd617ee96a6c5b29732f0d043202b46cdc76ac8f15bf51364",
+    "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/owners-20261022T053546Z-fa3768",
+    "players": 0,
+    "plugins": [
+      "CubveOwnerProbe"
+    ],
+    "runs": [
+      {
+        "restart": false,
+        "probeResult": "[14:36:16 INFO]: [CubveOwnerProbe] CUBVE_OWNER_PROBE_PASS checks=38 stopAsOwner=false"
+      },
+      {
+        "restart": true,
+        "probeResult": "[14:36:33 INFO]: [CubveOwnerProbe] CUBVE_OWNER_PROBE_PASS checks=38 stopAsOwner=true"
+      }
+    ],
+    "persistedOwners": {
+      "schemaVersion": 1,
+      "owners": [
+        {
+          "uuid": "11111111-1111-4111-8111-111111111111",
+          "name": "11111111-1111-4111-8111-111111111111"
+        }
+      ]
+    },
+    "ownerCommandStoppedServer": true,
+    "limitations": [
+      "Synthetic player senders; no authenticated player network sessions",
+      "No third-party moderation plugins or proxy forwarding"
+    ]
+  },
+  "newJUnitCases": {
+    "OwnerRegistryTest": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "OwnerAccessTest": {
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "pythonMaintenanceTests": 64,
+  "verification": {
+    "patchReapplication": true,
+    "gradleCheckAndPaperclipJar": true,
+    "runtimeServerJarEntriesEqualCurrentBuild": true,
+    "finalPaperclipIdenticalToTestedExecutable": true,
+    "probeExcludedFromProductionJar": true,
+    "ownerPersistedAcrossRestart": true,
+    "actualShutdownByOwnerCommand": true,
+    "whitelistEnabledDuringRuntimeProbe": true
+  },
+  "sourceSha256": {
+    "paper-api/src/main/java/io/papermc/paper/InternalAPIBridge.java": "230bbd544fce65da0c506533fa47f3c85ce4af36ba6e18b42085e65955cd3cae",
+    "paper-api/src/main/java/org/bukkit/command/defaults/ReloadCommand.java": "602ce49ab8938c14f04c12550ed7dd68cd65fcea87aae90773b6adae1b582fbd",
+    "paper-server/patches/features/0003-Moonrise-optimisation-patches.patch": "9c6d0978d2be07fe29c2b1a238baaef33d4911d66a1bb2471aa487443fecd9ad",
+    "paper-server/patches/sources/net/minecraft/commands/CommandSourceStack.java.patch": "4cf2cfb25010a27ec00bd6a127775319eafd244322384ab12701f155e9905909",
+    "paper-server/patches/sources/net/minecraft/server/MinecraftServer.java.patch": "7e5421e36b026646be5c269eea448d2227d472c6dfdc0054eb0ce1aa1b93019f",
+    "paper-server/patches/sources/net/minecraft/server/commands/BanIpCommands.java.patch": "2e2f3880b4ae80e9ae6a1b747069723dd384e1e8788742c3c6f78722abeff39b",
+    "paper-server/patches/sources/net/minecraft/server/commands/BanPlayerCommands.java.patch": "ee49065127431dae426d3d980833ec98431584363e92e655f0e9b8807b44e473",
+    "paper-server/patches/sources/net/minecraft/server/commands/DataPackCommand.java.patch": "c63af550479441c8bd29ffdaa52321b67b3be9aa838912ea90544203f8b4cdd3",
+    "paper-server/patches/sources/net/minecraft/server/commands/DeOpCommands.java.patch": "20d5fdf9e592770f66c3b35923c1875bed89a400c46ecb2e3538c16694c65b28",
+    "paper-server/patches/sources/net/minecraft/server/commands/KickCommand.java.patch": "f3818cf86986a6506d5e7ebd57f66b3635efc1199814a9b3df9813328e224563",
+    "paper-server/patches/sources/net/minecraft/server/commands/OpCommand.java.patch": "6b1682195a34638ea8ef6ccb8ed9294c2e077fc64fb87e8eeed80e2f34465b97",
+    "paper-server/patches/sources/net/minecraft/server/commands/ReloadCommand.java.patch": "1c1dadead82db11ab89af43efc4fbf9cb1e5af4a8fb8538e1cd4fe916f8778fb",
+    "paper-server/patches/sources/net/minecraft/server/commands/SaveOffCommand.java.patch": "4eb7dfa4505a3dce3e2ec71a7b0f70d1d69450f9392668e21dc08411d1a5e1b8",
+    "paper-server/patches/sources/net/minecraft/server/commands/SaveOnCommand.java.patch": "c62cd590b71933102fd3ee76ff665ff571f4bd1505d673f27de5a920431a897f",
+    "paper-server/patches/sources/net/minecraft/server/commands/ScheduleCommand.java.patch": "caff5ace6bed9576bc88060042de8c08a4fbed2e99b800a695fdd1b4b0f4e8f2",
+    "paper-server/patches/sources/net/minecraft/server/commands/StopCommand.java.patch": "1ed65569fa42157fdf4a3f8e28dc44530b8574786cb5b6e266412ce83459f26d",
+    "paper-server/patches/sources/net/minecraft/server/commands/TransferCommand.java.patch": "ad69ff85d4ab86f83a0e8d6efebd41f5e55f155bb15e199926e99921eb51d198",
+    "paper-server/patches/sources/net/minecraft/server/players/PlayerList.java.patch": "2de10b278ae8c53a66e0124b1f75ba4d2fcf8ceda79fca34768972a7dd0408be",
+    "paper-server/src/main/java/io/github/lunastev/cubve/command/CubveCommands.java": "e5da2a0487f38f5b8b8416e3f9282075a2d8f509097b3082f6d23ac93d50b37c",
+    "paper-server/src/main/java/io/github/lunastev/cubve/command/OwnerCommand.java": "fb75d9f0c5f65b467c22d6a6f79e84059685f8354822ad834a96437ceb13b654",
+    "paper-server/src/main/java/io/github/lunastev/cubve/permission/OwnerAccess.java": "8663c6de413da3aa12021a5429bbb4fe2e28be27cfb7f42f07627d56e6bdeb53",
+    "paper-server/src/main/java/io/github/lunastev/cubve/permission/OwnerRegistry.java": "f736ffd1cdb589ed6e181171cb2c75646bb6b8c9d4ea79dc338ada59e377f5ce",
+    "paper-server/src/main/java/io/papermc/paper/PaperServerInternalAPIBridge.java": "2a66b4c33c6d7c16483fadfb6ecf2f63c69e9e01ae17af43890b02e68adc2e5b",
+    "paper-server/src/main/java/io/papermc/paper/command/subcommands/ReloadCommand.java": "67713444c9815360d92968e91dd2b8f2607f1d0fc8f27b1a25ef9bf2d7a57b25",
+    "paper-server/src/main/java/org/bukkit/craftbukkit/CraftServer.java": "6f5a5a0f8c138646e96cdebdbb1c122cb5a5d06e3876107c15438d897eebd1c1",
+    "paper-server/src/main/java/org/bukkit/craftbukkit/ban/CraftIpBanList.java": "a21550e9c82fd6c7918cd632a89c647931c81a3c0955036779769efe951711b4",
+    "paper-server/src/main/java/org/bukkit/craftbukkit/ban/CraftProfileBanList.java": "102b6e05274400c679c527a326ce1badc231ba39fd2c4111bf5bba15c7367df1",
+    "paper-server/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java": "e23c8f6acb47d08c5363cb25c4af60d7a35612e238d0fd9d9dff901c1142d77d",
+    "paper-server/src/main/java/org/spigotmc/RestartCommand.java": "e6fa6e15918e6747fee9a8822e7185253b8d7284759365fe43eb600351fa17d1",
+    "paper-server/src/main/java/org/spigotmc/SpigotCommand.java": "3c61d49c9d22b176cd3aea433b7b0faa112dd44ebe3b1db73648dd27f64b5f66",
+    "paper-server/src/test/java/io/github/lunastev/cubve/permission/OwnerAccessTest.java": "dc9eb1339f596fd00354314d67e8add7b492624aaca2eb6c187abe7a05a8bf6d",
+    "paper-server/src/test/java/io/github/lunastev/cubve/permission/OwnerRegistryTest.java": "047478c1fc5a0b93208534ec14982009de35f9e3bd76044fb156109f40a33b44",
+    "scripts/fixtures/owner-probe/OwnerProbe.java": "3e0a440dce2c3e95a05fc69bb338f269dce8bd2876af6f693069bebbd3e71268",
+    "scripts/fixtures/owner-probe/plugin.yml": "0d7668088c2f5445e845df93c2a377b589574431765dd3e479dafb6cd287edbf",
+    "scripts/run-owner-validation.py": "fba374e3a9707d73c4dcebbda02604785077b9e12606d5f9b934c421ee6534ce"
+  },
+  "logs": [
+    "/tmp/cubve-owner-rebuild-serial.log",
+    "/tmp/cubve-owner-apply.log",
+    "/tmp/cubve-owner-check.log",
+    "/tmp/cubve-owner-runtime.log",
+    "/tmp/cubve-owner-python-tests.log"
+  ],
+  "limitations": [
+    "Synthetic Bukkit Player senders, not authenticated network sessions",
+    "No third-party moderation plugin or authenticated-proxy integration run",
+    "Native online-target kick/IP handlers and Bukkit kick entry points use mocked players/connections in JUnit",
+    "Trusted plugins/datapacks and direct internal APIs are not sandboxed"
+  ]
+}

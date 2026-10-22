@@ -1459,6 +1459,18 @@
      }
  
      public boolean isEnforceWhitelist() {
+@@ -1807,6 +_,11 @@
+     }
+ 
+     public LevelBasedPermissionSet getProfilePermissions(final NameAndId nameAndId) {
++        // Cubve start - owners retain full operator capabilities independently of ops.json
++        if (this.server != null && io.github.lunastev.cubve.permission.OwnerAccess.isOwner(this.server, nameAndId.id())) {
++            return LevelBasedPermissionSet.OWNER;
++        }
++        // Cubve end - owners retain full operator capabilities independently of ops.json
+         if (this.getPlayerList().isOp(nameAndId)) {
+             ServerOpListEntry opListEntry = this.getPlayerList().getOps().get(nameAndId);
+             return opListEntry != null ? opListEntry.permissions() : this.operatorUserPermissions();
 @@ -1854,7 +_,7 @@
      private void dumpGameRules(final Path path) throws IOException {
          try (Writer output = Files.newBufferedWriter(path)) {

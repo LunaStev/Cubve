@@ -19,6 +19,7 @@ public class RestartCommand extends Command {
 
     @Override
     public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+        if (!io.github.lunastev.cubve.permission.OwnerAccess.checkControl(sender)) return true;
         if (this.testPermission(sender)) {
             MinecraftServer.getServer().processQueue.add(RestartCommand::restart);
         }

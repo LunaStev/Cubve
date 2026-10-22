@@ -270,7 +270,7 @@
              }
  
              @Override
-@@ -295,65 +_,146 @@
+@@ -295,88 +_,168 @@
      }
  
      protected void save(final ServerPlayer player) {
@@ -415,7 +415,7 @@
 +        LoginResult whitelistEventResult; // Paper
 +        // Paper start - Fix MC-158900
 +        UserBanListEntry ban1;
-+        if (this.bans.isBanned(nameAndId) && (ban1 = this.bans.get(nameAndId)) != null) {
++        if (!io.github.lunastev.cubve.permission.OwnerAccess.isOwner(this.server.server, nameAndId.id()) && this.bans.isBanned(nameAndId) && (ban1 = this.bans.get(nameAndId)) != null) { // Cubve - owners cannot be locked out by player bans
 +            UserBanListEntry ban = ban1;
 +            // Paper end - Fix MC-158900
              MutableComponent reason = Component.translatable("multiplayer.disconnect.banned.reason", ban.getReasonMessage());
@@ -432,8 +432,11 @@
 +                return whitelistEventResult; // Paper - whitelist event
              }
  
-             if (this.ipBans.isBanned(address)) {
-@@ -363,20 +_,19 @@
+-            if (this.ipBans.isBanned(address)) {
++            if (!io.github.lunastev.cubve.permission.OwnerAccess.isOwner(this.server.server, nameAndId.id()) && this.ipBans.isBanned(address)) { // Cubve - owners retain access after offline IP bans
+                 IpBanListEntry ban = this.ipBans.get(address);
+                 MutableComponent reason = Component.translatable("multiplayer.disconnect.banned_ip.reason", ban.getReasonMessage());
+                 if (ban.getExpires() != null) {
                      reason.append(Component.translatable("multiplayer.disconnect.banned_ip.expiration", BAN_DATE_FORMAT.format(ban.getExpires())));
                  }
  
@@ -646,7 +649,7 @@
          if (player.connection != null) {
              byte eventId = switch (permissions.level()) {
                  case ALL -> EntityEvent.PERMISSION_LEVEL_ALL;
-@@ -584,9 +_,48 @@
+@@ -584,28 +_,58 @@
              player.connection.send(new ClientboundEntityEventPacket(player, eventId));
          }
  
@@ -678,7 +681,7 @@
 +    }
 +
 +    public LoginResult isWhiteListedLogin(NameAndId nameAndId) {
-+        boolean isOp = this.ops.contains(nameAndId);
++        boolean isOp = this.isOp(nameAndId); // Cubve - include owners in whitelist verification
 +        boolean isWhitelisted = !this.isUsingWhitelist() || isOp || this.whitelist.contains(nameAndId);
 +
 +        final net.kyori.adventure.text.Component configuredMessage = net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer.legacySection().deserialize(org.spigotmc.SpigotConfig.whitelistMessage);
@@ -695,9 +698,13 @@
 +
 +    @io.papermc.paper.annotation.DoNotUse // Paper
      public boolean isWhiteListed(final NameAndId nameAndId) {
-         return !this.isUsingWhitelist() || this.ops.contains(nameAndId) || this.whitelist.contains(nameAndId);
+-        return !this.isUsingWhitelist() || this.ops.contains(nameAndId) || this.whitelist.contains(nameAndId);
++        return !this.isUsingWhitelist() || this.isOp(nameAndId) || this.whitelist.contains(nameAndId); // Cubve - include owners
      }
-@@ -596,16 +_,7 @@
+ 
+     public boolean isOp(final NameAndId nameAndId) {
+-        return this.ops.contains(nameAndId) || this.server.isSingleplayerOwner(nameAndId) && this.server.getWorldData().isAllowCommands();
++        return io.github.lunastev.cubve.permission.OwnerAccess.isOwner(this.server.server, nameAndId.id()) || this.ops.contains(nameAndId) || this.server.isSingleplayerOwner(nameAndId) && this.server.getWorldData().isAllowCommands(); // Cubve - owners have operator capabilities
      }
  
      public @Nullable ServerPlayer getPlayerByName(final String name) {

@@ -1,5 +1,18 @@
 --- a/net/minecraft/server/commands/BanPlayerCommands.java
 +++ b/net/minecraft/server/commands/BanPlayerCommands.java
+@@ -39,6 +_,12 @@
+         UserBanList list = source.getServer().getPlayerList().getBans();
+         int count = 0;
+ 
++        // Cubve start - reject protected targets before changing any player
++        for (NameAndId player : players) {
++            io.github.lunastev.cubve.permission.OwnerAccess.requireUnprotected(source.getServer().server, player.id());
++        }
++        // Cubve end - reject protected targets before changing any player
++
+         for (NameAndId player : players) {
+             if (!list.isBanned(player)) {
+                 UserBanListEntry entry = new UserBanListEntry(player, null, source.getTextName(), null, reason == null ? null : reason.getString());
 @@ -47,7 +_,7 @@
                  source.sendSuccess(() -> Component.translatable("commands.ban.success", Component.literal(player.name()), entry.getReasonMessage()), true);
                  ServerPlayer online = source.getServer().getPlayerList().getPlayer(player.id());

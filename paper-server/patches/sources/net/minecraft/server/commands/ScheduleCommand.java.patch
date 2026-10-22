@@ -9,7 +9,14 @@
      );
  
      public static void register(final CommandDispatcher<CommandSourceStack> dispatcher) {
-@@ -102,7 +_,7 @@
+@@ -96,13 +_,14 @@
+         final int time,
+         final boolean replace
+     ) throws CommandSyntaxException {
++        io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - scheduled functions later run as the server
+         if (time == 0) {
+             throw ERROR_SAME_TICK.create();
+         }
  
          long tickTime = source.getLevel().getGameTime() + time;
          Identifier callbackId = callback.getFirst();
@@ -18,9 +25,11 @@
          Optional<CommandFunction<CommandSourceStack>> function = callback.getSecond().left();
          if (function.isPresent()) {
              if (function.get() instanceof MacroFunction) {
-@@ -131,7 +_,7 @@
+@@ -130,8 +_,9 @@
+     }
  
      private static int remove(final CommandSourceStack source, final Identifier id) throws CommandSyntaxException {
++        io.github.lunastev.cubve.permission.OwnerAccess.requireControl(source); // Cubve - owner-only scheduled function control
          String stringId = id.toString();
 -        int count = source.getServer().getScheduledEvents().remove(stringId);
 +        int count = source.getLevel().scheduledEvents.remove(stringId); // Paper - Make schedule command per-world

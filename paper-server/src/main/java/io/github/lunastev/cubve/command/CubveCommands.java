@@ -34,6 +34,7 @@ public final class CubveCommands {
     public static void registerCommands() {
         register(status(), "Shows server performance and resource usage");
         register(server(), "Shows the operating system and JVM memory usage");
+        register(OwnerCommand.create(), "Manages Cubve owners from the console");
     }
 
     static LiteralArgumentBuilder<CommandSourceStack> server() {
