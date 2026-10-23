@@ -35,6 +35,7 @@ public final class CubveCommands {
         register(status(), "Shows server performance and resource usage");
         register(server(), "Shows the operating system and JVM memory usage");
         register(OwnerCommand.create(), "Manages Cubve owners from the console");
+        register(PregenCommand.create(), "Generates chunks gradually with bounded resource use");
     }
 
     static LiteralArgumentBuilder<CommandSourceStack> server() {

@@ -1,0 +1,20 @@
+{
+  "extended-wold-height-1024": {
+    "version": "4.0",
+    "modrinthVersionId": "9FO9wrCO",
+    "minecraft26.3Listed": true,
+    "file": "Extended World Height 4.0 (1024).zip",
+    "url": "https://cdn.modrinth.com/data/DLe2VxRR/versions/9FO9wrCO/Extended%20World%20Height%204.0%20%281024%29.zip",
+    "sha256": "b0e961cad43e515bc094af9db28c6aca0e7499cf09b88c403378327136532e08",
+    "verifiedSha512": "cd9333ca7b6f034cff92362aa1daaf8f7af30c20c7456227bfbd39cde400cddab37c5a48486ca9a98763f316c1b61b6f2eaaad3d38ad164cd2386a685863fdf0"
+  },
+  "worldedit": {
+    "version": "7.4.6",
+    "modrinthVersionId": "YFnqiUlL",
+    "minecraft26.3Listed": true,
+    "file": "worldedit-bukkit-7.4.6.jar",
+    "url": "https://cdn.modrinth.com/data/1u6JkXh5/versions/YFnqiUlL/worldedit-bukkit-7.4.6.jar",
+    "sha256": "e0ce67d870ad1fef8a40dd9d7926360caf3bb44722438545d6b20b55f82a0c91",
+    "verifiedSha512": "1fe3975132857093f971fed9efc601299bfa76fa7885f52a542fee41e7a0165ca9cb3cbcf5ae244474887d774d650b0db6f8f79aa80f98b245dea44f1c1b4152"
+  }
+}

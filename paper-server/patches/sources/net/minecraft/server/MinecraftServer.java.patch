@@ -971,7 +971,8 @@
      protected void tickServer(final BooleanSupplier haveTime) {
 +        org.spigotmc.WatchdogThread.tick(); // Spigot
          long nano = Util.getNanos();
-         int emptyTickThreshold = this.pauseWhenEmptySeconds() * 20;
+-        int emptyTickThreshold = this.pauseWhenEmptySeconds() * 20;
++        int emptyTickThreshold = this.server.cubvePregenerator().keepsServerAwake() ? -1 : this.pauseWhenEmptySeconds() * 20; // Cubve - let bounded pregeneration finish on an empty server
 +        this.removeDisabledPluginsBlockingSleep(); // Paper - API to allow/disallow tick sleeping
          if (emptyTickThreshold > 0) {
 -            if (this.playerList.getPlayerCount() == 0 && !this.tickRateManager.isSprinting()) {
@@ -1011,7 +1012,7 @@
          this.tickCount++;
          this.tickRateManager.tick();
          this.tickChildren(haveTime);
-@@ -976,13 +_,21 @@
+@@ -976,13 +_,23 @@
          }
  
          this.ticksUntilAutosave--;
@@ -1020,6 +1021,8 @@
              this.autoSave();
          }
  
++        this.server.cubvePregenerator().tick(nano); // Cubve - admit background chunk generation only with tick/heap headroom
++
          ProfilerFiller profiler = Profiler.get();
 +        this.server.spark.executeMainThreadTasks(); // Paper - spark
 +        // Paper start - Server Tick Events

@@ -31,6 +31,7 @@ Local development builds remain in `paper-server/build/libs/`. CI development ar
 | `/status` | TPS, MSPT, players, worlds and heap usage | `cubve.command.status` (operators) |
 | `/server` | Operating system and JVM heap usage / maximum | `cubve.command.server` (everyone) |
 | `/owner add <online-player-or-uuid>`, `/owner remove <uuid>`, `/owner list` | Persistent server ownership | Console / RCON only |
+| `/pregen start <world> <center-x> <center-z> <radius-blocks> [chunks-per-second]`, `/pregen status`, `/pregen pause`, `/pregen resume`, `/pregen cancel` | Gradual chunk pregeneration with one pending request | Cubve owner / console / RCON |
 
 The existing `/paper` administration commands remain available. All commands above are registered by the server itself.
 
@@ -49,6 +50,8 @@ See [DEVELOPMENT.md](DEVELOPMENT.md) for local development, patch maintenance, t
 Measured API optimizations are documented in [PERFORMANCE.md](PERFORMANCE.md). The plugin-free survival profiling baseline and its reproducible test runner are described in [SURVIVAL-PERFORMANCE.md](SURVIVAL-PERFORMANCE.md).
 
 The measured chunk-generation allocation reduction and same-seed terrain/save validation are documented in [CHUNK-PERFORMANCE.md](CHUNK-PERFORMANCE.md).
+
+Extended-height WorldEdit measurements and resource-limited pregeneration are documented in [EXTENDED-HEIGHT-PERFORMANCE.md](EXTENDED-HEIGHT-PERFORMANCE.md).
 
 Cubve accepts complete Paper bases when upgrading Minecraft. Between upgrades, only reviewed security fixes, data-loss fixes and critical crash fixes are selected. General upstream changes are not automatically merged.
 

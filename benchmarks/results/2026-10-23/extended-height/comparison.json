@@ -1,0 +1,105 @@
+{
+  "sourceCommit": "35f98307b61e264696b6b1e51250ff32d388571e",
+  "sourceWorkingTreeModified": true,
+  "java": "openjdk version \"25.0.4.1\" 2026-08-18\nOpenJDK Runtime Environment (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1)\nOpenJDK 64-Bit Server VM (Red_Hat-25.0.4.1.1-1) (build 25.0.4.1+1, mixed mode, sharing)\n",
+  "platform": "Linux-7.2.11-100.fc43.x86_64-x86_64-with-glibc2.42",
+  "sourceHashes": {
+    "paper-server/src/main/java/ca/spottedleaf/moonrise/common/list/ShortList.java": "116991b024ffdacb99760f8a1deb932b573006573b1069e67d3bacbf992e476f",
+    "paper-server/src/main/java/io/github/lunastev/cubve/chunk/ChunkPregenerator.java": "117992d2bd2380d105ae6e13d1c9cfd79b7d77bf044a78f4dbefb608dd1c25ce",
+    "paper-server/src/main/java/io/github/lunastev/cubve/chunk/PregenerationJob.java": "d253364419d940577d736327706ba953fceb5259aa58f08b12da27b2c6d887dc",
+    "paper-server/src/main/java/io/github/lunastev/cubve/command/CubveCommands.java": "d80f45467c42570936872dae708c083fea20b780b68450f4283538d4d97ebd7d",
+    "paper-server/src/main/java/io/github/lunastev/cubve/command/OwnerCommand.java": "fb75d9f0c5f65b467c22d6a6f79e84059685f8354822ad834a96437ceb13b654",
+    "paper-server/src/main/java/io/github/lunastev/cubve/command/PregenCommand.java": "1329589c2543830418bbfafdc3d1a7c6a68cd3944de33bdecc84c10dfd0869cf",
+    "paper-server/src/main/java/org/bukkit/craftbukkit/CraftServer.java": "f482a1d42160832a2df744ae7d7eca4971cbc8028d969d9d35d088ff9f65ed99",
+    "paper-server/src/minecraft/java/net/minecraft/server/MinecraftServer.java": "e37bbe1fc1a7dcff28631a00a58a089280009484da47b1d266627f2cfb2a021f",
+    "paper-server/src/minecraft/java/net/minecraft/world/level/levelgen/Heightmap.java": "e8b0f599ca8e62e1b87e159dd0d882b098b42a95a24632a76dfcec39be0fb298",
+    "paper-server/src/test/java/io/github/lunastev/cubve/HeightmapRemovalTest.java": "6c0b6dfb375e8fd39e4bd93c86a736d8e007926065dc7d546bd10cf3a165529c",
+    "paper-server/src/test/java/io/github/lunastev/cubve/chunk/ChunkPregeneratorTest.java": "ba3a66c56948206a8af7c9702699caadb6c16ae54e9bb2cd05e2fc1c5d309a1f",
+    "paper-server/src/test/java/io/github/lunastev/cubve/chunk/PregenerationJobTest.java": "137b6adb8f968639e03ecd46fc6e51fb433469b7c761b3fee59a1fce354f9afb",
+    "paper-server/src/test/java/io/github/lunastev/cubve/chunk/TickingShortListTest.java": "09d77970e6fd3caf9c34bc9b8ecc21cbddd744aebc7271ce91242303df78847f",
+    "scripts/fixtures/height-probe/HeightProbe.java": "d63c627a89eb511dfbd2d2f51a82927ccd6b5118684805402e96c01181dfa0d4",
+    "scripts/fixtures/height-probe/README.md": "5d3845e0f8cd35a9c152e67c7beb4b1eb51ff2a75ce64a7706d11dcbe760ef7e",
+    "scripts/fixtures/height-probe/plugin.yml": "7f74917adc39f6a805840323f5728037239de3a9d2eaa4b5493bb15ea0b359c6",
+    "scripts/run-extended-height-validation.py": "25ca9cb1c146d1af2b46de65215774f1d7771107a7e8bcaf168952e028dc657c",
+    "scripts/tests/test_extended_height_validation.py": "afea00eec3f3a6f513912806e3ec790bb8bd0eb2ac96902476138a658134578f",
+    "paper-server/src/benchmarks/java/io/github/lunastev/cubve/benchmark/EmptyChunkBenchmark.java": "cbb4c0d0298db5072dc34550833e0885b4cf8444701586c97af9e6028aa811ca",
+    "paper-server/src/benchmarks/java/io/github/lunastev/cubve/benchmark/HeightmapRemovalBenchmark.java": "1fd4ae2e0ea21336f826aa76f3fe6a1e0c8ec238ab2070f56e9fd813048db0fe",
+    "paper-server/src/benchmarks/java/io/github/lunastev/cubve/benchmark/TickingListBenchmark.java": "e87c054727011ffcbb73c4990df2feb5a375e1e74662cee4d2eb627ba79fd824",
+    "paper-server/src/test/java/io/github/lunastev/cubve/command/PregenCommandTest.java": "10003869be7a1cfee9243f181360f2ff075357dce9bda14b813c6dd805ddbe97",
+    "paper-server/patches/sources/net/minecraft/world/level/levelgen/Heightmap.java.patch": "4d1c1aa66b045632eced70be2b2019e4d3ac62d87853c593a5f120fba96f9538",
+    "paper-server/patches/sources/net/minecraft/server/MinecraftServer.java.patch": "be67a1fced64684fbafe91c50700de9ca8b16ee063257021a9093286b54b7602"
+  },
+  "newJavaTests": {
+    "HeightmapRemovalTest": 12,
+    "PregenerationJobTest": 9,
+    "ChunkPregeneratorTest": 1,
+    "TickingShortListTest": 2,
+    "PregenCommandTest": 1
+  },
+  "pythonTests": 69,
+  "checks": {
+    "fixupSourcePatches": {
+      "result": "passed",
+      "log": "/tmp/cubve-height-fixup.log"
+    },
+    "rebuildPatches": {
+      "result": "passed",
+      "log": "/tmp/cubve-height-rebuild.log"
+    },
+    "applyPatches": {
+      "result": "passed",
+      "log": "/tmp/cubve-height-apply.log"
+    },
+    "check_createPaperclipJar": {
+      "result": "passed",
+      "log": "/tmp/cubve-height-final2-check.log",
+      "sha256": "1d4c965edf81474e2a643da76c87907d73f6f0db64afa86c08652cf37dacee81"
+    },
+    "python": {
+      "result": "passed",
+      "log": "/tmp/cubve-height-final-python.log",
+      "sha256": "1053f62036403ec4a47bff7176244d4a1df7764f459d556ec8a54f0335b39225"
+    }
+  },
+  "jarSha256": "6c9439554922fe71a6f973f817eab7762d2645bb7eecc4c36c53c3001a2b9430",
+  "baselineJarSha256": "4c7691c35213dcd6d13e04d2f21287a63868e2320c52dcd1e7fd0a3146937bdb",
+  "probeSha256": "bff8271ab23addaaba776f618dbf08c8f6843e70ea52c302dfbcd4115ea4c478",
+  "actualNativeEvidence": [
+    "[21:32:29 INFO]: Using com.sk89q.worldedit.bukkit.adapter.impl.v26_3.PaperweightAdapter as the Bukkit adapter",
+    "[21:33:11 INFO]: \u001b[96mPregeneration world: PAUSED 0/9, pending=true \u2014 operator pause\u001b[0m",
+    "[21:33:15 INFO]: \u001b[96mPregeneration world: COMPLETED 9/9, pending=false \u2014 generated; normal saving/unloading still applies\u001b[0m",
+    "[21:33:15 INFO]: \u001b[96mPregeneration world: CANCELLED 1/9, pending=false \u2014 cancelled; current request may finish\u001b[0m",
+    "[21:33:15 INFO]: \u001b[96mPregeneration world: CANCELLED 1/9, pending=false \u2014 cancelled; current request may finish\u001b[0m",
+    "[21:33:15 INFO]: \u001b[96mPregeneration world: COMPLETED 1/1, pending=false \u2014 generated; normal saving/unloading still applies\u001b[0m"
+  ],
+  "savedWorldFingerprint": "dbd85ea1d973f0da64aca0914d0417385abdbc2659ef7a10a274cde243ec8d1f",
+  "worldeditComparison": {
+    "319": {
+      "baselineMs": 6.6191275,
+      "candidateMs": 2.824315,
+      "medianReductionPercent": 57.331007749888485
+    },
+    "1000": {
+      "baselineMs": 16.2775725,
+      "candidateMs": 2.252142,
+      "medianReductionPercent": 86.16414087542846
+    },
+    "-900": {
+      "baselineMs": 0.9066815,
+      "candidateMs": 0.873583,
+      "medianReductionPercent": 3.650510129521778
+    }
+  },
+  "excludedRuns": [
+    {
+      "directory": "run/benchmarks/extended-height-candidate-20261023T122017Z-8edf8f",
+      "reason": "Native global debug dump raced with generation (NewChunkHolder.getDebugJson null holder). No edit measurements collected. Replaced readiness with direct target status/postprocessing checks in the probe; reran baseline and candidate with identical probe."
+    },
+    {
+      "directory": "run/benchmarks/extended-height-candidate-final-20261023T122502Z-0700cb",
+      "reason": "Intermediate pregenerator counted all holders (including generation dependencies) as full chunks and paused after one request. Interrupted runner through its finally save/stop; corrected getFullChunksCount and added native-admission regression. No retained comparison uses this JAR."
+    }
+  ],
+  "cpu": "AMD Ryzen 5 2600X Six-Core Processor",
+  "whitespaceCheck": "Non-patch source diffs clean; generated unified-patch blank context markers are preserved and applyPatches passed."
+}

@@ -25297,7 +25297,7 @@ index df28b83ab34b2e44a6ce2dbb903ef94db5496aaa..f961326218d56f1455df8d3b7b6079e2
          assert isValidNamespace(namespace);
          assert isValidPath(path);
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index c2fe8b5fbf19dae56a3238cf29198b6ba5bcb91c..cfb40c8a1c1a8d45e63b07d902b58b238c5154d4 100644
+index b3085bdabd432b64765b285b91b1ffe086cc2ad4..db6bc92c75f0acf0e0f661c6648658252b3116d4 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -187,7 +187,7 @@ import net.minecraft.world.scores.ScoreboardSaveData;
@@ -25524,7 +25524,7 @@ index c2fe8b5fbf19dae56a3238cf29198b6ba5bcb91c..cfb40c8a1c1a8d45e63b07d902b58b23
              return true;
          }
  
-@@ -1519,6 +1631,13 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -1521,6 +1633,13 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          // Paper - improve tick loop - moved into runAllTasksAtTickStart
          this.runAllTasksAtTickStart(); // Paper - improve tick loop
          this.tickServer(sprinting ? () -> false : this::haveTime);
@@ -25538,7 +25538,7 @@ index c2fe8b5fbf19dae56a3238cf29198b6ba5bcb91c..cfb40c8a1c1a8d45e63b07d902b58b23
          this.tickFrame.end();
          this.recordEndOfTick(); // Paper - improve tick loop
          profiler.pop();
-@@ -2565,6 +2684,12 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
+@@ -2567,6 +2686,12 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
          }
      }
  
@@ -36816,7 +36816,7 @@ index 7041d673e6f6b7b629d325fee770e640f75725a1..7e2c64b1962fa36e006c0cd4a4f1df46
      private static float getBuryContribution(final float dx, final float dy, final float dz) {
          float distanceSq = Mth.lengthSquared(dx, dy, dz);
 diff --git a/net/minecraft/world/level/levelgen/Heightmap.java b/net/minecraft/world/level/levelgen/Heightmap.java
-index 50827f91da97201264e7da29b958ad6297da6540..22990ffcb40304279530462a72c489e8e1207e08 100644
+index ffb96528c9d6aa29c0399e4b902fe023ced552f2..33174761def6f4dd12585d26c0ef73a5dccfd2eb 100644
 --- a/net/minecraft/world/level/levelgen/Heightmap.java
 +++ b/net/minecraft/world/level/levelgen/Heightmap.java
 @@ -30,6 +30,17 @@ public class Heightmap {
@@ -36837,7 +36837,7 @@ index 50827f91da97201264e7da29b958ad6297da6540..22990ffcb40304279530462a72c489e8
  
      public Heightmap(final ChunkAccess chunk, final Heightmap.Types heightmapType) {
          this.isOpaque = heightmapType.isOpaque();
-@@ -117,17 +128,29 @@ public class Heightmap {
+@@ -125,17 +136,29 @@ public class Heightmap {
      }
  
      private int getFirstAvailable(final int index) {
@@ -36869,7 +36869,7 @@ index 50827f91da97201264e7da29b958ad6297da6540..22990ffcb40304279530462a72c489e8
          } else {
              LOGGER.warn("Ignoring heightmap data for chunk {}, size does not match; expected: {}, got: {}", chunk.getPos(), rawData.length, data.length);
              primeHeightmaps(chunk, EnumSet.of(type));
-@@ -139,7 +162,7 @@ public class Heightmap {
+@@ -147,7 +170,7 @@ public class Heightmap {
      }
  
      private static int getIndex(final int x, final int z) {

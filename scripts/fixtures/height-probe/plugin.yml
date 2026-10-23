@@ -1,0 +1,11 @@
+name: CubveHeightProbe
+version: '1'
+main: io.github.lunastev.cubve.fixture.HeightProbe
+api-version: '26.3'
+depend: [WorldEdit]
+commands:
+  cubveheightprobe:
+    permission: cubve.fixture.height
+permissions:
+  cubve.fixture.height:
+    default: op

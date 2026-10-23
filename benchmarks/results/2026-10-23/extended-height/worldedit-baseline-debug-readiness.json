@@ -1,0 +1,500 @@
+{
+  "sourceCommit": "35f98307b61e264696b6b1e51250ff32d388571e",
+  "sourceWorkingTreeModified": true,
+  "label": "baseline",
+  "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/extended-height-baseline-20261023T120723Z-5e0189",
+  "worldRange": [
+    -1024,
+    1024
+  ],
+  "seed": 8142026,
+  "workerThreads": 1,
+  "players": 0,
+  "warmupPerScenario": 10,
+  "measurementsPerScenario": 20,
+  "sha256": {
+    "jar": "4c7691c35213dcd6d13e04d2f21287a63868e2320c52dcd1e7fd0a3146937bdb",
+    "probe": "4a461dba0d7c82eb53b7f8ecaebc117c76cce8cfc16533d745683c90d0efbffe",
+    "datapack": "b0e961cad43e515bc094af9db28c6aca0e7499cf09b88c403378327136532e08",
+    "worldedit": "e0ce67d870ad1fef8a40dd9d7926360caf3bb44722438545d6b20b55f82a0c91"
+  },
+  "metrics": [
+    {
+      "label": "y319-i10",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 7547832,
+      "allocatedBytes": 397872
+    },
+    {
+      "label": "y319-i11",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6736847,
+      "allocatedBytes": 396408
+    },
+    {
+      "label": "y319-i12",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 5007792,
+      "allocatedBytes": 396944
+    },
+    {
+      "label": "y319-i13",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6896248,
+      "allocatedBytes": 393808
+    },
+    {
+      "label": "y319-i14",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 7154046,
+      "allocatedBytes": 394848
+    },
+    {
+      "label": "y319-i15",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6977783,
+      "allocatedBytes": 377752
+    },
+    {
+      "label": "y319-i16",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6872694,
+      "allocatedBytes": 378792
+    },
+    {
+      "label": "y319-i17",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 5363456,
+      "allocatedBytes": 371304
+    },
+    {
+      "label": "y319-i18",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6326409,
+      "allocatedBytes": 371880
+    },
+    {
+      "label": "y319-i19",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6176766,
+      "allocatedBytes": 366728
+    },
+    {
+      "label": "y319-i20",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 4400383,
+      "allocatedBytes": 362496
+    },
+    {
+      "label": "y319-i21",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6701409,
+      "allocatedBytes": 368200
+    },
+    {
+      "label": "y319-i22",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6322703,
+      "allocatedBytes": 367816
+    },
+    {
+      "label": "y319-i23",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 5972990,
+      "allocatedBytes": 366048
+    },
+    {
+      "label": "y319-i24",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 5979593,
+      "allocatedBytes": 367552
+    },
+    {
+      "label": "y319-i25",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 5418561,
+      "allocatedBytes": 363432
+    },
+    {
+      "label": "y319-i26",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 5574996,
+      "allocatedBytes": 365024
+    },
+    {
+      "label": "y319-i27",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 6134506,
+      "allocatedBytes": 364936
+    },
+    {
+      "label": "y319-i28",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 4092118,
+      "allocatedBytes": 362832
+    },
+    {
+      "label": "y319-i29",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 4812212,
+      "allocatedBytes": 361856
+    },
+    {
+      "label": "y1000-i10",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17668987,
+      "allocatedBytes": 441536
+    },
+    {
+      "label": "y1000-i11",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 18366889,
+      "allocatedBytes": 444200
+    },
+    {
+      "label": "y1000-i12",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17311019,
+      "allocatedBytes": 446328
+    },
+    {
+      "label": "y1000-i13",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17280591,
+      "allocatedBytes": 445312
+    },
+    {
+      "label": "y1000-i14",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17161427,
+      "allocatedBytes": 445792
+    },
+    {
+      "label": "y1000-i15",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17943547,
+      "allocatedBytes": 449048
+    },
+    {
+      "label": "y1000-i16",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17633791,
+      "allocatedBytes": 447192
+    },
+    {
+      "label": "y1000-i17",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17910355,
+      "allocatedBytes": 450584
+    },
+    {
+      "label": "y1000-i18",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 18117967,
+      "allocatedBytes": 451112
+    },
+    {
+      "label": "y1000-i19",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 18578670,
+      "allocatedBytes": 456432
+    },
+    {
+      "label": "y1000-i20",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 18433314,
+      "allocatedBytes": 455952
+    },
+    {
+      "label": "y1000-i21",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 19071974,
+      "allocatedBytes": 453288
+    },
+    {
+      "label": "y1000-i22",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 10831150,
+      "allocatedBytes": 390352
+    },
+    {
+      "label": "y1000-i23",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 18283190,
+      "allocatedBytes": 456432
+    },
+    {
+      "label": "y1000-i24",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 18473692,
+      "allocatedBytes": 457496
+    },
+    {
+      "label": "y1000-i25",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 25798251,
+      "allocatedBytes": 466544
+    },
+    {
+      "label": "y1000-i26",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17105591,
+      "allocatedBytes": 457592
+    },
+    {
+      "label": "y1000-i27",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17011612,
+      "allocatedBytes": 455904
+    },
+    {
+      "label": "y1000-i28",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17206021,
+      "allocatedBytes": 457760
+    },
+    {
+      "label": "y1000-i29",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 17065916,
+      "allocatedBytes": 454368
+    },
+    {
+      "label": "y-900-i10",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 932967,
+      "allocatedBytes": 364232
+    },
+    {
+      "label": "y-900-i11",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 812949,
+      "allocatedBytes": 361056
+    },
+    {
+      "label": "y-900-i12",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 823840,
+      "allocatedBytes": 364232
+    },
+    {
+      "label": "y-900-i13",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 906146,
+      "allocatedBytes": 364736
+    },
+    {
+      "label": "y-900-i14",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 840673,
+      "allocatedBytes": 364176
+    },
+    {
+      "label": "y-900-i15",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 830122,
+      "allocatedBytes": 364208
+    },
+    {
+      "label": "y-900-i16",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 880808,
+      "allocatedBytes": 363792
+    },
+    {
+      "label": "y-900-i17",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 675940,
+      "allocatedBytes": 362192
+    },
+    {
+      "label": "y-900-i18",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 863555,
+      "allocatedBytes": 363936
+    },
+    {
+      "label": "y-900-i19",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 816356,
+      "allocatedBytes": 364208
+    },
+    {
+      "label": "y-900-i20",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 904743,
+      "allocatedBytes": 364208
+    },
+    {
+      "label": "y-900-i21",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1001707,
+      "allocatedBytes": 364208
+    },
+    {
+      "label": "y-900-i22",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 862924,
+      "allocatedBytes": 364208
+    },
+    {
+      "label": "y-900-i23",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 621748,
+      "allocatedBytes": 358112
+    },
+    {
+      "label": "y-900-i24",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 771832,
+      "allocatedBytes": 364208
+    },
+    {
+      "label": "y-900-i25",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 734841,
+      "allocatedBytes": 364760
+    },
+    {
+      "label": "y-900-i26",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 528621,
+      "allocatedBytes": 357920
+    },
+    {
+      "label": "y-900-i27",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 842966,
+      "allocatedBytes": 364208
+    },
+    {
+      "label": "y-900-i28",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 769527,
+      "allocatedBytes": 364832
+    },
+    {
+      "label": "y-900-i29",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1076518,
+      "allocatedBytes": 365192
+    }
+  ],
+  "medians": {
+    "319": {
+      "nanos": 6155636.0,
+      "allocatedBytes": 368008.0
+    },
+    "1000": {
+      "nanos": 17789671.0,
+      "allocatedBytes": 452200.0
+    },
+    "-900": {
+      "nanos": 835397.5,
+      "allocatedBytes": 364208.0
+    }
+  },
+  "savedFingerprints": [
+    "dbd85ea1d973f0da64aca0914d0417385abdbc2659ef7a10a274cde243ec8d1f",
+    "dbd85ea1d973f0da64aca0914d0417385abdbc2659ef7a10a274cde243ec8d1f"
+  ],
+  "saving": [
+    {
+      "attempts": 1,
+      "elapsedSeconds": 1.2633650810021209,
+      "pendingChunkCounts": [
+        0
+      ],
+      "statusAttempts": 1,
+      "statusElapsedSeconds": 0.11112263899849495,
+      "statusPendingChunkCounts": [
+        0
+      ],
+      "statusDumpFiles": [
+        "/mnt/hdd/Cubve/run/benchmarks/extended-height-baseline-20261023T120723Z-5e0189/debug/chunks-2026-10-23_21.08.24.txt"
+      ]
+    },
+    {
+      "attempts": 1,
+      "elapsedSeconds": 1.1646457189999637,
+      "pendingChunkCounts": [
+        0
+      ],
+      "statusAttempts": 1,
+      "statusElapsedSeconds": 0.11170249700080603,
+      "statusPendingChunkCounts": [
+        0
+      ],
+      "statusDumpFiles": [
+        "/mnt/hdd/Cubve/run/benchmarks/extended-height-baseline-20261023T120723Z-5e0189/debug/chunks-2026-10-23_21.08.44.txt"
+      ]
+    }
+  ],
+  "pregen": false,
+  "limitations": [
+    "No connected clients; packet sections decoded on the server",
+    "Actual WorldEdit API EditSession, no player commands/permissions/clipboard history UI",
+    "Times include EditSession construction, edits and close; exclude setup and asynchronous follow-up work",
+    "One shared-host fixture, not production TPS or client rendering measurements"
+  ]
+}

@@ -5,9 +5,15 @@ import java.util.Arrays;
 
 public final class ShortList {
 
-    private final Short2ShortOpenHashMap map = new Short2ShortOpenHashMap(0);
-    {
-        this.map.defaultReturnValue(Short.MIN_VALUE);
+    // Cubve - most sections in tall worlds never contain a randomly ticking block.
+    private Short2ShortOpenHashMap map;
+
+    private Short2ShortOpenHashMap map(final int capacity) {
+        if (this.map == null) {
+            this.map = new Short2ShortOpenHashMap(capacity);
+            this.map.defaultReturnValue(Short.MIN_VALUE);
+        }
+        return this.map;
     }
 
     private static final short[] EMPTY_LIST = new short[0];
@@ -31,12 +37,17 @@ public final class ShortList {
         if (byIndex.length < len) {
             this.byIndex = Arrays.copyOf(byIndex, len);
         }
-        this.map.ensureCapacity(len);
+        this.map(len).ensureCapacity(len);
     }
 
     public boolean add(final short value) {
+        final Short2ShortOpenHashMap map = this.map;
+        if (map == null) {
+            this.map(0);
+            return this.add(value);
+        }
         final int count = (int)this.count;
-        final short currIndex = this.map.putIfAbsent(value, (short)count);
+        final short currIndex = map.putIfAbsent(value, (short)count);
 
         if (currIndex != Short.MIN_VALUE) {
             return false; // already in this list
@@ -56,7 +67,11 @@ public final class ShortList {
     }
 
     public boolean remove(final short value) {
-        final short index = this.map.remove(value);
+        final Short2ShortOpenHashMap map = this.map;
+        if (map == null) {
+            return false;
+        }
+        final short index = map.remove(value);
         if (index == Short.MIN_VALUE) {
             return false;
         }
@@ -66,7 +81,7 @@ public final class ShortList {
         final short end = this.byIndex[endIndex];
         if (index != endIndex) {
             // not empty after this call
-            this.map.put(end, index);
+            map.put(end, index);
         }
         this.byIndex[(int)index] = end;
         this.byIndex[(int)endIndex] = (short)0;
@@ -76,6 +91,8 @@ public final class ShortList {
 
     public void clear() {
         this.count = (short)0;
-        this.map.clear();
+        if (this.map != null) {
+            this.map.clear();
+        }
     }
 }

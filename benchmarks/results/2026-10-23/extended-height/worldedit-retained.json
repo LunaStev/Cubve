@@ -1,0 +1,479 @@
+{
+  "sourceCommit": "35f98307b61e264696b6b1e51250ff32d388571e",
+  "sourceWorkingTreeModified": true,
+  "label": "retained",
+  "workDirectory": "/mnt/hdd/Cubve/run/benchmarks/extended-height-retained-20261023T123211Z-4240e2",
+  "worldRange": [
+    -1024,
+    1024
+  ],
+  "seed": 8142026,
+  "workerThreads": 1,
+  "players": 0,
+  "warmupPerScenario": 10,
+  "measurementsPerScenario": 20,
+  "sha256": {
+    "jar": "6c9439554922fe71a6f973f817eab7762d2645bb7eecc4c36c53c3001a2b9430",
+    "probe": "bff8271ab23addaaba776f618dbf08c8f6843e70ea52c302dfbcd4115ea4c478",
+    "datapack": "b0e961cad43e515bc094af9db28c6aca0e7499cf09b88c403378327136532e08",
+    "worldedit": "e0ce67d870ad1fef8a40dd9d7926360caf3bb44722438545d6b20b55f82a0c91"
+  },
+  "metrics": [
+    {
+      "label": "y319-i10",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 3662531,
+      "allocatedBytes": 414136
+    },
+    {
+      "label": "y319-i11",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 4566382,
+      "allocatedBytes": 406208
+    },
+    {
+      "label": "y319-i12",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 4862342,
+      "allocatedBytes": 409600
+    },
+    {
+      "label": "y319-i13",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 3644266,
+      "allocatedBytes": 411008
+    },
+    {
+      "label": "y319-i14",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 3714850,
+      "allocatedBytes": 408360
+    },
+    {
+      "label": "y319-i15",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 4516377,
+      "allocatedBytes": 413992
+    },
+    {
+      "label": "y319-i16",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 3591657,
+      "allocatedBytes": 403176
+    },
+    {
+      "label": "y319-i17",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2751497,
+      "allocatedBytes": 395960
+    },
+    {
+      "label": "y319-i18",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2897133,
+      "allocatedBytes": 396040
+    },
+    {
+      "label": "y319-i19",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 3084387,
+      "allocatedBytes": 399896
+    },
+    {
+      "label": "y319-i20",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 3259910,
+      "allocatedBytes": 389960
+    },
+    {
+      "label": "y319-i21",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2436190,
+      "allocatedBytes": 381528
+    },
+    {
+      "label": "y319-i22",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2733413,
+      "allocatedBytes": 381520
+    },
+    {
+      "label": "y319-i23",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2421823,
+      "allocatedBytes": 373336
+    },
+    {
+      "label": "y319-i24",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2022207,
+      "allocatedBytes": 373464
+    },
+    {
+      "label": "y319-i25",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2383851,
+      "allocatedBytes": 373232
+    },
+    {
+      "label": "y319-i26",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2267591,
+      "allocatedBytes": 377560
+    },
+    {
+      "label": "y319-i27",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2162442,
+      "allocatedBytes": 373112
+    },
+    {
+      "label": "y319-i28",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2087621,
+      "allocatedBytes": 370344
+    },
+    {
+      "label": "y319-i29",
+      "y": 319,
+      "blocks": 256,
+      "nanos": 2100615,
+      "allocatedBytes": 374424
+    },
+    {
+      "label": "y1000-i10",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2249988,
+      "allocatedBytes": 373688
+    },
+    {
+      "label": "y1000-i11",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 1907771,
+      "allocatedBytes": 375416
+    },
+    {
+      "label": "y1000-i12",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 3179156,
+      "allocatedBytes": 378616
+    },
+    {
+      "label": "y1000-i13",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2222817,
+      "allocatedBytes": 374232
+    },
+    {
+      "label": "y1000-i14",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2361239,
+      "allocatedBytes": 373688
+    },
+    {
+      "label": "y1000-i15",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2254296,
+      "allocatedBytes": 380936
+    },
+    {
+      "label": "y1000-i16",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2820608,
+      "allocatedBytes": 370728
+    },
+    {
+      "label": "y1000-i17",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 1400390,
+      "allocatedBytes": 373208
+    },
+    {
+      "label": "y1000-i18",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2269465,
+      "allocatedBytes": 371592
+    },
+    {
+      "label": "y1000-i19",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2654583,
+      "allocatedBytes": 371304
+    },
+    {
+      "label": "y1000-i20",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2232184,
+      "allocatedBytes": 371432
+    },
+    {
+      "label": "y1000-i21",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 1489168,
+      "allocatedBytes": 379496
+    },
+    {
+      "label": "y1000-i22",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2498919,
+      "allocatedBytes": 374296
+    },
+    {
+      "label": "y1000-i23",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 1520097,
+      "allocatedBytes": 372912
+    },
+    {
+      "label": "y1000-i24",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2230602,
+      "allocatedBytes": 371528
+    },
+    {
+      "label": "y1000-i25",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2362171,
+      "allocatedBytes": 378296
+    },
+    {
+      "label": "y1000-i26",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2532533,
+      "allocatedBytes": 373688
+    },
+    {
+      "label": "y1000-i27",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 1482205,
+      "allocatedBytes": 378760
+    },
+    {
+      "label": "y1000-i28",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2189634,
+      "allocatedBytes": 374168
+    },
+    {
+      "label": "y1000-i29",
+      "y": 1000,
+      "blocks": 256,
+      "nanos": 2526010,
+      "allocatedBytes": 373080
+    },
+    {
+      "label": "y-900-i10",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 919901,
+      "allocatedBytes": 359704
+    },
+    {
+      "label": "y-900-i11",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1034177,
+      "allocatedBytes": 361096
+    },
+    {
+      "label": "y-900-i12",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 628078,
+      "allocatedBytes": 352216
+    },
+    {
+      "label": "y-900-i13",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1271456,
+      "allocatedBytes": 356616
+    },
+    {
+      "label": "y-900-i14",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 866771,
+      "allocatedBytes": 358976
+    },
+    {
+      "label": "y-900-i15",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1202586,
+      "allocatedBytes": 358952
+    },
+    {
+      "label": "y-900-i16",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1150367,
+      "allocatedBytes": 358728
+    },
+    {
+      "label": "y-900-i17",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 869476,
+      "allocatedBytes": 357992
+    },
+    {
+      "label": "y-900-i18",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 839018,
+      "allocatedBytes": 358776
+    },
+    {
+      "label": "y-900-i19",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 880857,
+      "allocatedBytes": 359624
+    },
+    {
+      "label": "y-900-i20",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 876449,
+      "allocatedBytes": 357560
+    },
+    {
+      "label": "y-900-i21",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 870717,
+      "allocatedBytes": 357960
+    },
+    {
+      "label": "y-900-i22",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 856611,
+      "allocatedBytes": 358952
+    },
+    {
+      "label": "y-900-i23",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 614964,
+      "allocatedBytes": 354696
+    },
+    {
+      "label": "y-900-i24",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 626956,
+      "allocatedBytes": 357992
+    },
+    {
+      "label": "y-900-i25",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1125520,
+      "allocatedBytes": 359096
+    },
+    {
+      "label": "y-900-i26",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 610385,
+      "allocatedBytes": 357720
+    },
+    {
+      "label": "y-900-i27",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 865337,
+      "allocatedBytes": 358040
+    },
+    {
+      "label": "y-900-i28",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1019890,
+      "allocatedBytes": 361288
+    },
+    {
+      "label": "y-900-i29",
+      "y": -900,
+      "blocks": 256,
+      "nanos": 1205902,
+      "allocatedBytes": 356616
+    }
+  ],
+  "medians": {
+    "319": {
+      "nanos": 2824315.0,
+      "allocatedBytes": 392960.0
+    },
+    "1000": {
+      "nanos": 2252142.0,
+      "allocatedBytes": 373688.0
+    },
+    "-900": {
+      "nanos": 873583.0,
+      "allocatedBytes": 358384.0
+    }
+  },
+  "savedFingerprints": [
+    "dbd85ea1d973f0da64aca0914d0417385abdbc2659ef7a10a274cde243ec8d1f",
+    "dbd85ea1d973f0da64aca0914d0417385abdbc2659ef7a10a274cde243ec8d1f"
+  ],
+  "saving": [
+    {
+      "nativeReadiness": "ENTITY_TICKING and empty postprocessing in all nine target chunks",
+      "attempts": 1
+    },
+    {
+      "nativeReadiness": "ENTITY_TICKING and empty postprocessing in all nine target chunks",
+      "attempts": 1
+    }
+  ],
+  "pregen": true,
+  "limitations": [
+    "No connected clients; packet sections decoded on the server",
+    "Actual WorldEdit API EditSession, no player commands/permissions/clipboard history UI",
+    "Times include EditSession construction, edits and close; exclude setup and asynchronous follow-up work",
+    "One shared-host fixture, not production TPS or client rendering measurements"
+  ],
+  "baselineSavedFingerprintMatched": true
+}

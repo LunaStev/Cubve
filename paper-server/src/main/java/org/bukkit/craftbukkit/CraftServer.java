@@ -377,6 +377,11 @@ public final class CraftServer implements Server {
     }
 
     private final io.github.lunastev.cubve.permission.OwnerRegistry cubveOwners;
+    private final io.github.lunastev.cubve.chunk.ChunkPregenerator cubvePregenerator;
+
+    public io.github.lunastev.cubve.chunk.ChunkPregenerator cubvePregenerator() {
+        return this.cubvePregenerator;
+    }
 
     public io.github.lunastev.cubve.permission.OwnerRegistry cubveOwners() {
         return this.cubveOwners;
@@ -384,6 +389,7 @@ public final class CraftServer implements Server {
 
     public CraftServer(DedicatedServer console, PlayerList playerList) {
         this.console = console;
+        this.cubvePregenerator = new io.github.lunastev.cubve.chunk.ChunkPregenerator(console);
         this.playerList = (DedicatedPlayerList) playerList;
         try {
             this.cubveOwners = new io.github.lunastev.cubve.permission.OwnerRegistry(java.nio.file.Path.of("owners.json"));

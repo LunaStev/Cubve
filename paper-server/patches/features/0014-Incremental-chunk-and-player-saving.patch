@@ -5,7 +5,7 @@ Subject: [PATCH] Incremental chunk and player saving
 
 
 diff --git a/net/minecraft/server/MinecraftServer.java b/net/minecraft/server/MinecraftServer.java
-index 255e01251005a547088aba437ca27ce06fc996e5..487fcb8546ad24125c6573fb84f22a02752b35f1 100644
+index db6bc92c75f0acf0e0f661c6648658252b3116d4..b4ab2539a349105dd70c706ad344560b63821375 100644
 --- a/net/minecraft/server/MinecraftServer.java
 +++ b/net/minecraft/server/MinecraftServer.java
 @@ -929,7 +929,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -80,10 +80,10 @@ index 255e01251005a547088aba437ca27ce06fc996e5..487fcb8546ad24125c6573fb84f22a02
 +        Profiler.get().pop();
 +        // Paper end - Incremental chunk and player saving
  
-         ProfilerFiller profiler = Profiler.get();
-         this.server.spark.executeMainThreadTasks(); // Paper - spark
+         this.server.cubvePregenerator().tick(nano); // Cubve - admit background chunk generation only with tick/heap headroom
+ 
 diff --git a/net/minecraft/server/level/ServerLevel.java b/net/minecraft/server/level/ServerLevel.java
-index e4d38cfdac2b926afae3b1b96679b6ce45ea256a..ca793f3f7300148cd55d2e873af5b43d9f4c708f 100644
+index e197ac0ee5e49d7768a9de889c972b3d590f7951..85ab77c3d1d5420df648fd173eaf5ad4f4775a80 100644
 --- a/net/minecraft/server/level/ServerLevel.java
 +++ b/net/minecraft/server/level/ServerLevel.java
 @@ -1470,6 +1470,15 @@ public class ServerLevel extends Level implements WorldGenLevel, ServerEntityGet
@@ -115,7 +115,7 @@ index beb0135d0c292e5b879fac5d55e5889b761d5d0a..60db677d06207b488aad0363af55012b
      private static final int NEUTRAL_MOB_DEATH_NOTIFICATION_RADII_Y = 10;
      private static final int FLY_STAT_RECORDING_SPEED = 25;
 diff --git a/net/minecraft/server/players/PlayerList.java b/net/minecraft/server/players/PlayerList.java
-index 8957b3957d67ac2b1d2cfadc86ce729a485a68e2..e36089e15cdec4f0447050e87532e650bb8f3d0b 100644
+index 70d15fe21fc1fa91a95255878b7e069956590a5b..a61b7fb759860f87c2f7755fc6b11445207f149c 100644
 --- a/net/minecraft/server/players/PlayerList.java
 +++ b/net/minecraft/server/players/PlayerList.java
 @@ -417,6 +417,7 @@ public abstract class PlayerList {

@@ -1,0 +1,17 @@
+--- a/net/minecraft/world/level/levelgen/Heightmap.java
++++ b/net/minecraft/world/level/levelgen/Heightmap.java
+@@ -94,6 +_,14 @@
+             BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+ 
+             for (int y = localY - 1; y >= this.chunk.getMinY(); y--) {
++                // Cubve start - skip complete empty sections during downward surface searches
++                // Keep partial sections and datapacks that classify air as opaque on the original path.
++                if ((y & 15) == 15 && this.chunk.getSection(this.chunk.getSectionIndex(y)).hasOnlyAir()
++                    && !this.isOpaque.test(Blocks.AIR.defaultBlockState())) {
++                    y -= 15;
++                    continue;
++                }
++                // Cubve end - skip complete empty sections during downward surface searches
+                 pos.set(localX, y, localZ);
+                 if (this.isOpaque.test(this.chunk.getBlockState(pos))) {
+                     this.setHeight(localX, localZ, y + 1);
